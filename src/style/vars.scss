@@ -1,0 +1,83 @@
+// 变量值
+@import "./functions/index";
+@import "./theme/default";
+
+// Prefix 前缀
+$prefix : sk;
+
+
+// Font 字体
+$font-family-body       : PingFang SC,Helvetica Neue,Hiragino Sans GB,Helvetica,Microsoft YaHei,Arial;
+$font-family-code       : Consolas, Menlo, Courier, monospace;
+
+// Font-size  字号
+$font-size-base         : px2rem(32px);
+$font-size-xs           : $font-size-base - px2rem(8px);
+$font-size-sm           : $font-size-base - px2rem(4px);
+$font-size-md           : $font-size-base + px2rem(4px);
+$font-size-lg           : $font-size-base + px2rem(8px);
+
+
+// Radius 圆角
+$border-radius-base     : px2rem(6px);
+$border-radius-sm       : $border-radius-base - px2rem(2px);
+$border-radius-md       : $border-radius-base + px2rem(2px);
+$border-radius-lg       : $border-radius-base + px2rem(4px);
+
+
+// Space 间隔
+$space-blank-base       : px2rem(30px);
+$space-blank-sm         : $space-blank-base - px2rem(10px);
+$space-blank-md         : $space-blank-base + px2rem(10px);
+$space-blank-lg         : $space-blank-base + px2rem(20px);
+
+
+
+
+
+// Iconfont 字体图标
+$iconfont-css-prefix    : icon;
+$icon-url               : "//at.alicdn.com/t/font_orbvkz469vnrvn29";
+
+
+// z-index 层次
+$zindex-affix           : 10;     // 附上
+$zindex-back-top        : 10;     // 返回顶部
+$zindex-bar             : 900;  // 顶部底部层次
+$zindex-modal-mask      : 1000;   // 弹窗遮罩层
+$zindex-modal           : 1000;   // 弹窗
+$zindex-notification    : 1010;   // 通知
+$zindex-message         : 1010;   // 信息
+$zindex-popover         : 1030;   // 弹窗层
+$zindex-picker          : 1050;   // 选择器
+$zindex-dropdown        : 1050;   // 下拉菜单
+$zindex-tooltip         : 1060;   // 提示信息
+
+
+// Badge 徽标数
+$badge-size-count       : px2rem(36px);
+$badge-size-dot         : px2rem(18px);
+$badge-font-size        : $font-size-xs;
+
+
+// Buttons 按钮
+$button-size-sm                    : px2rem(56px);
+$button-size-md                    : px2rem(76px);
+$button-size-lg                    : px2rem(100px);
+
+
+
+// nav-bar 顶部菜单栏
+$nav-bar-height                     : px2rem(100px);
+$nav-bar-font-size                  : px2rem(32px);
+$nav-bar-font-size-title            : px2rem(36px);
+
+
+// Tab-bar 底部菜单栏
+$tab-bar-font-size                  : $font-size-xs;
+$tab-bar-height                     : px2rem(110px);
+$tab-bar-height-hidden              : - $tab-bar-height;
+
+
+// 滚动分类导航
+$nav-category-size-height            : px2rem(100px);

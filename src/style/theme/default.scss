@@ -1,0 +1,133 @@
+@import "../color";
+
+// Color
+$primary-color                      : $blue;     // 主色
+$primary-color-light                : $blue400;  // 浅主色
+$primary-color-dark                 : $blue700;  // 深主色
+$secondary-color                    : $pink;     // 辅助色
+$accent-color                       : $pink;     // 强调色. 可用来当做按钮和控件，例如开关和滑块。左对齐的选项（图标，标题）也可以采用。
+
+
+// Text-color 文字颜色
+$text-color-base                    : $black;
+$text-color-second                  : rgba($black, 0.8);
+$text-color-summary                 : rgba($black, 0.5);
+$text-color-extra                   : rgba($black, 0.4);
+$text-color-meta                    : rgba($black, 0.3);
+
+
+// Border-color 边框颜色
+$border-color-base                  : $grey300;
+$border-color-light                 : $grey200;
+$border-color-dark                  : $grey500;
+
+
+// Link 链接颜色
+$link-color-base                    : $primary-color;
+$link-color-hover                   : $primary-color-dark;
+$link-color-active                  : $primary-color-light;
+
+
+// Background-color 背景色
+$background-color-base               : $grey100;
+$background-color-light              : $grey50;
+$background-color-dark               : $grey200;
+
+
+// Icon-font 字体图标
+$icon-font-color                     : $grey;
+
+
+// Badge 徽标数
+$badge-text-color                    : $white;
+$badge-color-base                    : $deepOrange;        // 橙色
+$badge-color-primary                 : $primary-color;     // 主颜色
+$badge-color-secondary               : $secondary-color;   // 强调色
+$badge-color-transparent             : $transparent;       // 透明
+$badge-shadow-color                  : $white;             // 投影颜色
+
+
+// Text-field 文本输入框
+$text-field-color-normal            : rgba($black, 0.4);
+$text-field-color-focus             : $primary-color;
+$text-field-color-error             : $red;
+$text-field-color-disabled          : rgba($black, 0.2);
+$text-field-color-hint              : rgba($black, 0.4);
+$text-field-color-label-float       : rgba($black, 0.4);
+$text-field-font-size-label         : px2rem(28px);
+$text-field-font-size-label-float   : px2rem(24px);
+$text-field-font-size-help          : px2rem(24px);
+$text-field-input-size              : px2rem(64px);
+$text-field-input-border-color      : rgba($black, 0.2);
+
+
+// Checkbox 复选框
+$checkbox-checked-color             : $primary-color;
+$checkbox-checked-color-disabled    : rgba($black, 0.4);
+$checkbox-checked-icon-size         : px2rem(48px);
+
+
+// 投影
+$shadow-depth-1                     : rgba($black, 0.12);
+$shadow-depth-2                     : rgba($black, 0.16);
+$shadow-depth-3                     : rgba($black, 0.19);
+$shadow-depth-4                     : rgba($black, 0.25);
+$shadow-depth-5                     : rgba($black, 0.30);
+
+// nar-bar 顶部菜单栏
+$nav-bar-text-color                 : $white;
+$nav-bar-background-color           : $primary-color;
+
+// Tab-bar 底部菜单栏
+$tab-bar-text-color                  : $grey400;
+$tab-bar-background-color            : $white;
+$tab-bar-color-active                : $primary-color;
+
+$page-light-background-color         : $white;
+
+// 面板模块
+$panel-simple-background-color       : $white;
+$panel-simple-text-color-header      : $grey;
+
+
+// 列表菜单
+$list-menu-text-color-brief          : $text-color-summary;
+$list-menu-text-color-extra          : $text-color-summary;
+$list-menu-text-color-arrow          : $text-color-meta;
+$list-menu-border-color              : $border-color-base;
+$list-menu-background-color-active   : $grey50;
+$list-menu-disabled-opacity          : 0.4;
+
+
+
+
+// 色块
+$primary-section-background-color     : $primary-color;
+$primary-section-text-color-base      : $white;
+$primary-section-text-color-second    : rgba($white, 0.8);
+
+
+// Buttons 按钮
+$button-color-normal                   : $grey600;
+$button-color-primary                  : $primary-color;     // 主要颜色
+$button-color-secondary                : $secondary-color;   // 辅助颜色
+$button-color-transparent              : $transparent;  // 透明颜色
+$button-text-color-abrupt              : $white;        // 文本颜色
+$button-color-flat-normal              : $grey100;      // 扁平默认颜色
+$button-color-ghost-normal             : $grey400;      // 扁平默认颜色
+
+
+// 分割线
+$divider-line-color                    : $grey300;
+$divider-text-color                    : $grey400;
+$divider-background-color              : $white;
+$divider-space-sm                      : px2rem(20px);
+$divider-space-md                      : px2rem(50px);
+$divider-space-lg                      : px2rem(80px);
+
+
+// 滚动分类导航
+$nav-category-scroll-text-color        : $white;
+$nav-category-scroll-background-color  : $primary-color;
+$nav-category-border-color             : rgba($white, 0.8);
+
