@@ -1,0 +1,36 @@
+@import '../../../style/import';
+
+.tabs {
+  &__handle {
+    position: relative;
+    display: flex;
+  }
+  
+  // 高亮项目
+  &__ink__bar {
+    position: absolute;
+    bottom: 0;
+    height: px2rem(4px);
+    background-color: $primary-color;
+  }
+
+  &__tab {
+    cursor: pointer;
+    flex: 1;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    font-size: px2rem(30px);
+    height: px2rem(88px);
+    line-height: px2rem(88px);
+    background-color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__content {}
+
+  .tab__pane {
+    overflow: auto;
+  }
+}
