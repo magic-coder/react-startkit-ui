@@ -7,6 +7,14 @@ import Tabs, { TabPane } from '@/components/tabs';
 
 import testActions from '@/actions';
 
+const callback = (key) => {
+  console.log('onChange', key);
+};
+
+const handleTabClick = (key) => {
+  console.log('onTabClick', key);
+};
+
 class Home extends React.Component {
   static propTypes = {
     test: PropTypes.any,
@@ -20,7 +28,7 @@ class Home extends React.Component {
     return (
       <div className="page page__home">
         <p>首页~~~</p>
-        <Tabs activeKey="3">
+        <Tabs activeKey="22" onChange={callback} onTabClick={handleTabClick}>
           <TabPane tab={'标签1'} key="11">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
               Content of First Tab

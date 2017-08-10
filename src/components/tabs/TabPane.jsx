@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 export default class TabPane extends React.Component {
   static propTypes = {
-    children: PropTypes.any.isRequired,
+    children: PropTypes.any,
+    activeKey: PropTypes.string,
+    paneKey: PropTypes.string,
   }
 
   static defaultTypes = {
@@ -11,9 +13,11 @@ export default class TabPane extends React.Component {
   }
 
   render() {
-    console.log('TabPanel =>>', this);
+    const { activeKey, paneKey } = this.props;
+    const paneComputeClass = activeKey === paneKey ? 'tab__pane tab__pane--active' : 'tab__pane tab__pane--inactive';
+
     return (
-      <div className="tab__pane">{this.props.children}</div>
+      <div className={paneComputeClass}>{this.props.children}</div>
     );
   }
 }

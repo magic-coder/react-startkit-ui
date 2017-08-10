@@ -16,6 +16,8 @@
 
   &__tab {
     cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     flex: 1;
     align-items: center;
     border-bottom: 1px solid #ddd;
@@ -32,5 +34,13 @@
 
   .tab__pane {
     overflow: auto;
+
+    // 隐藏
+    &--inactive {
+      height: 0;
+      overflow: visible;
+
+      display: none;
+    }
   }
 }

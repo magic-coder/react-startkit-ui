@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Tab from './Tab';
+import InkBar from './InkBar';
 import TabPane from './TabPane';
 
 import './scss/tabs';
@@ -27,17 +28,17 @@ export default class Tabs extends React.Component {
   static propTypes = {
     // animated: PropTypes.bool,
     children: PropTypes.any.isRequired,
-    // renderTabBar: PropTypes.func,
-    // renderTabContent: PropTypes.func,
     defaultActiveKey: PropTypes.string,
     activeKey: PropTypes.string,
+    onTabClick: PropTypes.func,
+    onChange: PropTypes.func,
   }
 
   static defaultTypes = {
     // animated: false, // 是否是运动模式
     children: null,
-    // renderTabBar: () => {},
-    // renderTabContent: () => {},
+    onTabClick: () => {},
+    onChange: () => {},
   }
 
   constructor(props) {
@@ -52,8 +53,6 @@ export default class Tabs extends React.Component {
       activeKey = getDefaultActiveKey(props);
     }
 
-    console.log('activeKey ==>>>', activeKey);
-
     this.state = {
       tabsInkBarWidth: 0,
       activeKey,
@@ -61,64 +60,93 @@ export default class Tabs extends React.Component {
     };
   }
 
-  componentWillMount = () => {}
+  componentWillMount = () => {
+    this.setActiveIndex(this.state.activeKey);
+  }
 
   componentDidMount = () => {
-    console.log(this.tabsElement);
     this.getTabsInkBarWidth();
+  }
+
+  onTabClick = (activeKey) => {
+    if (this.props.onTabClick) {
+      this.props.onTabClick(activeKey);
+    }
+    this.setActiveKey(activeKey);
+  }
+
+  // 设置选中面板的 key
+  setActiveKey = (activeKey) => {
+    if (this.state.activeKey !== activeKey) {
+      this.setActiveIndex(activeKey);
+
+      this.setState({
+        activeKey,
+      });
+    }
+  }
+
+  // 设置选中面板的 index
+  setActiveIndex = (activeKey) => {
+    const { children } = this.props;
+    const activeIndex = children.findIndex((tabPane) => {
+      return tabPane.key === activeKey;
+    });
+
+    if (this.props.onChange) {
+      this.props.onChange(activeKey);
+    }
+
+    this.setState({
+      activeIndex,
+    });
   }
 
   getTabsInkBarWidth = () => {
     const { children } = this.props;
-    const { activeKey } = this.state;
     const $tabsElement = this.tabsElement;
-    const activeIndex = children.findIndex((tabPane) => {
-      return tabPane.key === activeKey;
-    });
     const tabsInkBarWidth = $tabsElement.clientWidth / children.length;
 
     this.setState({
-      activeIndex,
       tabsInkBarWidth,
     });
   }
 
   render() {
-    const {
-      children,
-    } = this.props;
-
-    const { tabsInkBarWidth, activeIndex } = this.state;
+    const { children } = this.props;
+    const { tabsInkBarWidth, activeIndex, activeKey } = this.state;
 
     const tabsListsContent = children.map((tabItem) => {
       return (
-        <Tab key={tabItem.key} {...tabItem.props} />        
+        <Tab
+          key={tabItem.key}
+          tabKey={tabItem.key}
+          {...tabItem.props}
+          onTabClick={(key) => { this.onTabClick(key); }}
+        />
       );
     });
 
     const tabsPanesContent = children.map((PaneItem) => {
       return (
-        <TabPane key={PaneItem.key} {...this.props}>{PaneItem.props.children}</TabPane>
+        <TabPane
+          key={PaneItem.key}
+          activeKey={activeKey}
+          paneKey={PaneItem.key}
+          {...PaneItem.props}
+        >
+          {PaneItem.props.children}
+        </TabPane>
       );
     });
-
-    const tabsContent = [];
 
     return (
       <div
         className="tabs"
         ref={(ele) => { this.tabsElement = ele; }}
       >
-        {tabsContent}
         <div className="tabs__handle">
-          <div
-            className="tabs__ink__bar"
-            style={{
-              display: 'block',
-              transform: `translate3d(${tabsInkBarWidth * activeIndex}px, 0px, 0px)`,
-              width: `${tabsInkBarWidth}px`,
-            }}
-          />
+          <InkBar activeIndex={activeIndex} tabsInkBarWidth={tabsInkBarWidth} />
           {tabsListsContent}
         </div>
         <div className="tabs__content">{tabsPanesContent}</div>
