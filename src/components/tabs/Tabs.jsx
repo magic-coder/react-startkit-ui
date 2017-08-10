@@ -26,7 +26,7 @@ const getDefaultActiveKey = (props) => {
 
 export default class Tabs extends React.Component {
   static propTypes = {
-    // animated: PropTypes.bool,
+    animated: PropTypes.bool,
     children: PropTypes.any.isRequired,
     defaultActiveKey: PropTypes.string,
     activeKey: PropTypes.string,
@@ -35,7 +35,7 @@ export default class Tabs extends React.Component {
   }
 
   static defaultTypes = {
-    // animated: false, // 是否是运动模式
+    animated: false, // 是否是运动模式
     children: null,
     onTabClick: () => {},
     onChange: () => {},
@@ -113,7 +113,7 @@ export default class Tabs extends React.Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, animated } = this.props;
     const { tabsInkBarWidth, activeIndex, activeKey } = this.state;
 
     const tabsListsContent = children.map((tabItem) => {
@@ -122,6 +122,7 @@ export default class Tabs extends React.Component {
           key={tabItem.key}
           tabKey={tabItem.key}
           {...tabItem.props}
+          active={tabItem.key === activeKey}
           onTabClick={(key) => { this.onTabClick(key); }}
         />
       );
@@ -132,6 +133,7 @@ export default class Tabs extends React.Component {
         <TabPane
           key={PaneItem.key}
           activeKey={activeKey}
+          active={PaneItem.key === activeKey}
           paneKey={PaneItem.key}
           {...PaneItem.props}
         >
@@ -146,7 +148,7 @@ export default class Tabs extends React.Component {
         ref={(ele) => { this.tabsElement = ele; }}
       >
         <div className="tabs__handle">
-          <InkBar activeIndex={activeIndex} tabsInkBarWidth={tabsInkBarWidth} />
+          <InkBar animated={animated} activeIndex={activeIndex} tabsInkBarWidth={tabsInkBarWidth} />
           {tabsListsContent}
         </div>
         <div className="tabs__content">{tabsPanesContent}</div>

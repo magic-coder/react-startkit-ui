@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 export default class Tab extends React.Component {
   static propTypes = {
     tab: PropTypes.string.isRequired,
+    active: PropTypes.bool.isRequired,
     tabKey: PropTypes.string.isRequired,
     onTabClick: PropTypes.func.isRequired,
   }
 
   static defaultTypes = {
     tab: '',
+    active: false,
     tabKey: '',
     onTabClick: () => {},
   }
@@ -19,10 +21,11 @@ export default class Tab extends React.Component {
   }
 
   render() {
-    const { tab, tabKey } = this.props;
+    const { tab, tabKey, active } = this.props;
+    const tabClassName = active ? 'tabs__tab tabs__tab--active' : 'tabs__tab';
     return (
       <div
-        className="tabs__tab"
+        className={tabClassName}
         role="tab"
         tabIndex={tabKey}
         onClick={() => { this.handleClick(tabKey); }}
