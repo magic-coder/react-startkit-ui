@@ -59,7 +59,7 @@ const plugins = [
 module.exports = {
     entry: {
         main: './src/index.jsx',
-        vendor: ['react', 'react-dom', 'react-router'],
+        vendor: ['react', 'react-dom', 'react-router', 'babel-polyfill'],
     },
     // 打包
     output: {
