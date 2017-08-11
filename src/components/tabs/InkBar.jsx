@@ -9,14 +9,15 @@ export default class InkBar extends React.Component {
   }
 
   static defaultProps = {
-    animated: false, // 是否是运动模式
+    animated: false,
   }
 
   componentDidMount() {
+    // 是运动模式, 延迟添加运动的 className
     if (this.props.animated) {
       setTimeout(() => {
         this.inkBarElement.classList.add('tabs__ink__bar--animated');
-      }, 0);
+      }, 200);
     }
   }
 
