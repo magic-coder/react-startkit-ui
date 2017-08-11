@@ -28,7 +28,7 @@ class Home extends React.Component {
     return (
       <div className="page page__home">
         <p>首页~~~</p>
-        <Tabs activeKey="22" onChange={callback} onTabClick={handleTabClick}>
+        <Tabs animated defaultActiveKey="22" onChange={callback} onTabClick={handleTabClick}>
           <TabPane tab={'标签1'} key="11">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
               Content of First Tab
@@ -39,12 +39,12 @@ class Home extends React.Component {
               Content of Second Tab
             </div>
           </TabPane>
-          <TabPane tab={'标签 3'} key="3" >
+          <TabPane tab={'标签 3'} key="3" disabled>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
               Content of Third Tab
             </div>
           </TabPane>
-          <TabPane tab={'标签 4'} key="4" disabled>
+          <TabPane tab={'标签 4'} key="4">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
               Content of Four Tab
             </div>
@@ -52,7 +52,7 @@ class Home extends React.Component {
         </Tabs>
         <br />
         <br />
-        <Tabs animated activeKey="3" onChange={callback} onTabClick={handleTabClick}>
+        <Tabs defaultActiveKey="11" onChange={callback} onTabClick={handleTabClick}>
           <TabPane tab={'标签1'} key="11">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
               Content of First Tab
@@ -63,7 +63,7 @@ class Home extends React.Component {
               Content of Second Tab
             </div>
           </TabPane>
-          <TabPane tab={'标签 3'} key="3" >
+          <TabPane tab={'标签 3'} key="3">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
               Content of Third Tab
             </div>

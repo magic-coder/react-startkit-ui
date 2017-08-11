@@ -1,6 +1,8 @@
 @import '../../../style/import';
 
 .tabs {
+  overflow: hidden;
+
   &__handle {
     position: relative;
     display: flex;
@@ -34,23 +36,56 @@
     display: flex;
     justify-content: center;
 
-    // 选择
+    // 不可用
+    &--disabled {
+      cursor: default;
+      color: #ccc;
+    }
+    
+    // 选中
     &--active {
       color: $primary-color;
     }
   }
 
-  &__content {}
+  // pane content
+  &__content {
+    // 运动
+    &--animated {
+      display: flex;
+      transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+      zoom: 1;
+      width: 100%;
+      height: 100%;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+      .tab__pane {
+        flex-shrink: 0;
+        width: 100%;
+        will-change: transform;
+      }
+    }
+
+    // 没有运动
+    &--no--animated {
+
+      .tab__pane {
+        &--inactive {
+          display: none;
+        }
+      }
+    }    
+  }
 
   .tab__pane {
     overflow: auto;
 
-    // 隐藏
     &--inactive {
       height: 0;
       overflow: visible;
-
-      display: none;
     }
   }
 }
