@@ -9,7 +9,7 @@ export default class TabPane extends React.Component {
 
   static defaultProps = {
     children: null,
-    // active: false,
+    active: false,
   }
 
   render() {
