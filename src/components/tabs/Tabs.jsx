@@ -3,23 +3,10 @@ import PropTypes from 'prop-types';
 
 import Tab from './Tab';
 import InkBar from './InkBar';
+import ScrollableTabBar from './ScrollableTabBar';
 import TabPane from './TabPane';
 
 import './scss/tabs';
-
-/**
- * 获取默认选中面板的 key
- * @param {*} props 
- */
-const getDefaultActiveKey = (props) => {
-  let activeKey;
-  React.Children.forEach(props.children, (child) => {
-    if (child && !activeKey && !child.props.disabled) {
-      activeKey = child.key;
-    }
-  });
-  return activeKey;
-};
 
 export default class Tabs extends React.Component {
   static propTypes = {
@@ -27,7 +14,7 @@ export default class Tabs extends React.Component {
     defaultActiveKey: PropTypes.string, // 初始化选中面板的 key
     animated: PropTypes.bool, // 是否动画
     swipeable: PropTypes.bool, // 是否可以滑动 tab 内容进行切换
-    activeKey: PropTypes.string,
+    pageSize: PropTypes.number, // 可视区显示的 tab 数量，可以看做一页
     onTabClick: PropTypes.func,
     onChange: PropTypes.func,
   }
@@ -36,6 +23,7 @@ export default class Tabs extends React.Component {
     children: null,
     animated: false,
     swipeable: true,
+    pageSize: 4,
     onTabClick: () => {},
     onChange: () => {},
   }
@@ -43,14 +31,7 @@ export default class Tabs extends React.Component {
   constructor(props) {
     super(props);
 
-    let activeKey;
-    if ('activeKey' in props) {
-      activeKey = props.activeKey;
-    } else if ('defaultActiveKey' in props) {
-      activeKey = props.defaultActiveKey;
-    } else {
-      activeKey = getDefaultActiveKey(props);
-    }
+    const activeKey = this.getDefaultActiveKey(props, this.props.defaultActiveKey);
 
     this.state = {
       tabsInkBarWidth: 0,
@@ -120,9 +101,11 @@ export default class Tabs extends React.Component {
    * 获取 InkBar 宽度
    */
   getTabsInkBarWidth = () => {
-    const { children } = this.props;
+    const { children, pageSize } = this.props;
     const wrapperWidth = this.getWrapperSize().width;
-    const tabsInkBarWidth = wrapperWidth / children.length;
+    // 一屏的 tab 个数
+    const size = children.length > pageSize ? pageSize : children.length;
+    const tabsInkBarWidth = wrapperWidth / size;
 
     this.setState({
       tabsInkBarWidth,
@@ -155,6 +138,38 @@ export default class Tabs extends React.Component {
   }
 
   /**
+   * 获取默认选中面板的 key
+   * @param {*} props 
+  */
+  getDefaultActiveKey = (props, defaultActiveKey) => {
+    let activeKey;
+    if ('defaultActiveKey' in props) {
+      // 有设置默认选中面板的 key
+      const defaultActiveChild = props.children.find((child) => {
+        return child.key === defaultActiveKey;
+      });
+      if (defaultActiveChild && !defaultActiveChild.props.disabled) {
+        activeKey = defaultActiveKey;
+      } else {
+        activeKey = this.getFirstActiveKey();
+      }
+    } else {
+      activeKey = this.getFirstActiveKey();
+    }
+    return activeKey;
+  };
+
+  /**
+   * 获取第一项不禁用面包的 key
+   */
+  getFirstActiveKey = () => {
+    const firstActiveChild = this.props.children.find((child) => {
+      return child && !child.props.disabled;
+    });
+    return firstActiveChild.key;
+  }
+
+  /**
    * 通过选中面板的 index 获取对应的 key
    */
   getActiveKeyByIndex = (index) => {
@@ -179,7 +194,6 @@ export default class Tabs extends React.Component {
 
   /**
    * 获取外层容器的宽度/高度
-   * @memberof Tabs
    */
   getWrapperSize = () => {
     const $tabsElement = this.tabsElement;
@@ -273,11 +287,28 @@ export default class Tabs extends React.Component {
     });
   }
 
-  render() {
-    const { children, animated } = this.props;
-    const { tabsInkBarWidth, activeIndex, activeKey } = this.state;
+  // 渲染 tabInkBar
+  renderTabInkBar = () => {
+    const { pageSize, animated } = this.props;
+    const { tabsInkBarWidth, activeIndex } = this.state;
 
-    const tabsListsContent = children.map((tabItem) => {
+    return (
+      <InkBar
+        animated={animated}
+        activeIndex={activeIndex}
+        pageSize={pageSize}
+        tabsInkBarWidth={tabsInkBarWidth}
+      />
+    );
+  }
+
+  // 渲染 tabBar
+  renderTabBar = () => {
+    const { children, pageSize } = this.props;
+    const { activeIndex } = this.state;
+
+    const tabInkBar = this.renderTabInkBar();
+    const tabBarLists = children.map((tabItem) => {
       return (
         <Tab
           key={tabItem.key}
@@ -289,15 +320,44 @@ export default class Tabs extends React.Component {
       );
     });
 
+    // 超出一屏显示
+    if (children.length > pageSize) {
+      return (
+        <div className="tabs__bar">
+          <ScrollableTabBar
+            activeIndex={activeIndex}
+            pageSize={pageSize}
+            count={children.length}
+          >
+            {tabInkBar}
+            {tabBarLists}
+          </ScrollableTabBar>
+        </div>
+      );
+    }
+
+    // 未超出一屏显示
+    return (
+      <div className="tabs__bar">
+        {tabInkBar}
+        {tabBarLists}
+      </div>
+    );
+  }
+
+  render() {
+    const { children, animated } = this.props;
+    const { activeIndex } = this.state;
+
+    const tabBarContet = this.renderTabBar();
     const tabsPanesContent = children.map((PaneItem) => {
-      const isActive = PaneItem.key === activeKey;
+      const paneItemChildContent = PaneItem.props.children;
       return (
         <TabPane
           key={PaneItem.key}
-          active={isActive}
-          {...PaneItem.props}
+          active={PaneItem.key === children[activeIndex].key}
         >
-          {PaneItem.props.children}
+          {paneItemChildContent}
         </TabPane>
       );
     });
@@ -320,14 +380,7 @@ export default class Tabs extends React.Component {
         className="tabs"
         ref={(ele) => { this.tabsElement = ele; }}
       >
-        <div className="tabs__handle">
-          <InkBar
-            animated={animated}
-            activeIndex={activeIndex}
-            tabsInkBarWidth={tabsInkBarWidth}
-          />
-          {tabsListsContent}
-        </div>
+        {tabBarContet}
         <div
           className={tabsContentClassName}
           ref={(ele) => { this.tabsContentElement = ele; }}

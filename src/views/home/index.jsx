@@ -28,6 +28,60 @@ class Home extends React.Component {
     return (
       <div className="page page__home">
         <p>首页~~~</p>
+        <Tabs animated defaultActiveKey="2" onChange={callback} onTabClick={handleTabClick}>
+          <TabPane tab={'标签1'} key="1">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+              Content of First Tab
+            </div>
+          </TabPane>
+          <TabPane tab={'标签 2'} key="2">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+              Content of Second Tab
+            </div>
+          </TabPane>
+          <TabPane tab={'标签 3'} key="3" disabled>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+              Content of Third Tab
+            </div>
+          </TabPane>
+          <TabPane tab={'标签 4'} key="4">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+              Content of Four Tab
+            </div>
+          </TabPane>
+          <TabPane tab={'标签 5'} key="5">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+              Content of First Tab
+            </div>
+          </TabPane>
+          <TabPane tab={'标签 6'} key="6">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+              Content of Second Tab
+            </div>
+          </TabPane>
+          <TabPane tab={'标签 7'} key="7" disabled>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+              Content of Third Tab
+            </div>
+          </TabPane>
+          <TabPane tab={'标签 8'} key="8">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+              Content of Four Tab
+            </div>
+          </TabPane>
+          <TabPane tab={'标签 9'} key="9" disabled>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+              Content of Third Tab
+            </div>
+          </TabPane>
+          <TabPane tab={'标签 10'} key="10">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
+              Content of Four Tab
+            </div>
+          </TabPane>
+        </Tabs>
+        <br />
+        <br />
         <Tabs animated defaultActiveKey="22" onChange={callback} onTabClick={handleTabClick}>
           <TabPane tab={'标签1'} key="11">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
@@ -52,7 +106,7 @@ class Home extends React.Component {
         </Tabs>
         <br />
         <br />
-        <Tabs defaultActiveKey="11" onChange={callback} onTabClick={handleTabClick}>
+        <Tabs defaultActiveKey="3" onChange={callback} onTabClick={handleTabClick}>
           <TabPane tab={'标签1'} key="11">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
               Content of First Tab
