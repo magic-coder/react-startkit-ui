@@ -7,6 +7,8 @@ export default class Tab extends React.Component {
     disabled: PropTypes.bool,
     active: PropTypes.bool.isRequired,
     tabKey: PropTypes.string.isRequired,
+    pageSize: PropTypes.number,
+    count: PropTypes.number,
     onTabClick: PropTypes.func.isRequired,
   }
 
@@ -15,6 +17,8 @@ export default class Tab extends React.Component {
     active: false,
     disabled: false,
     tabKey: '',
+    pageSize: 4,
+    count: 4,
     onTabClick: () => {},
   }
 
@@ -44,8 +48,18 @@ export default class Tab extends React.Component {
   }
 
   render() {
-    const { tab, tabKey } = this.props;
+    const { tab, tabKey, pageSize, count } = this.props;
     const tabClassName = this.getTabClassName();
+    // 数量超出一屏显示, 设置每项的 flex-base-width;
+    let style;
+    if (count > pageSize) {
+      const percentWidth = (1 / pageSize) * 100;
+      style = {
+        flex: `0 0 ${percentWidth}%`,
+      };
+    } else {
+      style = {};
+    }
 
     return (
       <div
@@ -53,6 +67,7 @@ export default class Tab extends React.Component {
         role="tab"
         tabIndex={tabKey}
         onClick={() => { this.handleClick(tabKey); }}
+        style={style}
       >
         {tab}
       </div>
