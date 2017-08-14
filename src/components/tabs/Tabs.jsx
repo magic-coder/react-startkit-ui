@@ -6,7 +6,7 @@ import InkBar from './InkBar';
 import ScrollableTabBar from './ScrollableTabBar';
 import TabPane from './TabPane';
 
-import './scss/tabs';
+import './scss';
 
 export default class Tabs extends React.Component {
   static propTypes = {
@@ -14,9 +14,9 @@ export default class Tabs extends React.Component {
     defaultActiveKey: PropTypes.string, // 初始化选中面板的 key
     animated: PropTypes.bool, // 是否动画
     swipeable: PropTypes.bool, // 是否可以滑动 tab 内容进行切换
-    pageSize: PropTypes.number, // 可视区显示的 tab 数量，可以看做一页
-    onTabClick: PropTypes.func,
-    onChange: PropTypes.func,
+    pageSize: PropTypes.number, // 可视区显示的 tab 数量, 可以看做一屏
+    onTabClick: PropTypes.func, // tab 点击的回调函数
+    onChange: PropTypes.func, // tabs 切换时的回调函数
   }
 
   static defaultProps = {
