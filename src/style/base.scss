@@ -59,7 +59,7 @@ html {
 }
 
 body {
-  line-height: 1.5;
+  line-height: 1;
   font-family: $font-family-body;
   font-size: $font-size-base;
   color: $text-color-base;
@@ -83,4 +83,28 @@ a {
 }
 img {
   max-width: 100%;
+}
+
+// page 
+.page {
+
+  &__header {
+    position: relative;
+    overflow: hidden;
+    padding: px2rem(80px) px2rem(50px) px2rem(50px);
+  }
+
+  &__title {
+    color: #3d3d3d;
+    font-size: px2rem(60px);
+    font-weight: 400;
+  }
+
+  &__desc {
+    line-height: 1.5;
+    padding: px2rem(30px) 0 0;
+    font-size: px2rem(26px);
+    color: #666;
+    font-weight: 400;
+  }
 }
