@@ -176,7 +176,7 @@ export default class ScrollableTabBar extends React.Component {
   /**
    * 抬起/结束事件触发的函数
    */
-  endSwipe = () => {
+  endSwipe = (ev) => {
     const { swipe } = this.state;
     const endTime = new Date();
 
@@ -195,6 +195,10 @@ export default class ScrollableTabBar extends React.Component {
       distanceX = swipe.distanceX * (diffTime * ((moveDistance / wrapperWidth) / 3));
     } else {
       distanceX = swipe.distanceX;
+    }
+
+    if (diffTime > 200) {
+      ev.preventDefault();
     }
 
     // 位移
