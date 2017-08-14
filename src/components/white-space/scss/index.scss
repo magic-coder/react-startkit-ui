@@ -1,0 +1,25 @@
+@import '../../../style/import';
+
+.whitespace {
+
+  &--xs {
+    height: px2rem(6px);
+  }
+
+  &--sm {
+    height: px2rem(12px);
+  }
+
+  &--md {
+    height: px2rem(18px);
+  }
+
+  &--lg {
+    height: px2rem(30px);
+  }
+
+  &--xl {
+    height: px2rem(42px);
+  }
+
+}
