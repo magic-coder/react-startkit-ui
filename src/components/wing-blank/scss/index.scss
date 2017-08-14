@@ -1,0 +1,22 @@
+@import '../../../style/import';
+
+.wingblank {
+  margin-left: px2rem(16px);
+  margin-right: px2rem(16px);
+
+  &--sm {
+    margin-left: px2rem(10px);
+    margin-right: px2rem(10px);
+  }
+
+  &--md {
+    margin-left: px2rem(16px);
+    margin-right: px2rem(16px);
+  }
+
+  &--lg {
+    margin-left: px2rem(30px);
+    margin-right: px2rem(30px);
+  }
+
+}
