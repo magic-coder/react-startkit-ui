@@ -9,6 +9,7 @@
 
     &__container {
       width: 100%;
+      background-color: #fff;
       
       &:before,
       &:after {
@@ -16,7 +17,7 @@
         position: absolute;
         top: 0;
         display: block;
-        width: px2rem(120px);
+        width: px2rem(60px);
         height: 100%;
         content: "";
         z-index: 999;
@@ -38,7 +39,8 @@
       left: 0;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       transform: translate3d(0px, 0px, 0px);
-      transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+      // transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+      transition: transform 0.3s;
     }
 
     &__nav {
