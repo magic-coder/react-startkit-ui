@@ -41,7 +41,9 @@ export default class Tabs extends React.Component {
         isStartDrag: false,
         startTime: 0,
         startX: 0,
+        startY: 0,
         distanceX: 0,
+        distanceY: 0,
         movePercent: 0,
       },
     };
@@ -216,6 +218,7 @@ export default class Tabs extends React.Component {
     slide.isStartDrag = true;
     slide.startTime = new Date();
     slide.startX = touch.clientX;
+    slide.startY = touch.clientY;
 
     this.setState({
       slide,
@@ -234,7 +237,10 @@ export default class Tabs extends React.Component {
     }
     const wrapperWidth = this.getWrapperSize().width;
     slide.distanceX = slide.startX - touch.clientX;
-    slide.movePercent = (slide.distanceX / wrapperWidth) * 100;
+    slide.distanceY = slide.startY - touch.clientY;
+    if (Math.abs(slide.distanceY) < 30) {
+      slide.movePercent = (slide.distanceX / wrapperWidth) * 100;
+    }
 
     // 滑动了一定距离, 阻止默认行为, 解决某些浏览器的滑屏后退前进
     if (Math.abs(slide.distanceX) >= wrapperWidth / 20) {
@@ -254,15 +260,25 @@ export default class Tabs extends React.Component {
     const endTime = new Date();
 
     // 滑动的绝对距离
-    const moveDistance = Math.abs(slide.distanceX);
+    const moveDistanceX = Math.abs(slide.distanceX);
+    const moveDistanceY = Math.abs(slide.distanceY);
     // 外层容器的宽度
     const wrapperWidth = this.getWrapperSize().width;
+    // 是否有垂直滑动距离
+    const hasMoveDistanceY = moveDistanceY > 120;
+
+    // 条件: 垂直滑动距离小于 30 且水平滑动距离超过 1/4
+    const isMatchDistance = !hasMoveDistanceY && moveDistanceX >= wrapperWidth / 4;
+
     // 是否符合时间差
     const isMatchTime = endTime - slide.startTime < 300;
-    // 滑动距离超过 1/4  or 滑动距离超过 1/5 且按下与抬起的时间差小于 300 毫秒
-    if (moveDistance >= wrapperWidth / 4 || (moveDistance >= wrapperWidth / 8 && isMatchTime)) {
-      const nextActiveIndex = this.getNextActiveIndex(activeIndex);
+    // 最小滑动距离
+    const isMatchMoveDistanceXMin = moveDistanceX >= wrapperWidth / 8;
+    // 条件: 垂直滑动距离小于 30 且 滑动距离超过 1/8 且按下与抬起的时间差小于 300 毫秒
+    const isMatchDistanceAndTime = !hasMoveDistanceY && isMatchTime && isMatchMoveDistanceXMin;
 
+    if (isMatchDistance || isMatchDistanceAndTime) {
+      const nextActiveIndex = this.getNextActiveIndex(activeIndex);
       if (nextActiveIndex !== activeIndex) {
         this.setState({
           activeIndex: nextActiveIndex,
@@ -281,7 +297,9 @@ export default class Tabs extends React.Component {
         isStartDrag: false,
         startTime: 0,
         startX: 0,
+        startY: 0,
         distanceX: 0,
+        distanceY: 0,
         movePercent: 0,
       },
     });
@@ -289,14 +307,13 @@ export default class Tabs extends React.Component {
 
   // 渲染 tabInkBar
   renderTabInkBar = () => {
-    const { pageSize, animated } = this.props;
+    const { animated } = this.props;
     const { tabsInkBarWidth, activeIndex } = this.state;
 
     return (
       <InkBar
         animated={animated}
         activeIndex={activeIndex}
-        pageSize={pageSize}
         tabsInkBarWidth={tabsInkBarWidth}
       />
     );
@@ -312,10 +329,12 @@ export default class Tabs extends React.Component {
       return (
         <Tab
           key={tabItem.key}
-          tabKey={tabItem.key}
           {...tabItem.props}
+          tabKey={tabItem.key}
           active={tabItem.key === children[activeIndex].key}
           onTabClick={(key) => { this.onTabClick(key); }}
+          pageSize={pageSize}
+          count={children.length}
         />
       );
     });
