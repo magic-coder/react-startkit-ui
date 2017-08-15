@@ -108,3 +108,13 @@ img {
     font-weight: 400;
   }
 }
+
+// text__content
+.text__content {
+  text-align: justify;
+
+  p {
+    line-height: 1.5;
+    margin: 0 0 px2rem(30px);
+  }
+}
