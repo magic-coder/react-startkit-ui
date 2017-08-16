@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Panel from '@/components/panel';
 import WhiteSpace from '@/components/white-space';
@@ -20,7 +21,7 @@ class PanelExample extends React.Component {
           <Panel>
             <Panel.Header
               title="标题 - 页面主体"
-              extra={<a>详情</a>}
+              extra={<Link to="/" replace>详情</Link>}
             />
             <Panel.Body>
               <WingBlank>
@@ -33,12 +34,13 @@ class PanelExample extends React.Component {
                 <WhiteSpace size="lg" />
               </WingBlank>
             </Panel.Body>
-            <Panel.Footer content={<a>查看更多</a>} />
+            <Panel.Footer content={<Link to="/" replace>查看更多</Link>} />
           </Panel>
+          <WhiteSpace size="lg" />
 
           <Panel>
             <Panel.Header
-              title="排版 - 页面主体"
+              title="底部内容非链接"
               extra={<span>详情</span>}
             />
             <Panel.Body>
@@ -54,6 +56,60 @@ class PanelExample extends React.Component {
             </Panel.Body>
             <Panel.Footer content="底部内容" extra="其他" />
           </Panel>
+          <WhiteSpace size="lg" />
+
+          <Panel>
+            <Panel.Header
+              title="MORE 居左"
+            />
+            <Panel.Body>
+              <WingBlank>
+                <WhiteSpace size="lg" />
+                <div className="text__content">
+                  <p>React 是一个用于构建用户界面的 JAVASCRIPT 库，主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）。</p>
+                  <p>React 起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源。</p>
+                  <p>React 拥有较高的性能，代码逻辑非常简单，越来越多的人已开始关注和使用它。</p>
+                </div>
+                <WhiteSpace size="lg" />
+              </WingBlank>
+            </Panel.Body>
+            <Panel.More
+              content={
+                <Link
+                  replace
+                  to={{
+                    pathname: '/courses',
+                    search: '?sort=name',
+                    hash: '#the-hash',
+                    state: { fromDashboard: true },
+                 }}
+                >
+                  查看详情
+                </Link>
+              }
+            />
+          </Panel>
+          <WhiteSpace size="lg" />
+
+          <Panel>
+            <Panel.Header
+              title="MORE 居中"
+            />
+            <Panel.Body>
+              <WingBlank>
+                <WhiteSpace size="lg" />
+                <div className="text__content">
+                  <p>React 是一个用于构建用户界面的 JAVASCRIPT 库，主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）。</p>
+                  <p>React 起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源。</p>
+                  <p>React 拥有较高的性能，代码逻辑非常简单，越来越多的人已开始关注和使用它。</p>
+                </div>
+                <WhiteSpace size="lg" />
+              </WingBlank>
+            </Panel.Body>
+            <Panel.More content="查看详情" center />
+          </Panel>
+          <WhiteSpace size="lg" />
+
         </div>
       </div>
     );
