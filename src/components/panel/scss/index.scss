@@ -41,6 +41,12 @@
       flex: 1;
     }
 
+    &__content {
+      > a {
+        display: block;
+      }
+    }
+
     &__extra {
       text-align: right;
     }
