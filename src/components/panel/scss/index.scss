@@ -9,6 +9,12 @@
     padding: 0 px2rem(30px);
     color: #808080;
 
+    // 标题 和 内容 混合
+    &--inside {
+      background-color: #ffffff;
+      color: #999999;
+    }
+
     &__extra {
       flex: 1;
       opacity: 0.8;

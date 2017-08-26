@@ -110,6 +110,26 @@ class PanelExample extends React.Component {
           </Panel>
           <WhiteSpace size="lg" />
 
+          <Panel>
+            <Panel.Header
+              inside
+              title="标题和内容混合"
+            />
+            <Panel.Body>
+              <WingBlank>
+                <WhiteSpace size="lg" />
+                <div className="text__content">
+                  <p>React 是一个用于构建用户界面的 JAVASCRIPT 库，主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）。</p>
+                  <p>React 起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源。</p>
+                  <p>React 拥有较高的性能，代码逻辑非常简单，越来越多的人已开始关注和使用它。</p>
+                </div>
+                <WhiteSpace size="lg" />
+              </WingBlank>
+            </Panel.Body>
+            <Panel.More to="https://www.so.com" content="查看详情" />
+          </Panel>
+          <WhiteSpace size="lg" />
+
         </div>
       </div>
     );
