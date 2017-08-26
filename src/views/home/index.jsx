@@ -25,6 +25,7 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log(this.props.test);
     return (
       <div className="page page__home">
         <div className="page__header">
