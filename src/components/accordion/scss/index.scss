@@ -1,0 +1,73 @@
+@import '../../../style/import';
+
+.accordion {
+      
+  &__item {
+    border-bottom: 1px solid #eee;
+
+    &--active {
+       .accordion__header__icon {
+          transform: rotate(90deg);
+       }
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    height: px2rem(88px);
+    line-height: px2rem(88px);
+    padding: 0 px2rem(30px);
+    background-color: #fff;
+    cursor: pointer;
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.015);
+    }
+
+    &__icon {
+      display: inline-block;
+      width: px2rem(20px);
+      position: relative;
+      transition: transform 0.3s;
+
+      &:after {
+        content: " ";
+        display: inline-block;
+        height: px2rem(16px);
+        width: px2rem(16px);
+        border-width: 2px 2px 0 0;
+        border-color: #C8C8CD;
+        border-style: solid;
+        transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+        position: relative;
+        top: px2rem(-8px);
+        position: absolute;
+        top: 50%;
+        margin-top: px2rem(-6px);
+        right: px2rem(8px);
+      }
+    }
+  }
+
+  &__title {
+    flex: 1;
+    font-size: px2rem(30px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__body {
+    background-color: #fff;
+    // transition: height 0.3s;
+    // overflow: hidden;
+    
+    // &--active {}
+
+    // &--inactive {
+    //   padding: 0px;
+    //   height: 0px;
+    // }
+  }
+}

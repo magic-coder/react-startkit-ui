@@ -8,6 +8,7 @@ import Home from '@/views/home';
 import WhiteSpaceExample from '@/views/examples/whitespace';
 import WingBlankExample from '@/views/examples/wingblank';
 import PanelExample from '@/views/examples/panel';
+import AccordionExample from '@/views/examples/accordion';
 import NotFound from '@/views/404';
 
 // reacr-fastclick
@@ -23,6 +24,7 @@ export default class APP extends Component {
             <Route exact path="/whitespace" component={WhiteSpaceExample} />
             <Route exact path="/wingblank" component={WingBlankExample} />
             <Route exact path="/panel" component={PanelExample} />
+            <Route exact path="/accordion" component={AccordionExample} />
             <Route component={NotFound} />
           </Switch>
         </div>
