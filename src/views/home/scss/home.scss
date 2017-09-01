@@ -1,0 +1,33 @@
+@import '../../../style/import';
+
+.accordion__category {
+  margin: 0 px2rem(30px); 
+
+  .accordion__item {
+    border-bottom: none;
+    margin-bottom: px2rem(30px);
+
+    &--active {
+      .text__content {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .accordion__header {
+    height: px2rem(140px);
+    line-height: px2rem(140px);
+    padding-left: px2rem(50px);
+  }
+
+  .accordion__title {
+    font-size: px2rem(36px);
+  }
+
+  .text__content {
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity .3s, transform .3s;
+  }
+}

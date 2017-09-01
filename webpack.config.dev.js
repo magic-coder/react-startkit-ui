@@ -72,13 +72,19 @@ module.exports = {
                 use: ['url-loader'],
             },
             {
-                test: /\.(gif|png|jpe?g|svg)$/i,
+                test: /\.(gif|png|jpe?g)$/i,
                 use: [
                     'url-loader?limit=1000&name=assets/images/[name].[ext]',
                     'image-webpack-loader',
                 ],
-            }
-
+            },
+            {
+                test: /\.svg$/,
+                loader: 'svg-sprite-loader',
+                include:  [
+                    path.resolve(__dirname, 'src/assets/svg'),
+                ],
+            },
         ]
     },
     resolve: {
