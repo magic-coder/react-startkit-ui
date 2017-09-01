@@ -109,12 +109,27 @@ img {
   }
 }
 
-// text__content
+// text content
 .text__content {
   text-align: justify;
 
   p {
     line-height: 1.5;
     margin: 0 0 px2rem(30px);
+  }
+}
+
+// demo preview
+.demo__preview {
+  &__title {
+    padding: px2rem(30px) px2rem(30px) px2rem(20px) px2rem(30px);
+    font-size: px2rem(32px);
+    font-weight: 700;
+    position: relative;
+    color: #000000;
+  }
+
+  &__content {
+    padding: px2rem(20px) px2rem(0);
   }
 }

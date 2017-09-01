@@ -3,12 +3,24 @@
 .accordion {
       
   &__item {
-    border-bottom: 1px solid #eee;
+    position: relative;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e6e6e6;
 
     &--active {
        .accordion__header__icon {
-          transform: rotate(90deg);
+          &:after { 
+            transform: rotate(-45deg);
+          }
        }
+    }
+
+    &--disabled {
+      .accordion__title,
+      .accordion__header__icon,
+      .accordion__body {
+        opacity: 0.5;
+      }
     }
   }
 
@@ -27,25 +39,24 @@
 
     &__icon {
       display: inline-block;
-      width: px2rem(20px);
+      width: px2rem(32px);
       position: relative;
-      transition: transform 0.3s;
 
       &:after {
         content: " ";
         display: inline-block;
-        height: px2rem(16px);
-        width: px2rem(16px);
+        height: px2rem(20px);
+        width: px2rem(20px);
+        position: absolute;
+        top: 50%;
+        right: px2rem(8px);
+        margin-top: px2rem(-10px);
         border-width: 2px 2px 0 0;
         border-color: #C8C8CD;
         border-style: solid;
-        transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-        position: relative;
-        top: px2rem(-8px);
-        position: absolute;
-        top: 50%;
-        margin-top: px2rem(-6px);
-        right: px2rem(8px);
+        transform:rotate(135deg);   
+        transform-origin: center;
+        transition: transform 0.3s;
       }
     }
   }
@@ -60,14 +71,9 @@
 
   &__body {
     background-color: #fff;
-    // transition: height 0.3s;
-    // overflow: hidden;
     
-    // &--active {}
+    &--active {}
 
-    // &--inactive {
-    //   padding: 0px;
-    //   height: 0px;
-    // }
+    &--inactive {}
   }
 }

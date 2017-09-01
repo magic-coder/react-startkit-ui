@@ -5,12 +5,11 @@ import classNames from 'classnames';
 import AccordionHeader from './AccordionHeader';
 import AccordionBody from './AccordionBody';
 
-// https://github.com/daviferreira/react-sanfona/blob/master/src/AccordionItem/index.jsx
-
 export default class AccordionItem extends React.Component {
   static propTypes = {
     index: PropTypes.number.isRequired,
     label: PropTypes.string.isRequired,
+    disabled: PropTypes.bool,
     active: PropTypes.bool,
     children: PropTypes.oneOfType([
       PropTypes.string,
@@ -21,6 +20,7 @@ export default class AccordionItem extends React.Component {
 
   static defaultProps = {
     index: 0,
+    disabled: false,
     children: null,
     onChange: () => {},
   }
@@ -38,23 +38,31 @@ export default class AccordionItem extends React.Component {
     };
   }
 
-  componentDidUpdate() {
-    const { active } = this.props;
-    if (active) {
+  componentDidUpdate(prevProps) {
+    const { active, children } = this.props;
+
+    if (prevProps.active !== active) {
+      if (active) {
+        this.handleCollapse();
+      } else {
+        this.handleExpand();
+      }
+    } else if (prevProps.children !== children) {
       this.setBodyStyle();
     }
   }
 
-  onHandleClick = (activeIndex) => {
-    console.log('AccordionItem =>>', activeIndex);
-    this.props.onChange(activeIndex);
+  onHandleClick = (handleIndex) => {
+    // 当前为禁用项
+    if (this.props.disabled) {
+      return;
+    }
+    this.props.onChange(handleIndex);
   }
 
   setBodyStyle = () => {
     const { active } = this.props;
-    // console.log(active);
     const $bodyElement = this.bodyElement.bodyElement;
-    // console.log($bodyElement);
 
     this.setState({
       maxHeight: active ? `${$bodyElement.scrollHeight}px` : 0,
@@ -62,10 +70,19 @@ export default class AccordionItem extends React.Component {
     });
   }
 
+  handleCollapse = () => {
+    this.setBodyStyle();
+  }
+
+  handleExpand = () => {
+    this.setBodyStyle();
+  }
+
   render() {
-    const { label, index, active, children } = this.props;
+    const { label, index, active, disabled, children } = this.props;
     const accordionItemClassNames = classNames('accordion__item', {
       'accordion__item--active': active,
+      'accordion__item--disabled': disabled,
     });
 
     return (
