@@ -1,11 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
 import Tabs, { TabPane } from '@/components/tabs';
-
-import testActions from '@/actions';
 
 const callback = (key) => {
   console.log('onChange', key);
@@ -15,14 +10,10 @@ const handleTabClick = (key) => {
   console.log('onTabClick', key);
 };
 
-class Home extends React.Component {
-  static propTypes = {
-    test: PropTypes.any,
-  }
+class TabsExample extends React.Component {
+  static propTypes = {}
 
-  static defaultProps = {
-    test: null,
-  }
+  static defaultProps = {}
 
   render() {
     return (
@@ -158,17 +149,4 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { test } = state;
-  return {
-    test,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    testActions: bindActionCreators({ testActions }, dispatch),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default TabsExample;

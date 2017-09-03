@@ -3,17 +3,11 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Tabs, { TabPane } from '@/components/tabs';
-
 import testActions from '@/actions';
 
-const callback = (key) => {
-  console.log('onChange', key);
-};
+import Accordion from '@/components/accordion';
 
-const handleTabClick = (key) => {
-  console.log('onTabClick', key);
-};
+import './scss/home';
 
 class Home extends React.Component {
   static propTypes = {
@@ -33,131 +27,75 @@ class Home extends React.Component {
           <div className="page__desc">React Startkit UI 是一套移动端基础组件库</div>
         </div>
         <div className="page__body">
-          <Tabs animated defaultActiveKey="4" pageSize={4} onChange={callback} onTabClick={handleTabClick}>
-            <TabPane tab={'标签1'} key="1">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of First Tab
+          <p>
+            <svg>
+              <use xlinkHref="#all" />
+            </svg>
+            <svg>
+              <use xlinkHref="#cart" />
+            </svg>
+          </p>
+
+          <Accordion
+            className="accordion__category"
+          >
+            <Accordion.Item
+              label="布局 Layout"
+            >
+              <div className="text__content" style={{ padding: '0.3rem' }}>
+                <p>爱彼迎上的所有评价均由爱彼迎房东和旅行者所撰写。因此，您看到的评价都是基于房客在房东房源内完成的某次住宿。</p>
+                <p>退房后您有14天的时间为旅程撰写评价。</p>
               </div>
-            </TabPane>
-            <TabPane tab={'标签 2'} key="2">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Second Tab
+            </Accordion.Item>
+            <Accordion.Item
+              label="导航 Navigation"
+            >
+              <div className="text__content" style={{ padding: '0.3rem' }}>
+                <p>爱彼迎上的预订总价取决于好几个因素。请注意，房东一旦接受您的预订申请（或者如果您使用闪订功能预订住宿），系统便会按此价格全额收取费用。</p>
+                <p>有些房东为支付其房源的清洁费用而收取的一次性费用额外房客费：有些房东为支付与使用他们的房源有关的其他费用而收取的一次性费用</p>
               </div>
-            </TabPane>
-            <TabPane tab={'标签 3'} key="3">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Third Tab
+            </Accordion.Item>
+            <Accordion.Item
+              label="数据展示 Data Display"
+            >
+              <div className="text__content" style={{ padding: '0.3rem' }}>
+                <p>您可以在旅程开始前或旅程期间随时取消预订。要取消预订，请按以下步骤操作：</p>
+                <p>1.前往您的旅程; 2.在您要取消的预订旁边点击更改或取消; 3.选择取消预订</p>
               </div>
-            </TabPane>
-            <TabPane tab={'标签 4'} key="4">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Fourth Tab
+            </Accordion.Item>
+            <Accordion.Item
+              label="数据录入 Data Entry"
+            >
+              <div className="text__content" style={{ padding: '0.3rem' }}>
+                <p>您可以在旅程开始前或旅程期间随时取消预订。要取消预订，请按以下步骤操作：</p>
+                <p>1.前往您的旅程; 2.在您要取消的预订旁边点击更改或取消; 3.选择取消预订</p>
               </div>
-            </TabPane>
-            <TabPane tab={'标签 5'} key="5">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Fifth Tab
+            </Accordion.Item>
+            <Accordion.Item
+              label="操作反馈 Feedback"
+            >
+              <div className="text__content" style={{ padding: '0.3rem' }}>
+                <p>您可以在旅程开始前或旅程期间随时取消预订。要取消预订，请按以下步骤操作：</p>
+                <p>1.前往您的旅程; 2.在您要取消的预订旁边点击更改或取消; 3.选择取消预订</p>
               </div>
-            </TabPane>
-            <TabPane tab={'标签 6'} key="6">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Fixth Tab
+            </Accordion.Item>
+            <Accordion.Item
+              label="组合组件 Combination"
+            >
+              <div className="text__content" style={{ padding: '0.3rem' }}>
+                <p>您可以在旅程开始前或旅程期间随时取消预订。要取消预订，请按以下步骤操作：</p>
+                <p>1.前往您的旅程; 2.在您要取消的预订旁边点击更改或取消; 3.选择取消预订</p>
               </div>
-            </TabPane>
-            <TabPane tab={'标签 7'} key="7">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Seventh Tab
+            </Accordion.Item>
+            <Accordion.Item
+              label="其他 Other"
+            >
+              <div className="text__content" style={{ padding: '0.3rem' }}>
+                <p>其他 Other</p>
               </div>
-            </TabPane>
-            <TabPane tab={'标签 8'} key="8">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Eighth Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 9'} key="9">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Ninth Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 10'} key="10">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Tenth Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 11'} key="11">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Eleventh Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 12'} key="12">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Twelevth Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 13'} key="13">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Thirteenth Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 14'} key="14">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Fourteenth Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 15'} key="15">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Fifteenth Tab
-              </div>
-            </TabPane>
-          </Tabs>
-          <br />
-          <br />
-          <Tabs animated defaultActiveKey="22" pageSize={5} onChange={callback} onTabClick={handleTabClick}>
-            <TabPane tab={'标签1'} key="11">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of First Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 2'} key="22">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Second Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 3'} key="3">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Third Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 4'} key="4">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Four Tab
-              </div>
-            </TabPane>
-          </Tabs>
-          <br />
-          <br />
-          <Tabs defaultActiveKey="3" onChange={callback} onTabClick={handleTabClick}>
-            <TabPane tab={'标签1'} key="11">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of First Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 2'} key="22">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Second Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 3'} key="3">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Third Tab
-              </div>
-            </TabPane>
-            <TabPane tab={'标签 4'} key="4" disabled>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '5rem', backgroundColor: '#fff' }}>
-                Content of Four Tab
-              </div>
-            </TabPane>
-          </Tabs>
+            </Accordion.Item>
+          </Accordion>
+
         </div>
       </div>
     );

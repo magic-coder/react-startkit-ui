@@ -129,7 +129,17 @@ img {
     color: #000000;
   }
 
+  &__sub__title {
+    color: #888;
+    font-size: px2rem(28px);
+    padding: px2rem(30px) px2rem(20px);
+  }
+
   &__content {
     padding: px2rem(20px) px2rem(0);
+
+    &--bg {
+      background-color: #ffffff;
+    }
   }
 }
