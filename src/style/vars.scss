@@ -35,9 +35,14 @@ $space-blank-lg         : $space-blank-base + px2rem(20px);
 
 
 
-// Iconfont 字体图标
-$iconfont-css-prefix    : icon;
-$icon-url               : "//at.alicdn.com/t/font_orbvkz469vnrvn29";
+// Icon 图标
+$icon-size-xxs          : px2rem(30px);
+$icon-size-xs           : px2rem(36px);
+$icon-size-sm           : px2rem(42px);
+$icon-size-md           : px2rem(48px);
+$icon-size-lg           : px2rem(72px);
+$icon-size-xl           : px2rem(96px);
+
 
 
 // z-index 层次
