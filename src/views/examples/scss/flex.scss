@@ -1,0 +1,22 @@
+@import '../../../style/import';
+
+.flexbox__example {
+  .flexbox__item {
+    margin: px2rem(10px) px2rem(10px);
+    width: 100%;
+  }
+
+  .inline {
+    width: px2rem(185px) !important;
+    margin: px2rem(10px) px2rem(10px);
+
+    &--small {
+      height: px2rem(36px)!important;
+      line-height: px2rem(36px)!important;
+    }
+
+    &--space-no {
+      margin: px2rem(10px) 0 px2rem(10px);
+    }
+  }
+}
