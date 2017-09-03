@@ -1,0 +1,116 @@
+@import '../../../style/import';
+$border-color  :  #ddd;
+
+.grid {
+  border: 1px solid $border-color;
+
+  .flexbox {
+    background: #fff;
+    
+    &__item {
+      position: relative;
+    }
+  }
+
+  &__item {
+    &:active {
+      background-color: $border-color;
+    }
+  }
+
+  &--null__item {
+    &:active {
+      background-color: transparent;
+    }
+  }
+  
+
+  // 有边框
+  &--line {
+    .flexbox {
+      position: relative;
+
+      &__item {
+        &:after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 0;
+          left: auto;
+          bottom: auto;
+          display: block;
+          width: 1px;
+          height: 100%;
+          background-color: $border-color;
+        }
+      }
+
+      &:last-child {
+        &:after {
+          border-bottom: none;
+        }
+      }
+
+      &:after {
+        display: block;
+        position: absolute;
+        content: "";
+        left: 0;
+        bottom: 0;
+        right: auto;
+        top: auto;
+        width: 100%;
+        border-bottom: 1px solid $border-color;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+
+    &:before {
+      display: block;
+      content: " ";
+      padding-bottom: 100%;
+    }
+
+    &__content {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__inner__content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &.column__num {
+        &--3 {
+          .grid__text {
+            font-size: px2rem(30px);
+          }
+        }
+      }
+    }
+  }
+
+  &__icon{
+    margin-top: px2rem(18px);
+    width: 30%;
+    height: 30%;
+  }
+
+  &__text {
+    margin-top: px2rem(18px);
+    font-size: px2rem(24px);
+    color: #000;
+    text-align: center;
+  }
+
+}
