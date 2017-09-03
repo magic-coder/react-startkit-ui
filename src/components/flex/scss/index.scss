@@ -1,0 +1,76 @@
+@import '../../../style/import';
+.flexbox {
+  display: flex;
+
+  // 子元素在父容器中的位置
+  &-dir {
+    &--row {
+      flex-direction: row;
+    }
+    &--row-reverse {
+      flex-direction: row-reverse;
+    }
+    &--column {
+      flex-direction: column;
+    }
+    &--column-reverse {
+      flex-direction: column-reverse;
+    }
+  }
+
+  // 换行方式
+  &--nowrap {
+    flex-wrap: nowrap;
+  }
+  &--wrap {
+    flex-wrap: wrap;
+  }
+  &--wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+  
+  // 主轴对齐方式
+  &-justify {
+    &--start {
+      justify-content: flex-start;
+    }
+    &--end {
+      justify-content: flex-end;
+    }
+    &--center {
+      justify-content: center;
+    }
+    &--between {
+      justify-content: space-between;
+    }
+    &--around {
+      justify-content: space-around;
+    }
+  }
+
+  // 交叉轴的对齐方式
+  &-align {
+    &--start {
+      align-items: flex-start;
+    }
+    &--end {
+      align-items: flex-end;
+    }
+    &--center {
+      align-items: center;
+    }
+    &--baseline {
+      align-items: baseline;
+    }
+    &--stretch {
+      align-items: stretch;
+    }
+  }
+
+  &__item {
+    box-sizing: border-box;
+    min-height: 0;
+    min-width: 0;
+    flex: 1;
+  }
+}
