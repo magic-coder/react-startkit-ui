@@ -1,0 +1,193 @@
+@import '../../../style/import';
+$line-color  :  #ddd;
+
+.list {
+  &__header {
+    box-sizing: border-box;
+    padding: px2rem(30px) px2rem(30px) px2rem(18px);
+    font-size: px2rem(28px);
+    color: #808080;
+    width: 100%;
+    display: inline-block;
+  }
+
+  &__body {
+    position: relative;
+    background-color: #fff;
+  }
+
+  // 无背景
+  &--transparent {
+    .list__body {
+      background-color: transparent;
+    }
+  }
+
+
+  // 有边框线
+  &--line {
+    .list__body {
+      border-top: 1px solid $line-color;
+      border-bottom: 1px solid $line-color;
+    }
+  }
+
+  // 标题在内
+  &--inside {
+    background-color: #fff;
+    border-top: 1px solid $line-color;
+    border-bottom: 1px solid $line-color;
+
+    .list__header {
+      padding: px2rem(15px) px2rem(30px);
+      font-size: px2rem(26px);
+    }
+
+    .list__body {
+      border: none;
+      background-color: transparent;
+    }
+  }
+
+
+  // item
+  &-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    padding-left: px2rem(30px);
+    min-height: px2rem(88px);
+    // background-color: #fff;
+    transition: background-color 0.2s, opacity 0.2s;
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.085);
+    }
+    
+    // 对齐 - 居中
+    &--middle {
+      .list-item__line {
+        align-items: center;
+      }
+    }
+    // 对齐 - 头部
+    &--top {
+      .list-item__line {
+        align-items: flex-start;
+      }
+    }
+    // 对齐 - 底部
+    &--bottom {
+      .list-item__line {
+        align-items: flex-end;
+      }
+    }
+
+    // 禁用
+    &--disabled {
+      opacity: 0.4;
+    }
+
+    &__thumb {
+      width: px2rem(48px);
+
+      &:first-child {
+        margin-right: px2rem(32px);
+      }
+
+      img {
+        display: block;
+        width: px2rem(48px);
+        height: px2rem(48px);
+      }
+    }
+
+    &__line {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      padding-right: px2rem(30px);
+    
+      // 多行
+      &--multiple {
+        padding: px2rem(25px) px2rem(30px) px2rem(25px) 0;
+
+        .list-item__content,
+        .list-item__extra {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+
+      // 换行
+      &--wrap {
+        .list-item__content,
+        .list-item__extra {
+          white-space: normal;
+        }
+      }
+    }
+
+    &__content,
+    &__extra {
+      line-height: 1.5;
+      width: auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-top: px2rem(14px);
+      padding-bottom: px2rem(14px);
+    }
+
+    &__content {
+      flex: 1;
+      min-width: 0;
+      color: #000;
+      font-size: px2rem(32px);      
+    }
+
+    &__extra {
+      flex-basis: 35%;
+      line-height: 1.3;
+      color: #888;
+      font-size: px2rem(28px);
+      text-align: right;
+    }
+
+    &__brief {
+      color: #888;
+      font-size: px2rem(28px);
+      line-height: 1.3;
+      margin-top: px2rem(12px);
+      @include ellipsis();
+    }
+
+    // 箭头
+    &__arrow {
+      display: block;
+      width: px2rem(30px);
+      height: px2rem(30px);
+      margin-left: px2rem(16px);
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='26' viewBox='0 0 16 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 0L0 2l11.5 11L0 24l2 2 14-13z' fill='%23C7C7CC' fill-rule='evenodd'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      visibility: hidden;
+
+      &--horizontal{
+        visibility: visible;
+      }
+      &--vertical {
+        visibility: visible;
+        transform: rotate(90deg)
+      }
+      &--vertical-up {
+        visibility: visible;
+        transform: rotate(270deg)
+      }
+    }
+
+  }
+}

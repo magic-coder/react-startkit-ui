@@ -10,9 +10,11 @@ import GridExample from '@/views/examples/grid';
 import WhiteSpaceExample from '@/views/examples/whitespace';
 import WingBlankExample from '@/views/examples/wingblank';
 import PanelExample from '@/views/examples/panel';
+import DividerExample from '@/views/examples/divider';
 import TabsExample from '@/views/examples/tabs';
 import AccordionExample from '@/views/examples/accordion';
 import IconExample from '@/views/examples/icon';
+import ListExample from '@/views/examples/list';
 import NotFound from '@/views/404';
 
 // reacr-fastclick
@@ -29,10 +31,12 @@ export default class APP extends Component {
             <Route exact path="/grid" component={GridExample} />
             <Route exact path="/whitespace" component={WhiteSpaceExample} />
             <Route exact path="/wingblank" component={WingBlankExample} />
+            <Route exact path="/divider" component={DividerExample} />
             <Route exact path="/panel" component={PanelExample} />
             <Route exact path="/tabs" component={TabsExample} />
             <Route exact path="/accordion" component={AccordionExample} />
             <Route exact path="/icon" component={IconExample} />
+            <Route exact path="/list" component={ListExample} />
             <Route component={NotFound} />
           </Switch>
         </div>
