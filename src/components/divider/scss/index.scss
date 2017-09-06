@@ -1,0 +1,24 @@
+@import '../../../style/import';
+$line-color  :  #ddd;
+
+.divider {
+  margin: 0;
+  border: none;
+  box-sizing: content-box;
+  overflow: visible;
+  height: 1px;
+  // width: 100%;
+  background-color: $line-color;
+
+  &--inset {
+    margin-left: px2rem(60px);
+  }
+  
+  &--shallow-inset {
+    margin-left: px2rem(30px);
+  }
+  
+  &--deep-inset {
+    margin-left: px2rem(110px);
+  }
+}
