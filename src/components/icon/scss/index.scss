@@ -37,7 +37,8 @@
   }
 
   // loading
-  &__loading {
+  &__loading,
+  &__loading-light {
     animation: cirle-anim 1s linear infinite
   }
 
