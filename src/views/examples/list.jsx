@@ -158,18 +158,6 @@ export default class ListExample extends React.Component {
 
           <List renderHeader={() => { return '其他'; }} className="my-list">
             <List.Item
-              thumb={thumb1}
-              multipleLine
-              extra={'居中'}
-              arrow="horizontal"
-              align="middle"
-              disabled={this.state.isDisabled}
-              onClick={this.toggleDisabled}
-            >
-              可用/禁用
-            </List.Item>
-            <Divider deepInset />
-            <List.Item
               thumb={thumb2}
             >
               <select
@@ -188,6 +176,27 @@ export default class ListExample extends React.Component {
                 <option value="3">选项 3</option>
                 <option value="4">选项 4</option>
               </select>
+            </List.Item>
+            <Divider deepInset />
+            <List.Item
+              thumb={thumb1}
+              extra={'居中'}
+              disabled={this.state.isDisabled}
+              arrow="horizontal"
+              onClick={() => {
+                const msg = '我被点击了';
+                alert(msg);
+                console.log(msg);
+              }}
+            >
+              可用/禁用
+            </List.Item>
+            <Divider deepInset />
+            <List.Item
+              thumb={thumb2}
+              onClick={this.toggleDisabled}
+            >
+              {this.state.isDisabled ? '上一项不可点击' : '上一项可点击'}
             </List.Item>
           </List>
         </div>

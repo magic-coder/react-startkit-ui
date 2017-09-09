@@ -52,6 +52,18 @@ export default class ListItem extends React.Component {
   static Brief = ListItemBrief;
 
   /**
+   * 触发 点击回调函数
+   */
+  handleClick = () => {
+    const { disabled, onClick } = this.props;
+    if (disabled) {
+      return;
+    }
+
+    onClick();
+  }
+
+  /**
    * 渲染 图标
    */
   renderThumb = () => {
@@ -88,7 +100,7 @@ export default class ListItem extends React.Component {
 
   render() {
     const {
-      prefixClassName, className, style, align, disabled, onClick,
+      prefixClassName, className, style, align, disabled,
     } = this.props;
     const classes = classNames(
       prefixClassName,
@@ -104,7 +116,7 @@ export default class ListItem extends React.Component {
       <div
         className={classes}
         style={style}
-        onClick={onClick}
+        onClick={this.handleClick}
         role={'link'}
         tabIndex="0"
       >
