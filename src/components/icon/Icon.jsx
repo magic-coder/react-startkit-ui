@@ -23,6 +23,7 @@ export default class Icon extends React.Component {
     ]),
     // 样式
     style: PropTypes.object,
+    onClick: PropTypes.func,
   }
 
   static defaultProps = {
@@ -30,14 +31,15 @@ export default class Icon extends React.Component {
   }
 
   render() {
-    const { type, size, style, className } = this.props;
+    const { type, size, style, className, onClick } = this.props;
     const iconType = typeof type === 'object' ? type.id : type;
     const iconClassName = classNames('icon', className, {
       [`icon__${iconType}`]: true,
       [`icon--${size}`]: true,
     });
+
     return (
-      <svg className={iconClassName} style={style}>
+      <svg className={iconClassName} style={style} onClick={onClick}>
         <use xlinkHref={`#${iconType}`} />
       </svg>
     );
