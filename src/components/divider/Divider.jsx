@@ -25,12 +25,14 @@ export default class Divider extends React.Component {
     shallowInset: PropTypes.bool,
     deepInset: PropTypes.bool,
   }
+
   static defaultProps = {
     prefixClassName: 'divider',
     inset: false,
     shallowInset: false,
     deepInset: false,
   }
+
   render() {
     const { prefixClassName, className, style, inset, shallowInset, deepInset } = this.props;
     const classes = classNames(
