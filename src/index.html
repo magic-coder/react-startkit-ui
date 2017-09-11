@@ -37,5 +37,15 @@
 </head>
 <body>
 <div id="root"></div>
+<% if (htmlWebpackPlugin.options.shim.fastclick) { %>
+    <script type="text/javascript" src="<%= htmlWebpackPlugin.options.shim.fastclick.src %>"></script>
+    <script type="text/javascript">
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+            FastClick.attach(document.body);
+        }, false);
+    }
+    </script>
+<% } %>
 </body>
 </html>

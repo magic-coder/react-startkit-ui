@@ -19,6 +19,12 @@ const plugins = [
         },
         PRODUCTION: JSON.stringify(true),
     }),
+    new CopyWebpackPlugin([
+        {
+            from: path.resolve(__dirname, './src/libs/fastclick.js'),
+            to: path.resolve(__dirname, './dist/js'),
+        }
+    ]),
     new ExtractTextPlugin({
         filename: 'css/[name].[hash:5].css',
         allChunks: true,
@@ -39,6 +45,11 @@ const plugins = [
         },
         // 把 CommonsChunkPlugin 的依赖关系自动添加 js, css
         chunksSortMode: 'dependency',
+        shim: {
+            fastclick: {
+                src: '/js/fastclick.js',
+            },
+        }
     }),
     // 压缩 JS、CSS
     new webpack.optimize.UglifyJsPlugin({

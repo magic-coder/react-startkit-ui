@@ -25,10 +25,14 @@ const plugins = [
     new HtmlWebpackPlugin({
         title: 'React Startkit UI',
         template: './src/index.html',
+        shim: {
+            fastclick: {
+                src: './src/libs/fastclick.js',
+            },
+        }
     }),
     new ExtractTextPlugin({
         filename: 'css/[name].css',
-
         allChunks: true,
     }),
     new OpenBrowserPlugin({
@@ -38,7 +42,11 @@ const plugins = [
 ];
 
 module.exports = {
-    entry: './src/index.jsx',
+    // entry: './src/index.jsx',
+    entry: {
+        main: './src/index.jsx',
+        vendor: ['react', 'react-dom', 'react-router', 'babel-polyfill'],
+    },
     // 打包
     output: {
         path: path.resolve(__dirname, 'dist'),
