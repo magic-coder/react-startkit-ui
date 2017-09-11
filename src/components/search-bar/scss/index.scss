@@ -1,0 +1,110 @@
+@import '../../../style/import';
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  height: $searchbar-height;
+  line-height: $searchbar-height;
+  background-color: $searchbar-mode-dark-bg;
+  color: $searchbar-mode-dark-color;
+  padding-left: px2rem(30px);
+  padding-right: px2rem(30px);
+
+  // 浅色模式 
+  &--light {
+    background-color: $searchbar-mode-light-bg;
+    color: $searchbar-mode-light-color;
+
+    .search-bar {
+      &__form,
+      &__input {
+        color: #666;
+      }
+    }
+  }
+
+  &__left,
+  &__right {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: px2rem(32px);
+  }
+
+  &__left {
+    padding-right: px2rem(30px);
+    justify-content: flex-start;
+
+    span {
+      vertical-align: middle;
+    }
+
+    &__icon {
+      margin-right: px2rem(10px);
+      display: inherit;
+    }
+
+    &__content {
+      @include ellipsis();
+    }
+  }
+
+  &__right {
+    padding-left: px2rem(30px);
+    justify-content: flex-end;
+    overflow: hidden;
+
+    > .icon,
+    > span, {
+      flex: none;
+    }
+  }
+
+  &__form {
+    flex: 1;
+    min-width: 0;
+    height: 75%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 px2rem(10px);
+    background-color: rgba(0, 0, 0, 0.065);
+  }
+
+  &__input {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    border: none;
+    height: inherit;
+    line-height: 1.5;
+    flex: 1;
+    min-width: 0;
+    padding: 0 px2rem(10px);
+    color: #fff;
+    font-size: px2rem(28px);
+
+    &__front,
+    &__back {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 px2rem(10px);
+    }
+
+    &__front {
+      opacity: 0.8;
+    }
+  }
+
+  &__reset {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 px2rem(10px);
+    cursor: pointer;
+    position: relative;
+  }
+
+}
