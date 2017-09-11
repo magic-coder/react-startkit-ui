@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import initReactFastclick from 'react-fastclick';
-
-import '@/style/base';
 
 import Home from '@/views/home';
 import FlexExample from '@/views/examples/flex';
@@ -10,6 +7,8 @@ import GridExample from '@/views/examples/grid';
 import WhiteSpaceExample from '@/views/examples/whitespace';
 import WingBlankExample from '@/views/examples/wingblank';
 import PanelExample from '@/views/examples/panel';
+import NavBarExample from '@/views/examples/navbar';
+import SearchBarExample from '@/views/examples/searchbar';
 import DividerExample from '@/views/examples/divider';
 import TabsExample from '@/views/examples/tabs';
 import AccordionExample from '@/views/examples/accordion';
@@ -17,8 +16,7 @@ import IconExample from '@/views/examples/icon';
 import ListExample from '@/views/examples/list';
 import NotFound from '@/views/404';
 
-// reacr-fastclick
-initReactFastclick();
+import '@/style/base';
 
 export default class APP extends Component {
   render() {
@@ -31,6 +29,8 @@ export default class APP extends Component {
             <Route exact path="/grid" component={GridExample} />
             <Route exact path="/whitespace" component={WhiteSpaceExample} />
             <Route exact path="/wingblank" component={WingBlankExample} />
+            <Route exact path="/navbar" component={NavBarExample} />
+            <Route exact path="/searchbar" component={SearchBarExample} />
             <Route exact path="/divider" component={DividerExample} />
             <Route exact path="/panel" component={PanelExample} />
             <Route exact path="/tabs" component={TabsExample} />
