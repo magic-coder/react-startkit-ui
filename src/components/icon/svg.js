@@ -13,3 +13,4 @@ import '@/assets/svg/ellipsis.svg';
 import '@/assets/svg/close.svg';
 import '@/assets/svg/scan.svg';
 import '@/assets/svg/microphone.svg';
+import '@/assets/svg/home.svg';
