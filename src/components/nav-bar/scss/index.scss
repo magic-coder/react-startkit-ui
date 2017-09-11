@@ -1,0 +1,114 @@
+@import '../../../style/import';
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: $navbar-height;
+  line-height: $navbar-height;
+  background-color: $navbar-mode-dark-bg;
+  color: $navbar-mode-dark-color;
+
+  // 浅色模式 
+  &--light {
+    background-color: $navbar-mode-light-bg;
+    color: $navbar-mode-light-color;
+
+    .navbar__title {
+      color: #000;
+    }
+  }
+
+  // 自适应宽度
+  &--auto {
+    .navbar {
+      &__left,
+      &__right {
+        width: auto;
+      }
+    }
+    
+
+    .navbar__left {
+      &__content {
+        margin-right: px2rem(20px);
+      }
+    }
+
+    .navbar__right {
+      margin-left: px2rem(20px);
+    }
+
+    .navbar__title {
+      text-align: left;
+      justify-content: flex-start;
+
+      &__content {
+        text-align: left;
+      }
+    }
+  }
+
+  &__left,
+  &__right {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 30%;
+    font-size: px2rem(32px);
+  }
+
+  &__left {
+    padding-left: px2rem(30px);
+    justify-content: flex-start;
+
+    span {
+      vertical-align: middle;
+    }
+
+    &__icon {
+      margin-right: px2rem(10px);
+      display: inherit;
+    }
+
+    &__content {
+      @include ellipsis();
+    }
+  }
+
+  &__right {
+    padding-right: px2rem(30px);
+    justify-content: flex-end;
+    overflow: hidden;
+
+    > .icon,
+    > span, {
+      flex: none;
+    }
+  }
+
+  &__title {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__content {
+      // flex: 1;
+      min-width: 0;
+      height: 100%;
+      line-height: inherit;
+      font-size: px2rem(34px);
+      text-align: center;
+      @include ellipsis();
+    }
+  }
+
+  &__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: px2rem(15px);
+  }
+}
