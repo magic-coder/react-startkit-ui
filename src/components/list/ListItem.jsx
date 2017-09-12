@@ -47,6 +47,7 @@ export default class ListItem extends React.Component {
     multipleLine: false,
     wrap: false,
     disabled: false,
+    onClick: () => {},
   }
 
   static Brief = ListItemBrief;
