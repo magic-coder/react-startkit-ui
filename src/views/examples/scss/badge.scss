@@ -1,0 +1,13 @@
+@import '../../../style/import';
+
+.badge:not(.badge-status) {
+  margin-right: px2rem(30px);
+}
+
+.head-example {
+  width: px2rem(84px);
+  height: px2rem(84px);
+  border-radius: px2rem(12px);
+  background: #eee;
+  display: inline-block;
+}
