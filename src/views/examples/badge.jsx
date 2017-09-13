@@ -22,16 +22,16 @@ export default class BadgeExample extends React.Component {
 
           <div className="demo__preview">
             <div className="demo__preview__title">基本</div>
-            <div className="demo__preview__content demo__preview__content--bg demo__preview__content--padding">
+            <div className="demo__preview__content demo__preview__content--bg">
               <WhiteSpace size="lg" />
               <WingBlank size="lg">
-                <Badge text={5}>
+                <Badge className="my-badge" text={5}>
                   <span className="head-example" />
                 </Badge>
-                <Badge text={0} showZero>
+                <Badge className="my-badge" text={0} showZero>
                   <span className="head-example" />
                 </Badge>
-                <Badge text={0}>
+                <Badge className="my-badge" text={0}>
                   <span className="head-example" />
                 </Badge>
                 <WhiteSpace size="lg" />
@@ -45,19 +45,19 @@ export default class BadgeExample extends React.Component {
 
           <div className="demo__preview">
             <div className="demo__preview__title">封顶数字</div>
-            <div className="demo__preview__content demo__preview__content--bg demo__preview__content--padding">
+            <div className="demo__preview__content demo__preview__content--bg">
               <WhiteSpace size="lg" />
               <WingBlank size="lg">
-                <Badge text={99}>
+                <Badge className="my-badge" text={99}>
                   <span className="head-example" />
                 </Badge>
-                <Badge text={100} showZero>
+                <Badge className="my-badge" text={100} showZero>
                   <span className="head-example" />
                 </Badge>
-                <Badge text={99} overflowCount={10}>
+                <Badge className="my-badge" text={99} overflowCount={10}>
                   <span className="head-example" />
                 </Badge>
-                <Badge text={1000} overflowCount={999}>
+                <Badge className="my-badge" text={1000} overflowCount={999}>
                   <span className="head-example" />
                 </Badge>
 
@@ -72,7 +72,7 @@ export default class BadgeExample extends React.Component {
 
           <div className="demo__preview">
             <div className="demo__preview__title">可点击</div>
-            <div className="demo__preview__content demo__preview__content--bg demo__preview__content--padding">
+            <div className="demo__preview__content demo__preview__content--bg">
               <WhiteSpace size="lg" />
               <WingBlank size="lg">
                 <a
@@ -84,7 +84,7 @@ export default class BadgeExample extends React.Component {
                     console.log(msg);
                   }}
                 >
-                  <Badge text={5}>
+                  <Badge className="my-badge" text={5}>
                     <span className="head-example" />
                   </Badge>
                 </a>
@@ -103,19 +103,20 @@ export default class BadgeExample extends React.Component {
             <div className="demo__preview__content demo__preview__content--bg">
               <WhiteSpace size="lg" />
               <WingBlank size="lg">
-                <Badge text={25} />
-                <Badge text={250} style={{ backgroundColor: '#fff', color: '#999', boxShadow: '0 0 0 1px #d9d9d9 inset' }} />
-                <Badge text={109} style={{ backgroundColor: '#87d068' }} />
+                <Badge className="my-badge" text={25} />
+                <Badge className="my-badge" text={250} style={{ backgroundColor: '#fff', color: '#999', boxShadow: '0 0 0 1px #d9d9d9 inset' }} />
+                <Badge className="my-badge" text={109} style={{ backgroundColor: '#87d068' }} />
                 <WhiteSpace size="lg" />
-                <Badge text="减" hot style={{ marginRight: '0.15rem' }} />
-                <Badge text="惠" hot style={{ marginRight: '0.15rem' }} />
-                <Badge text="免" hot style={{ marginRight: '0.15rem' }} />
-                <Badge text="反" hot style={{ marginRight: '0.15rem' }} />
-                <Badge text="HOT" hot style={{ marginRight: '0.15rem' }} />
+                <Badge className="my-badge" text="减" hot style={{ marginRight: '0.15rem' }} />
+                <Badge className="my-badge" text="惠" hot style={{ marginRight: '0.15rem' }} />
+                <Badge className="my-badge" text="免" hot style={{ marginRight: '0.15rem' }} />
+                <Badge className="my-badge" text="反" hot style={{ marginRight: '0.15rem' }} />
+                <Badge className="my-badge" text="HOT" hot style={{ marginRight: '0.15rem' }} />
                 <WhiteSpace size="lg" />
-                <Badge text="券" style={{ marginRight: '0.15rem', padding: '0 0.06rem', backgroundColor: '#f19736', borderRadius: 2 }} />
-                <Badge text="NEW" style={{ marginRight: '0.15rem', padding: '0 0.06rem', backgroundColor: '#21b68a', borderRadius: 2 }} />
+                <Badge className="my-badge" text="券" style={{ marginRight: '0.15rem', padding: '0 0.06rem', backgroundColor: '#f19736', borderRadius: 2 }} />
+                <Badge className="my-badge" text="NEW" style={{ marginRight: '0.15rem', padding: '0 0.06rem', backgroundColor: '#21b68a', borderRadius: 2 }} />
                 <Badge
+                  className="my-badge"
                   text="自动缴费"
                   style={{
                     marginRight: '0.15rem',
@@ -137,16 +138,16 @@ export default class BadgeExample extends React.Component {
 
           <div className="demo__preview">
             <div className="demo__preview__title">恶心的小红点</div>
-            <div className="demo__preview__content demo__preview__content--bg demo__preview__content--padding">
+            <div className="demo__preview__content demo__preview__content--bg">
               <WhiteSpace size="lg" />
               <WingBlank size="lg">
-                <Badge dot>
+                <Badge className="my-badge" dot>
                   <span className="head-example" />
                 </Badge>
-                <Badge dot>
+                <Badge className="my-badge" dot>
                   <Icon type="comments" size="md" style={{ color: '#007fff' }} />
                 </Badge>
-                <Badge dot>
+                <Badge className="my-badge" dot>
                   <a href="javascript:;">这是一个链接</a>
                 </Badge>
 
@@ -161,10 +162,10 @@ export default class BadgeExample extends React.Component {
 
           <div className="demo__preview">
             <div className="demo__preview__title">动态效果</div>
-            <div className="demo__preview__content demo__preview__content--bg demo__preview__content--padding">
+            <div className="demo__preview__content demo__preview__content--bg">
               <WhiteSpace size="lg" />
               <WingBlank size="lg">
-                <Badge dot={this.state.show}>
+                <Badge className="my-badge" dot={this.state.show}>
                   <span className="head-example" />
                 </Badge>
 
