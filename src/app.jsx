@@ -9,6 +9,7 @@ import WingBlankExample from '@/views/examples/wingblank';
 import PanelExample from '@/views/examples/panel';
 import NavBarExample from '@/views/examples/navbar';
 import SearchBarExample from '@/views/examples/searchbar';
+import TabBarExample from '@/views/examples/tabbar';
 import DividerExample from '@/views/examples/divider';
 import BadgeExample from '@/views/examples/badge';
 import TabsExample from '@/views/examples/tabs';
@@ -32,6 +33,7 @@ export default class APP extends Component {
             <Route exact path="/wingblank" component={WingBlankExample} />
             <Route exact path="/navbar" component={NavBarExample} />
             <Route exact path="/searchbar" component={SearchBarExample} />
+            <Route exact path="/tabbar" component={TabBarExample} />
             <Route exact path="/divider" component={DividerExample} />
             <Route exact path="/badge" component={BadgeExample} />
             <Route exact path="/panel" component={PanelExample} />

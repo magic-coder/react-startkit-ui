@@ -1,0 +1,82 @@
+@import '../../../style/import';
+
+.tabbar {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+
+  &__list {
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    display: flex;
+    height: $tab-bar-height;
+    border-top: 1px solid #ddd;
+    background-color: $tab-bar-background;
+    transition: bottom .2s;
+    
+    // 隐藏
+    &--hidden {
+      bottom: -$tab-bar-height;
+    }
+
+    &__item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+
+      &__badge,
+      &__dot {
+        .badge {
+          &__text,
+          &__dot {
+            left: px2rem(50px);
+            margin-top: px2rem(16px);
+          }
+          &__dot {
+            margin-top: px2rem(6px);
+          }
+        }
+      }
+
+      &__title {
+        font-size: px2rem(22px);
+        margin: px2rem(10px) 0 0;
+        line-height: 1;
+      }
+    }
+  }
+
+  &__contents {
+    display: flex;
+
+    &--no-animated {
+      .tabbar__content {
+        &--inactive {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__content {
+    flex: 1;
+    width: 100%;
+    flex-shrink: 0;
+
+    &--inactive {
+      height: 0;
+      overflow: visible;
+    }
+
+    &--active {
+      height: auto;
+    }
+  }
+}
