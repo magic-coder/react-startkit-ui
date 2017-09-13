@@ -45,7 +45,6 @@ module.exports = {
     // entry: './src/index.jsx',
     entry: {
         main: './src/index.jsx',
-        vendor: ['react', 'react-dom', 'react-router', 'babel-polyfill'],
     },
     // 打包
     output: {
