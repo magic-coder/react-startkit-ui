@@ -27,7 +27,7 @@ export default class PanelHeader extends React.Component {
     return (
       <div className={headerClassName}>
         <div className="panel__title">{title}</div>
-        <div className="panel__header__extra">{extra}</div>
+        {extra ? <div className="panel__header__extra">{extra}</div> : null}
       </div>
     );
   }
