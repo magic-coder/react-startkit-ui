@@ -1,11 +1,11 @@
 @import '../../../style/import';
 
 .accordion__category {
-  margin: 0 px2rem(30px); 
+  margin: 0 15px; 
 
   .accordion__item {
     border-bottom: none;
-    margin-bottom: px2rem(30px);
+    margin-bottom: 15px; 
 
     &--active {
       .text__content {
@@ -16,13 +16,13 @@
   }
 
   .accordion__header {
-    height: px2rem(140px);
-    line-height: px2rem(140px);
-    padding-left: px2rem(50px);
+    height: 70px;
+    line-height: 70px;
+    padding-left: 25px;
   }
 
   .accordion__title {
-    font-size: px2rem(36px);
+    font-size: $font-size-heading;
   }
 
   .text__content {

@@ -14,8 +14,8 @@
     width: 100%;
     display: flex;
     height: $tab-bar-height;
-    border-top: 1px solid #ddd;
-    background-color: $tab-bar-background;
+    border-top: $border-width-sm solid $border-color-base; /*no*/
+    background-color: $tab-bar-fill;
     transition: bottom .2s;
     
     // 隐藏
@@ -36,19 +36,19 @@
         .badge {
           &__text,
           &__dot {
-            left: px2rem(50px);
-            margin-top: px2rem(16px);
+            left: 25px;
+            margin-top: 8px;
           }
           &__dot {
-            margin-top: px2rem(6px);
+            margin-top: 3px;
           }
         }
       }
 
       &__title {
-        font-size: px2rem(22px);
-        margin: px2rem(10px) 0 0;
-        line-height: 1;
+        font-size: $font-size-icontext;
+        margin: 3px 0 0;
+        line-height: $line-height-base;
       }
     }
   }

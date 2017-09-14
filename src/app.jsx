@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-// import Home from '@/views/home';
+import Home from '@/views/home';
 import FlexExample from '@/views/examples/flex';
 import GridExample from '@/views/examples/grid';
 import WhiteSpaceExample from '@/views/examples/whitespace';
 import WingBlankExample from '@/views/examples/wingblank';
-// import PanelExample from '@/views/examples/panel';
-// import NavBarExample from '@/views/examples/navbar';
+import PanelExample from '@/views/examples/panel';
+import NavBarExample from '@/views/examples/navbar';
 import SearchBarExample from '@/views/examples/searchbar';
-// import TabBarExample from '@/views/examples/tabbar';
-// import DividerExample from '@/views/examples/divider';
-// import BadgeExample from '@/views/examples/badge';
-// import TabsExample from '@/views/examples/tabs';
+import TabBarExample from '@/views/examples/tabbar';
+import DividerExample from '@/views/examples/divider';
+import BadgeExample from '@/views/examples/badge';
+import TabsExample from '@/views/examples/tabs';
 import AccordionExample from '@/views/examples/accordion';
 import IconExample from '@/views/examples/icon';
-// import ListExample from '@/views/examples/list';
+import ListExample from '@/views/examples/list';
 import NotFound from '@/views/404';
 
 import '@/style/base';
@@ -26,15 +26,7 @@ export default class APP extends Component {
       <Router>
         <div className="container">
           <Switch>
-            <Route exact path="/flex" component={FlexExample} />
-            <Route exact path="/grid" component={GridExample} />
-            <Route exact path="/whitespace" component={WhiteSpaceExample} />
-            <Route exact path="/wingblank" component={WingBlankExample} />
-            <Route exact path="/searchbar" component={SearchBarExample} />
-            <Route exact path="/accordion" component={AccordionExample} />
-            <Route exact path="/icon" component={IconExample} />
-            <Route component={NotFound} />
-            {/* <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/flex" component={FlexExample} />
             <Route exact path="/grid" component={GridExample} />
             <Route exact path="/whitespace" component={WhiteSpaceExample} />
@@ -49,7 +41,7 @@ export default class APP extends Component {
             <Route exact path="/accordion" component={AccordionExample} />
             <Route exact path="/icon" component={IconExample} />
             <Route exact path="/list" component={ListExample} />
-            <Route component={NotFound} /> */}
+            <Route component={NotFound} />
           </Switch>
         </div>
       </Router>

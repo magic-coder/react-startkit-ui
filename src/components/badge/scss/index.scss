@@ -18,17 +18,17 @@
 
   &__text {
     position: absolute;
-    top: px2rem(-20px);
+    top: -($badge-size-base-md / 2);
     transform: translateX(-50%);
-    min-width: px2rem(40px);
-    background: #ff5b05;
-    color: #fff;
-    line-height: px2rem(40px);
+    min-width: $badge-size-base-md;
+    line-height: $badge-size-base-md;
+    background: $badge-fill-base;
+    color: $badge-color-text-base;
     text-align: center;
-    padding: 0 px2rem(12px);
-    font-size: px2rem(24px);
+    padding: 0 6px;
+    font-size: $badge-font-size-base;
     white-space: nowrap;
-    border-radius: px2rem(20px);
+    border-radius: $badge-size-base-md / 2;
     font-family: $font-family-num;
     transform-origin: -10% center;
   }
@@ -36,13 +36,13 @@
   &__dot {
     position: absolute;
     transform: translateX(-50%);
-    top: px2rem(-8px);
+    top: -($badge-size-base-sm/2);
     z-index: 10;
-    height: px2rem(16px);
-    width: px2rem(16px);
+    height: $badge-size-base-sm;
+    width: $badge-size-base-sm;
     border-radius: 100%;
-    background: #ff5b05;
-    box-shadow: 0 0 0 1px #fff;
+    background: $badge-fill-base;
+    box-shadow: 0 0 0 $border-width-sm $badge-shadow-color; /*no*/
     transform-origin: 0 center;
   }
 

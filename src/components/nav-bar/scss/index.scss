@@ -5,16 +5,16 @@
   align-items: center;
   height: $navbar-height;
   line-height: $navbar-height;
-  background-color: $navbar-mode-dark-bg;
-  color: $navbar-mode-dark-color;
+  background-color: $navbar-fill-dark;
+  color: $navbar-color-text-base-inverse;
 
   // 浅色模式 
   &--light {
-    background-color: $navbar-mode-light-bg;
-    color: $navbar-mode-light-color;
+    background-color: $navbar-fill;
+    color: $navbar-color-text-base;
 
     .navbar__title {
-      color: #000;
+      color: $navbar-color-text-base;
     }
   }
 
@@ -30,12 +30,12 @@
 
     .navbar__left {
       &__content {
-        margin-right: px2rem(20px);
+        margin-right: 10px;
       }
     }
 
     .navbar__right {
-      margin-left: px2rem(20px);
+      margin-left: 10px;
     }
 
     .navbar__title {
@@ -54,11 +54,11 @@
     display: flex;
     align-items: center;
     width: 30%;
-    font-size: px2rem(32px);
+    font-size: $font-size-base;
   }
 
   &__left {
-    padding-left: px2rem(30px);
+    padding-left: 15px;
     justify-content: flex-start;
 
     span {
@@ -66,7 +66,7 @@
     }
 
     &__icon {
-      margin-right: px2rem(10px);
+      margin-right: 5px;
       display: inherit;
     }
 
@@ -76,7 +76,7 @@
   }
 
   &__right {
-    padding-right: px2rem(30px);
+    padding-right: 15px;
     justify-content: flex-end;
     overflow: hidden;
 
@@ -95,11 +95,10 @@
     justify-content: center;
 
     &__content {
-      // flex: 1;
       min-width: 0;
       height: 100%;
       line-height: inherit;
-      font-size: px2rem(34px);
+      font-size: $font-size-heading;
       text-align: center;
       @include ellipsis();
     }
@@ -109,6 +108,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: px2rem(15px);
+    margin-left: 8px;
   }
 }

@@ -1,19 +1,18 @@
 @import '../../../style/import';
-$line-color  :  #ddd;
 
 .list {
   &__header {
     box-sizing: border-box;
-    padding: px2rem(30px) px2rem(30px) px2rem(18px);
-    font-size: px2rem(28px);
-    color: #808080;
+    padding: 15px 15px 9px;
+    font-size: $font-size-base;
+    color: $color-text-caption;
     width: 100%;
     display: inline-block;
   }
 
   &__body {
     position: relative;
-    background-color: #fff;
+    background-color: $fill-base;
   }
 
   // 无背景
@@ -27,20 +26,20 @@ $line-color  :  #ddd;
   // 有边框线
   &--line {
     .list__body {
-      border-top: 1px solid $line-color;
-      border-bottom: 1px solid $line-color;
+      border-top: $border-width-sm solid $border-color-base; /*no*/
+      border-bottom: $border-width-sm solid $border-color-base; /*no*/
     }
   }
 
   // 标题在内
   &--inside {
-    background-color: #fff;
-    border-top: 1px solid $line-color;
-    border-bottom: 1px solid $line-color;
+    background-color: $fill-base;
+    border-top: $border-width-sm solid $border-color-base; /*no*/
+    border-bottom: $border-width-sm solid $border-color-base; /*no*/
 
     .list__header {
-      padding: px2rem(15px) px2rem(30px);
-      font-size: px2rem(26px);
+      padding: 8px 15px;
+      font-size: 0.9em;
     }
 
     .list__body {
@@ -56,13 +55,12 @@ $line-color  :  #ddd;
     display: flex;
     align-items: center;
     vertical-align: middle;
-    padding-left: px2rem(30px);
-    min-height: px2rem(88px);
-    // background-color: #fff;
+    padding-left: 15px;
+    min-height: 44px;
     transition: background-color 0.2s, opacity 0.2s;
 
     &:active {
-      background-color: rgba(0, 0, 0, 0.085);
+      background-color: rgba(0, 0, 0, 0.045);
     }
     
     // 对齐 - 居中
@@ -90,16 +88,16 @@ $line-color  :  #ddd;
     }
 
     &__thumb {
-      width: px2rem(48px);
+      width: $list-thumb-size;
 
       &:first-child {
-        margin-right: px2rem(32px);
+        margin-right: 16px;
       }
 
       img {
         display: block;
-        width: px2rem(48px);
-        height: px2rem(48px);
+        width: $list-thumb-size;
+        height: $list-thumb-size;
       }
     }
 
@@ -108,11 +106,11 @@ $line-color  :  #ddd;
       min-width: 0;
       display: flex;
       align-items: center;
-      padding-right: px2rem(30px);
+      padding-right: 15px;
     
       // 多行
       &--multiple {
-        padding: px2rem(25px) px2rem(30px) px2rem(25px) 0;
+        padding: 13px 15px 13px 0;
 
         .list-item__content,
         .list-item__extra {
@@ -132,44 +130,44 @@ $line-color  :  #ddd;
 
     &__content,
     &__extra {
-      line-height: 1.5;
+      line-height: $line-height-paragraph;
       width: auto;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      padding-top: px2rem(14px);
-      padding-bottom: px2rem(14px);
+      padding-top: 7px;
+      padding-bottom: 7px;
     }
 
     &__content {
       flex: 1;
       min-width: 0;
-      color: #000;
-      font-size: px2rem(32px);      
+      color: $color-text-base;
+      font-size: $font-size-caption;      
     }
 
     &__extra {
       flex-basis: 35%;
       line-height: 1.3;
       color: #888;
-      font-size: px2rem(28px);
+      font-size: $font-size-base;
       text-align: right;
     }
 
     &__brief {
       color: #888;
-      font-size: px2rem(28px);
+      font-size: $font-size-base;
       line-height: 1.3;
-      margin-top: px2rem(12px);
+      margin-top: 6px;
       @include ellipsis();
     }
 
     // 箭头
     &__arrow {
       display: block;
-      width: px2rem(30px);
-      height: px2rem(30px);
-      margin-left: px2rem(16px);
+      width: $list-arrow-size;
+      height: $list-arrow-size;
+      margin-left: 8px;
       background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='26' viewBox='0 0 16 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 0L0 2l11.5 11L0 24l2 2 14-13z' fill='%23C7C7CC' fill-rule='evenodd'/%3E%3C/svg%3E");
       background-size: contain;
       background-repeat: no-repeat;

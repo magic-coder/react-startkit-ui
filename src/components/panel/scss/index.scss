@@ -5,18 +5,19 @@
   &__header {
     display: flex;
     align-items: center;
-    font-size: px2rem(26px);
-    padding: 0 px2rem(30px);
-    color: #808080;
+    font-size: $font-size-base;
+    padding: 0 15px;
+    color: $color-text-caption;
 
     // 标题 和 内容 混合
     &--inside {
-      background-color: #ffffff;
-      color: #999999;
+      background-color: $fill-base;
+      color: $color-text-secondary;
     }
 
     &__extra {
       flex: 1;
+      font-size: 0.9em;
       opacity: 0.8;
       text-align: right;
     }
@@ -24,23 +25,23 @@
 
   &__title {
     flex: 1;
-    height: px2rem(72px);
-    line-height: px2rem(72px);
-    font-size: 1em;
+    height: 36px;
+    line-height: 36px;
+    font-size: 0.9em;
   }
  
   &__body {
-    background-color: #fff;
+    background-color: $fill-base;
   }
 
   &__footer {
     display: flex;
-    padding: 0 px2rem(30px);
-    line-height: px2rem(80px);
-    font-size: px2rem(26px);
-    color: #808080;
-    background-color: #fff;
-    border-top: 1px solid #d9d9d9;
+    padding: 0 15px;
+    line-height: 40px;
+    font-size: $font-size-base;
+    color: $color-text-caption ;
+    background-color: $fill-base;
+    border-top: $border-width-sm solid $border-color-base; /*no*/
 
     &__content,
     &__extra {
@@ -63,11 +64,11 @@
     a {
       display: flex;
       align-items: center;
-      padding: 0 px2rem(30px);
-      line-height: px2rem(80px);
-      font-size: px2rem(26px);
-      background-color: #fff;
-      border-top: 1px solid #d9d9d9;
+      padding: 0 15px;
+      line-height: 40px;
+      font-size: $font-size-base;
+      background-color: $fill-base;
+      border-top: $border-width-sm solid $border-color-base; /*no*/
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
@@ -83,28 +84,14 @@
     }
 
     &__footer {
-      text-align: right;
-      color: #999999;
-      padding-right: px2rem(26px);
-      position: relative;
-      vertical-align: middle;
-
-      &:after {
-        content: " ";
-        display: inline-block;
-        height: px2rem(12px);
-        width: px2rem(12px);
-        border-width: 2px 2px 0 0;
-        border-color: #C8C8CD;
-        border-style: solid;
-        transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-        position: relative;
-        top: px2rem(-4px);
-        position: absolute;
-        top: 50%;
-        margin-top: px2rem(-6px);
-        right: px2rem(4px);
-      }
+      display: block;
+      width: 12px;
+      height: 12px;
+      margin-left: 8px;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='26' viewBox='0 0 16 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 0L0 2l11.5 11L0 24l2 2 14-13z' fill='%23C7C7CC' fill-rule='evenodd'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
     }
 
     &--center {

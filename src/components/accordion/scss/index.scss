@@ -41,7 +41,7 @@
       display: inline-block;
       width: 16px;
       position: relative;
-      @include encoded-svg-background('left');
+      // @include encoded-svg-background('left');
 
       &:after {
         content: " ";

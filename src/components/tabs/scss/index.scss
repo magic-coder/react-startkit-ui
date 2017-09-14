@@ -9,7 +9,7 @@
 
     &__container {
       width: 100%;
-      background-color: #fff;
+      background-color: $fill-base;
       
       &:before,
       &:after {
@@ -17,20 +17,18 @@
         position: absolute;
         top: 0;
         display: block;
-        width: px2rem(60px);
+        width: 30px;
         height: 100%;
         content: "";
         z-index: 999;
       }
       &:before {
         left: 0;
-        background: -webkit-linear-gradient(left,#fff,rgba(255, 255, 255, 0));
-        background: linear-gradient(90deg,#fff,rgba(255, 255, 255, 0));
+        background: linear-gradient(90deg, $fill-base, rgba(255, 255, 255, 0));
       }
       &:after {
           right: 0;
-          background: -webkit-linear-gradient(left,rgba(216, 15, 15, 0),#fff);
-          background: linear-gradient(90deg,rgba(255, 255, 255, 0),#fff);
+          background: linear-gradient(90deg, rgba(255, 255, 255, 0), $fill-base);
       }
     }
 
@@ -39,7 +37,6 @@
       left: 0;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       transform: translate3d(0px, 0px, 0px);
-      // transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
       transition: transform 0.3s;
     }
 
@@ -60,8 +57,8 @@
   &__ink__bar {
     position: absolute;
     bottom: 0;
-    height: px2rem(4px);
-    background-color: $primary-color;
+    height: $border-width-lg;
+    background-color: $brand-primary;
 
     // 运动模式
     &--animated {
@@ -75,11 +72,11 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     flex: 1;
     align-items: center;
-    border-bottom: 1px solid #ddd;
-    font-size: px2rem(30px);
-    height: px2rem(88px);
-    line-height: px2rem(88px);
-    background-color: #fff;
+    border-bottom: $border-width-sm solid $border-color-base; /*no*/
+    font-size: $font-size-subhead ;
+    height: $tab-height;
+    line-height: $tab-height;
+    background-color: $fill-base;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -87,12 +84,12 @@
     // 不可用
     &--disabled {
       cursor: default;
-      color: #ccc;
+      color: $color-text-disabled;
     }
     
     // 选中
     &--active {
-      color: $primary-color;
+      color: $brand-primary;
     }
   }
 
