@@ -4,8 +4,8 @@
       
   &__item {
     position: relative;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e6e6e6;
+    background-color: $fill-base;
+    border-bottom: $border-width-sm solid $border-color-base; /*no*/
 
     &--active {
        .accordion__header__icon {
@@ -27,10 +27,10 @@
   &__header {
     display: flex;
     justify-content: center;
-    height: px2rem(88px);
-    line-height: px2rem(88px);
-    padding: 0 px2rem(30px);
-    background-color: #fff;
+    height: $accordion-height;
+    line-height: $accordion-height;
+    padding: 0 15px;
+    background-color: $fill-base;
     cursor: pointer;
 
     &:active {
@@ -39,19 +39,20 @@
 
     &__icon {
       display: inline-block;
-      width: px2rem(32px);
+      width: 16px;
       position: relative;
+      @include encoded-svg-background('left');
 
       &:after {
         content: " ";
         display: inline-block;
-        height: px2rem(20px);
-        width: px2rem(20px);
+        height: 10px;
+        width: 10px;
         position: absolute;
         top: 50%;
-        right: px2rem(8px);
-        margin-top: px2rem(-10px);
-        border-width: 2px 2px 0 0;
+        right: 4px;
+        margin-top: -5px;
+        border-width: $border-width-lg $border-width-lg 0 0; /*no*/
         border-color: #C8C8CD;
         border-style: solid;
         transform:rotate(135deg);   
@@ -73,7 +74,6 @@
     background-color: #fff;
     
     &--active {}
-
     &--inactive {}
   }
 }

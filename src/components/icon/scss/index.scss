@@ -39,13 +39,12 @@
   // loading
   &__loading,
   &__loading-light {
-    animation: cirle-anim 1s linear infinite
+    animation: cirle-anim 1s linear infinite;
   }
 
   @keyframes cirle-anim {
       to {
-          -webkit-transform: rotate(1turn);
-          transform: rotate(1turn)
+          transform: rotate(1turn);
       }
   }
 

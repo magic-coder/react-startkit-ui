@@ -42,7 +42,7 @@ em {
 }
 body,
 html {
-  background-color: $background-color-base;
+  background-color: $fill-body;
   height: 100%;
   text-size-adjust: 100%;
 }
@@ -59,26 +59,26 @@ html {
 }
 
 body {
-  line-height: 1;
+  line-height: $line-height-base;
   font-family: $font-family-body;
   font-size: $font-size-base;
-  color: $text-color-base;
+  color: $color-text-base ;
   margin: 0 auto;
   user-select: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 a {
-  color: $link-color-base;
+  color: $color-link;
   text-decoration: none;
   user-select: none;
   outline: none;
 
   &:hover {
-    color: $link-color-hover
+    color: $color-link-hover;
   }
   &:active {
-    color: $link-color-active
+    color: $color-link-tap;
   }
 }
 img {
@@ -91,20 +91,19 @@ img {
   &__header {
     position: relative;
     overflow: hidden;
-    padding: px2rem(80px) px2rem(50px) px2rem(50px);
+    padding: 40px 25px 25px;
   }
 
   &__title {
-    color: #3d3d3d;
-    font-size: px2rem(60px);
+    font-size: 30px;
     font-weight: 400;
   }
 
   &__desc {
-    line-height: 1.5;
-    padding: px2rem(30px) 0 0;
-    font-size: px2rem(26px);
-    color: #666;
+    line-height: $line-height-paragraph;
+    padding: 15px 0 0;
+    font-size: $font-size-base;
+    color: $color-text-caption;
     font-weight: 400;
   }
 }
@@ -114,32 +113,32 @@ img {
   text-align: justify;
 
   p {
-    line-height: 1.5;
-    margin: 0 0 px2rem(30px);
+    line-height: $line-height-paragraph;
+    margin: 0 0 15px;
   }
 }
 
 // demo preview
 .demo__preview {
   &__title {
-    padding: px2rem(30px) px2rem(30px) px2rem(20px) px2rem(30px);
-    font-size: px2rem(32px);
+    padding: 15px 15px 10px 15px;
+    font-size: $font-size-caption;
     font-weight: 700;
     position: relative;
-    color: #000000;
+    color: $color-text-base;
   }
 
   &__sub__title {
-    color: #888;
-    font-size: px2rem(28px);
-    padding: px2rem(30px) px2rem(20px);
+    color: $color-text-caption;
+    font-size: $font-size-base;
+    padding: 15px 10px;
   }
 
   &__content {
-    padding: px2rem(20px) px2rem(0);
+    padding: 10px 0;
 
     &--bg {
-      background-color: #ffffff;
+      background-color: $fill-base;
     }
   }
 }

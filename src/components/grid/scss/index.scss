@@ -1,11 +1,10 @@
 @import '../../../style/import';
-$border-color  :  #ddd;
 
 .grid {
-  border: 1px solid $border-color;
+  border: $border-width-sm solid $border-color-base; /*no*/
 
   .flexbox {
-    background: #fff;
+    background: $fill-base;
     
     &__item {
       position: relative;
@@ -14,7 +13,7 @@ $border-color  :  #ddd;
 
   &__item {
     &:active {
-      background-color: $border-color;
+      background-color: $border-color-base;
     }
   }
 
@@ -39,9 +38,9 @@ $border-color  :  #ddd;
           left: auto;
           bottom: auto;
           display: block;
-          width: 1px;
+          width: 1px; /*no*/
           height: 100%;
-          background-color: $border-color;
+          background-color: $border-color-base;
         }
       }
 
@@ -60,7 +59,7 @@ $border-color  :  #ddd;
         right: auto;
         top: auto;
         width: 100%;
-        border-bottom: 1px solid $border-color;
+        border-bottom: $border-width-sm solid $border-color-base; /*no*/
       }
     }
   }
@@ -93,7 +92,7 @@ $border-color  :  #ddd;
       &.column__num {
         &--3 {
           .grid__text {
-            font-size: px2rem(30px);
+            font-size: $font-size-subhead;
           }
         }
       }
@@ -101,15 +100,15 @@ $border-color  :  #ddd;
   }
 
   &__icon{
-    margin-top: px2rem(18px);
+    margin-top: 9px;
     width: 30%;
     height: 30%;
   }
 
   &__text {
-    margin-top: px2rem(18px);
-    font-size: px2rem(24px);
-    color: #000;
+    margin-top: 9px;
+    font-size: $font-size-caption-sm;
+    color: $color-text-base;
     text-align: center;
   }
 

@@ -27,15 +27,6 @@ class Home extends React.Component {
           <div className="page__desc">React Startkit UI 是一套移动端基础组件库</div>
         </div>
         <div className="page__body">
-          <p>
-            <svg>
-              <use xlinkHref="#all" />
-            </svg>
-            <svg>
-              <use xlinkHref="#cart" />
-            </svg>
-          </p>
-
           <Accordion
             className="accordion__category"
           >

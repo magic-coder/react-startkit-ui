@@ -2,21 +2,21 @@
 
 .flexbox__example {
   .flexbox__item {
-    margin: px2rem(10px) px2rem(10px);
+    margin: 5px;
     width: 100%;
   }
 
   .inline {
-    width: px2rem(185px) !important;
-    margin: px2rem(10px) px2rem(10px);
+    width: 93px !important;
+    margin: 5px;
 
     &--small {
-      height: px2rem(36px)!important;
-      line-height: px2rem(36px)!important;
+      height: 18px !important;
+      line-height: 18px !important;
     }
 
     &--space-no {
-      margin: px2rem(10px) 0 px2rem(10px);
+      margin: 5px 0 5px;
     }
   }
 }

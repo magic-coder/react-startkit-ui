@@ -3,17 +3,17 @@
 .search-bar {
   display: flex;
   align-items: center;
-  height: $searchbar-height;
-  line-height: $searchbar-height;
-  background-color: $searchbar-mode-dark-bg;
-  color: $searchbar-mode-dark-color;
-  padding-left: px2rem(30px);
-  padding-right: px2rem(30px);
+  height: $search-bar-height;
+  line-height: $search-bar-height;
+  color: $color-text-base-inverse;
+  background-color: $search-bar-fill-dark;
+  padding-left: 15px;
+  padding-right: 15px;
 
   // 浅色模式 
   &--light {
-    background-color: $searchbar-mode-light-bg;
-    color: $searchbar-mode-light-color;
+    color: $color-text-base;
+    background-color: $search-bar-fill;
 
     .search-bar {
       &__form,
@@ -28,11 +28,11 @@
     height: 100%;
     display: flex;
     align-items: center;
-    font-size: px2rem(32px);
+    font-size: $search-bar-font-size;
   }
 
   &__left {
-    padding-right: px2rem(30px);
+    padding-right: 15px;
     justify-content: flex-start;
 
     span {
@@ -40,7 +40,7 @@
     }
 
     &__icon {
-      margin-right: px2rem(10px);
+      margin-right: 5px;
       display: inherit;
     }
 
@@ -50,7 +50,7 @@
   }
 
   &__right {
-    padding-left: px2rem(30px);
+    padding-left: 15px;
     justify-content: flex-end;
     overflow: hidden;
 
@@ -67,8 +67,8 @@
     display: flex;
     align-items: center;
     position: relative;
-    padding: 0 px2rem(10px);
-    background-color: rgba(0, 0, 0, 0.065);
+    padding: 0 5px;
+    background-color: rgba(0, 0, 0, 0.045);
   }
 
   &__input {
@@ -79,9 +79,9 @@
     line-height: 1.5;
     flex: 1;
     min-width: 0;
-    padding: 0 px2rem(10px);
+    padding: 0 5px;
     color: #fff;
-    font-size: px2rem(28px);
+    font-size: $font-size-base;
 
     &__front,
     &__back {
@@ -89,7 +89,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 px2rem(10px);
+      padding: 0 5px;
     }
 
     &__front {
@@ -102,7 +102,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 px2rem(10px);
+    padding: 0 5px;
     cursor: pointer;
     position: relative;
   }

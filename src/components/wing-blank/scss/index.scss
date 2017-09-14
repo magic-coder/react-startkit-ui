@@ -1,22 +1,22 @@
 @import '../../../style/import';
 
 .wingblank {
-  margin-left: px2rem(16px);
-  margin-right: px2rem(16px);
+  margin-left: $h-spacing-md;
+  margin-right: $h-spacing-md;
 
   &--sm {
-    margin-left: px2rem(10px);
-    margin-right: px2rem(10px);
+    margin-left: $h-spacing-sm;
+    margin-right: $h-spacing-sm;
   }
 
   &--md {
-    margin-left: px2rem(16px);
-    margin-right: px2rem(16px);
+    margin-left: $h-spacing-md;
+    margin-right: $h-spacing-md;
   }
 
   &--lg {
-    margin-left: px2rem(30px);
-    margin-right: px2rem(30px);
+    margin-left: $h-spacing-lg;
+    margin-right: $h-spacing-lg;
   }
 
 }

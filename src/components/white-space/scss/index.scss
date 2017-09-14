@@ -3,23 +3,23 @@
 .whitespace {
 
   &--xs {
-    height: px2rem(6px);
+    height: $v-spacing-xs;
   }
 
   &--sm {
-    height: px2rem(12px);
+    height: $v-spacing-sm;
   }
 
   &--md {
-    height: px2rem(18px);
+    height: $v-spacing-md;
   }
 
   &--lg {
-    height: px2rem(30px);
+    height: $v-spacing-lg;
   }
 
   &--xl {
-    height: px2rem(42px);
+    height: $v-spacing-xl;
   }
 
 }
