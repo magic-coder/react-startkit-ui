@@ -13,7 +13,6 @@ const port = '8080';
 console.log("process.env.NODE_ENV =>>>> ", process.env.NODE_ENV);
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isPro = nodeEnv === 'production';
-console.log("当前运行环境：", isPro ? 'production' : 'development');
 
 const plugins = [
     new webpack.DefinePlugin({
@@ -42,7 +41,6 @@ const plugins = [
 ];
 
 module.exports = {
-    // entry: './src/index.jsx',
     entry: {
         main: './src/index.jsx',
     },
