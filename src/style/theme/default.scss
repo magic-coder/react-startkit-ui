@@ -155,3 +155,14 @@ $accordion-height      : 44 * $hd;
 $divider-spacing-sm     : 15 * $hd;
 $divider-spacing-md     : 30 * $hd;
 $divider-spacing-lg     : 55 * $hd;
+
+
+// z-index
+$progress-zindex        : 2000;
+$popover-zindex         : 1999;
+$toast-zindex           : 1999;
+$action-sheet-zindex    : 1000;    // actonsheet 会放到 popup / modal 中
+$picker-zindex          : 1000;
+$popup-zindex           : 999;
+$modal-zindex           : 999;     // modal.alert 应该最大，其他应该较小
+$tabs-pagination-zindex : 999;
