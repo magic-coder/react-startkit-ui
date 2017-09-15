@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 const argv = yargs.argv;
 const port = argv.port || '8080';
@@ -39,6 +40,8 @@ const plugins = [
         url: 'http://localhost:' + port,
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new SpriteLoaderPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(), // 3.0新功能 范围提升(Scope Hoisting)
 ];
 
 module.exports = {

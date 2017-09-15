@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 const plugins = [
     new CleanWebpackPlugin([
@@ -65,6 +66,8 @@ const plugins = [
             comments: false,
         }
     }),
+    new SpriteLoaderPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(), // 3.0新功能 范围提升(Scope Hoisting)
 ];
 
 module.exports = {
