@@ -10,6 +10,7 @@ import PanelExample from '@/views/examples/panel';
 import NavBarExample from '@/views/examples/navbar';
 import SearchBarExample from '@/views/examples/searchbar';
 import TabBarExample from '@/views/examples/tabbar';
+// import PopoverExample from '@/views/examples/popover';
 import DividerExample from '@/views/examples/divider';
 import BadgeExample from '@/views/examples/badge';
 import TabsExample from '@/views/examples/tabs';
@@ -34,6 +35,7 @@ export default class APP extends Component {
             <Route exact path="/navbar" component={NavBarExample} />
             <Route exact path="/searchbar" component={SearchBarExample} />
             <Route exact path="/tabbar" component={TabBarExample} />
+            {/* <Route exact path="/popover" component={PopoverExample} /> */}
             <Route exact path="/divider" component={DividerExample} />
             <Route exact path="/badge" component={BadgeExample} />
             <Route exact path="/panel" component={PanelExample} />
