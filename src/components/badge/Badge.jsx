@@ -64,7 +64,7 @@ export default class Badge extends React.Component {
   }
 
   render() {
-    const { prefixClassName, className, children } = this.props;
+    const { prefixClassName, className, children, dot } = this.props;
 
     const classes = classNames(
       prefixClassName,
@@ -80,7 +80,7 @@ export default class Badge extends React.Component {
         <Animate
           component=""
           showProp="data-show"
-          transitionName={children ? `${prefixClassName}--zoom` : ''}
+          transitionName={children && dot ? `${prefixClassName}--zoom` : ''}
           transitionAppear
         >
           {this.renderBadgeSup()}
