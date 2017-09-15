@@ -1,13 +1,14 @@
 'use strict';
 
 const path = require('path');
+const yargs = require('yargs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// 端口
-const port = '8080';
+const argv = yargs.argv;
+const port = argv.port || '8080';
 
 // 判断当前运行环境是开发模式还是生产模式
 console.log("process.env.NODE_ENV =>>>> ", process.env.NODE_ENV);

@@ -2,8 +2,10 @@ const express = require('express');
 const fs = require('fs');
 const childProcess = require('child_process');
 const app = express();
-const port = 8080;
+const yargs = require('yargs');
 
+const argv = yargs.argv;
+const port = argv.port || 8080;
 
 // Config
 app.use(express.static(__dirname + '/public'));  // 静态资源目录
