@@ -31,3 +31,12 @@
     transition: opacity .3s, transform .3s;
   }
 }
+
+.category__list {
+  padding-left: 15px;
+
+  .list__body {
+    border-top: 0;
+    border-bottom: 0;
+  }
+}
