@@ -1,27 +1,56 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-import Home from '@/views/home';
-import FlexExample from '@/views/examples/flex';
-import GridExample from '@/views/examples/grid';
-import WhiteSpaceExample from '@/views/examples/whitespace';
-import WingBlankExample from '@/views/examples/wingblank';
-import PanelExample from '@/views/examples/panel';
-import NavBarExample from '@/views/examples/navbar';
-import SearchBarExample from '@/views/examples/searchbar';
-import TabBarExample from '@/views/examples/tabbar';
-// import PopoverExample from '@/views/examples/popover';
-import DividerExample from '@/views/examples/divider';
-import BadgeExample from '@/views/examples/badge';
-import TabsExample from '@/views/examples/tabs';
-import AccordionExample from '@/views/examples/accordion';
-import IconExample from '@/views/examples/icon';
-import ListExample from '@/views/examples/list';
-import NotFound from '@/views/404';
+import dynamic from '@/utils/dynamic';
 
 import '@/style/base';
 
-export default class APP extends Component {
+import Home from '@/views/home';
+import NotFound from '@/views/404';
+
+const FlexExample = dynamic({
+  loader: () => { return import('@/views/examples/flex'); },
+});
+const GridExample = dynamic({
+  loader: () => { return import('@/views/examples/grid'); },
+});
+const WhiteSpaceExample = dynamic({
+  loader: () => { return import('@/views/examples/whitespace'); },
+});
+const WingBlankExample = dynamic({
+  loader: () => { return import('@/views/examples/wingblank'); },
+});
+const PanelExample = dynamic({
+  loader: () => { return import('@/views/examples/panel'); },
+});
+const NavBarExample = dynamic({
+  loader: () => { return import('@/views/examples/navbar'); },
+});
+const SearchBarExample = dynamic({
+  loader: () => { return import('@/views/examples/searchbar'); },
+});
+const TabBarExample = dynamic({
+  loader: () => { return import('@/views/examples/tabbar'); },
+});
+const DividerExample = dynamic({
+  loader: () => { return import('@/views/examples/divider'); },
+});
+const BadgeExample = dynamic({
+  loader: () => { return import('@/views/examples/badge'); },
+});
+const TabsExample = dynamic({
+  loader: () => { return import('@/views/examples/tabs'); },
+});
+const AccordionExample = dynamic({
+  loader: () => { return import('@/views/examples/accordion'); },
+});
+const IconExample = dynamic({
+  loader: () => { return import('@/views/examples/icon'); },
+});
+const ListExample = dynamic({
+  loader: () => { return import('@/views/examples/list'); },
+});
+
+export default class APP extends React.Component {
   render() {
     return (
       <Router>
