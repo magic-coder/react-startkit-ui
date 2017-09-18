@@ -1,0 +1,26 @@
+@import '../../../style/import';
+
+.popover {
+  position: absolute;
+  z-index: $popover-zindex;
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.4);
+    height: 100%;
+    z-index: $popup-zindex;
+  }
+
+  &__content {
+    overflow: hidden;
+    font-size: $font-size-subhead;
+    color: $color-text-base;
+    background-color: $fill-base;
+    border-radius: $radius-sm;
+    box-shadow: 0 0 2px rgba(0,0,0,0.21);
+  }
+}

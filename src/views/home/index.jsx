@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Link } from 'react-router-dom';
-
 import testActions from '@/actions';
 
 import Accordion from '@/components/accordion';
@@ -36,17 +34,11 @@ class Home extends React.Component {
         <div className="page__body">
           {
             process.env.NODE_ENV !== 'development' ? null : (
-              <div>
+              <div style={{ padding: '0.5rem 0.3rem' }}>
                 <p>开发模式下才显示~</p>
               </div>
             )
           }
-
-          <p style={{ padding: '0.5rem' }}>
-            <Link to="/" style={{ padding: '0.5rem' }}>Home</Link>
-            <Link to="/grid" style={{ padding: '0.5rem' }}>Grid</Link>
-            <Link to="/badge" style={{ padding: '0.5rem' }}>Badge</Link>
-          </p>
 
           <Accordion
             className="accordion__category"

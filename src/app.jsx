@@ -6,6 +6,7 @@ import '@/style/base';
 
 import Home from '@/views/home';
 import NotFound from '@/views/404';
+import PopoverExample from '@/views/examples/popover';
 
 const FlexExample = dynamic({
   loader: () => { return import('@/views/examples/flex'); },
@@ -64,7 +65,7 @@ export default class APP extends React.Component {
             <Route exact path="/navbar" component={NavBarExample} />
             <Route exact path="/searchbar" component={SearchBarExample} />
             <Route exact path="/tabbar" component={TabBarExample} />
-            {/* <Route exact path="/popover" component={PopoverExample} /> */}
+            <Route exact path="/popover" component={PopoverExample} />
             <Route exact path="/divider" component={DividerExample} />
             <Route exact path="/badge" component={BadgeExample} />
             <Route exact path="/panel" component={PanelExample} />
