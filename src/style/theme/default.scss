@@ -61,11 +61,13 @@ $font-size-heading    : 17 * $hd;
 
 // 圆角
 // ---
+$radius-xxs    : 1 * $hd;
 $radius-xs     : 2 * $hd;
 $radius-sm     : 3 * $hd;
 $radius-md     : 5 * $hd;
 $radius-lg     : 7 * $hd;
 $radius-circle : 50%;     // 圆形
+
 
 // 边框尺寸
 // ---
@@ -105,7 +107,8 @@ $icon-size-xl  : 48 * $hd;
 // 动画缓动
 // ---
 $ease-in-out-quint: cubic-bezier(.86, 0, .07, 1);
-
+$easeOutFunction: cubic-bezier(0.23, 1, 0.32, 1);
+$easeInOutFunction: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
 // 组件变量
 // ---
@@ -142,6 +145,9 @@ $badge-size-base-md    : 20 * $hd;
 $list-thumb-size       : 24 * $hd;
 $list-arrow-size       : 14 * $hd;
 
+// menu
+$menu-thumb-size       : 18 * $hd;
+$menu-arrow-size       : 12 * $hd;
 
 // tabs
 $tab-height            : 44 * $hd;
