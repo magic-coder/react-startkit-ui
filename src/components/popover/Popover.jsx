@@ -6,41 +6,36 @@ import classNames from 'classnames';
 import addEventListener from '@/utils/Dom/addEventListener';
 import contains from '@/utils/Dom/contains';
 
-// import { Overlay } from '../mixins';
-
 import './scss';
 
 class Popover extends React.Component {
   static propTypes = {
-    // prefixClassName: PropTypes.string,
-    // className: PropTypes.oneOfType([
-    //   PropTypes.string,
-    //   PropTypes.object,
-    // ]),
-    // style: PropTypes.object,
-    // children: PropTypes.any,
+    prefixClassName: PropTypes.string,
+    children: PropTypes.any,
     // 是否显示
     visible: PropTypes.bool,
+    // 位置
+    placement: PropTypes.oneOf([
+      'left', 'right', 'top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight',
+    ]),
+    offsetX: PropTypes.number,
+    offsetY: PropTypes.number,
     // 是否有遮罩层
     overlay: PropTypes.bool,
     // 是否有遮罩层点击回调函数
     overlayClosable: PropTypes.bool,
-    // 遮罩层点击回调函数
-    overlayClick: PropTypes.func,
+    // 关闭回调函数
     close: PropTypes.func,
   }
 
   static defaultProps = {
     prefixClassName: 'popover',
     visible: false,
-    position: {
-      x: 0,
-      y: 0,
-    },
-    placement: 'bottomRight', // 'left','right','top','bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'
+    placement: 'bottomRight', // 'left', 'right', 'top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight',
+    offsetX: 0, // 位置 X 轴偏移值
+    offsetY: 0, // 位置 Y 轴偏移值
     overlay: false,
     overlayClosable: true,
-    overlayClick: () => {},
     close: () => {},
   }
 
@@ -48,22 +43,35 @@ class Popover extends React.Component {
     // 创建装载的空 div
     this._wrapper = document.createElement('div');
     document.body.appendChild(this._wrapper);
+  }
 
+  componentDidMount() {
     if (this.props.visible) {
       this.renderPopover(this.props);
+      this.setPosition();
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps);
     // 创建 Popover DOM
     if (nextProps.visible && !this.props.visible) {
-      this.renderPopover(nextProps);
+      this.renderPopover(this.props);
+      this.setPosition();
     }
 
     // 移除 Popover DOM
     if (this.props.visible && !nextProps.visible) {
-      this.unrenderPopover();
+      // 监听运动结束后删除
+      this.popoverWebkitTransitionEndHandler = addEventListener(this.popoverRef, 'webkitTransitionEnd', () => {
+        console.log('运动结束~~');
+        this.unrenderPopover();
+      });
+      this.popoverMSTransitionEndHideHandler = addEventListener(this.popoverRef, 'MSTransitionEnd', () => {
+        this.unrenderPopover();
+      });
+      this.popoverTransitionendHideHandler = addEventListener(this.popoverRef, 'transitionend', () => {
+        this.unrenderPopover();
+      });
     }
   }
 
@@ -75,7 +83,7 @@ class Popover extends React.Component {
   /**
    * 绑定 事件
    * 
-   * @returns 
+   * @param {any} ev 
    */
   onDocumentClick(ev) {
     if (this.props.overlay && !this.props.overlayClosable) {
@@ -85,8 +93,86 @@ class Popover extends React.Component {
     const popupNode = this.popoverRef;
     if (!contains(popupNode, target)) {
       // 不是点击 popover 的内容. 关闭 popover;
-      this.props.close(ev);
+      this.close(ev);
     }
+  }
+
+  /**
+   * 设置 Popover 位置
+   * 先插入DOM 结构, 再去设置  <<== 未插入 DOM 结构时, 无法获取尺寸信息
+   */
+  setPosition() {
+    const position = this.getPosition();
+    const style = `left: ${position.left}px; top: ${position.top}px;`;
+    this.innerRef.setAttribute('style', style);
+
+    this.popoverRef.classList.remove(`${this.props.prefixClassName}--hide`);
+    this.popoverRef.classList.add(`${this.props.prefixClassName}--show`);
+  }
+
+  /**
+   * 获取 Popover 位置信息
+   */
+  getPosition() {
+    const { placement, offsetX, offsetY } = this.props;
+    const $target = this.targetRef;
+    const $arrow = this.arrowRef;
+    const $content = this.contentRef;
+    const dpr = document.querySelector('html').getAttribute('data-dpr') || 1;
+
+    // 箭头的宽高
+    const arrowWidth = $arrow ? $arrow.offsetWidth : 0;
+    const arrowHeight = $arrow ? $arrow.offsetHeight : 0;
+    // 内容的宽高
+    const contentWidth = $content ? $content.offsetWidth : 0;
+    const contentHeight = $content ? $content.offsetHeight : 0;
+    // 触发目标的宽高、位置
+    const targetWidth = $target.offsetWidth;
+    const targetHeight = $target.offsetHeight;
+    const targetTop = $target.offsetTop + (offsetY * dpr);
+    const targetLeft = $target.offsetLeft + (offsetX * dpr);
+
+    let positionTop = targetTop;
+    let positionLeft = targetLeft;
+
+    switch (placement) {
+      case 'top':
+        positionTop -= contentHeight + arrowHeight;
+        positionLeft -= (contentWidth - targetWidth) / 2;
+        break;
+      case 'bottom':
+        positionTop += targetHeight + arrowHeight;
+        positionLeft -= (contentWidth - targetWidth) / 2;
+        break;
+      case 'left':
+        positionTop -= (contentHeight - targetHeight) / 2;
+        positionLeft -= contentWidth + arrowWidth;
+        break;
+      case 'right':
+        positionTop -= (contentHeight - targetHeight) / 2;
+        positionLeft += targetWidth + arrowWidth;
+        break;
+      case 'topLeft':
+        positionTop -= contentHeight + arrowHeight;
+        break;
+      case 'topRight':
+        positionTop -= contentHeight + arrowHeight;
+        positionLeft -= contentWidth - targetWidth;
+        break;
+      case 'bottomLeft':
+        positionTop += targetHeight + arrowHeight;
+        break;
+      case 'bottomRight':
+        positionTop += targetHeight + arrowHeight;
+        positionLeft -= contentWidth - targetWidth;
+        break;
+      default:
+    }
+
+    return {
+      top: positionTop,
+      left: positionLeft,
+    };
   }
 
   /**
@@ -102,17 +188,41 @@ class Popover extends React.Component {
       this.touchOutsideHandler.remove();
       this.touchOutsideHandler = null;
     }
+
+    // 运动相关事件
+    if (this.popoverWebkitTransitionEndHandler) {
+      this.popoverWebkitTransitionEndHandler.remove();
+      this.popoverWebkitTransitionEndHandler = null;
+    }
+    if (this.popoverMSTransitionEndHideHandler) {
+      this.popoverMSTransitionEndHideHandler.remove();
+      this.popoverMSTransitionEndHideHandler = null;
+    }
+    if (this.popoverTransitionendHideHandler) {
+      this.popoverTransitionendHideHandler.remove();
+      this.popoverTransitionendHideHandler = null;
+    }
   }
 
   /**
    * 遮罩层点击事件
    * 
-   * @memberof Popover
+   * @param {any} ev 
    */
   overlayClick(ev) {
     if (this.props.overlayClosable) {
-      this.props.overlayClick(ev);
+      this.close(ev);
     }
+  }
+
+  /**
+   * 关闭 popover
+   * 
+   * @param {any} ev 
+   */
+  close(ev) {
+    this.props.close(ev);
+    this.popoverRef.classList.remove(`${this.props.prefixClassName}--show`);
   }
 
   /**
@@ -128,28 +238,35 @@ class Popover extends React.Component {
   /**
    * 渲染 Popover
    * 
-   * @memberof Popover
+   * @param {any} props 
    */
   renderPopover(props) {
     const {
-      prefixClassName, className, style, overlayStyle, contentStyle, children,
-      overlay, position, placement,
+      prefixClassName, className, style, overlayStyle,
+      overlay, placement, content,
     } = props;
 
     const popoverClasses = classNames(
       prefixClassName,
       className,
+    );
+    const contentClasses = classNames(
+      `${prefixClassName}__content`,
       {
-        [`${prefixClassName}--placement-bottomRight`]: placement === 'bottomRight',
+        [`${prefixClassName}__content--placement-left`]: placement === 'left',
+        [`${prefixClassName}__content--placement-right`]: placement === 'right',
+        [`${prefixClassName}__content--placement-top`]: placement === 'top',
+        [`${prefixClassName}__content--placement-bottom`]: placement === 'bottom',
+        [`${prefixClassName}__content--placement-topLeft`]: placement === 'topLeft',
+        [`${prefixClassName}__content--placement-topRight`]: placement === 'topRight',
+        [`${prefixClassName}__content--placement-bottomLeft`]: placement === 'bottomLeft',
+        [`${prefixClassName}__content--placement-bottomRight`]: placement === 'bottomRight',
       },
     );
-    const popoverContentStyle = Object.assign({}, contentStyle, {
-      left: position.x,
-      top: position.y,
-    });
 
     const popover = (
       <div
+        className={popoverClasses}
         style={style}
         ref={(ele) => { this.popoverRef = ele; }}
       >
@@ -158,12 +275,14 @@ class Popover extends React.Component {
             className={`${prefixClassName}__overlay`}
             style={overlayStyle}
             onClick={(ev) => { this.overlayClick(ev); }}
+            ref={(ele) => { this.overlayRef = ele; }}
             role="button"
             tabIndex="-1"
           />)
         }
-        <div className={popoverClasses} style={popoverContentStyle}>
-          {children}
+        <div className={contentClasses} ref={(ele) => { this.innerRef = ele; }}>
+          <div className={`${prefixClassName}__arrow`} ref={(ele) => { this.arrowRef = ele; }} />
+          <div className={`${prefixClassName}__inner`} ref={(ele) => { this.contentRef = ele; }}>{content}</div>
         </div>
       </div>);
 
@@ -189,8 +308,11 @@ class Popover extends React.Component {
   }
 
   render() {
+    const children = this.props.children || null;
     return (
-      null
+      React.cloneElement(children, {
+        ref: (ele) => { this.targetRef = ele; },
+      })
     );
   }
 }
