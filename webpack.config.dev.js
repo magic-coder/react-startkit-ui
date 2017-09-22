@@ -26,6 +26,7 @@ const plugins = [
     new HtmlWebpackPlugin({
         title: 'React Startkit UI',
         template: './src/index.html',
+        favicon: './src/favicon.ico',
         shim: {
             fastclick: {
                 src: './src/libs/fastclick.js',

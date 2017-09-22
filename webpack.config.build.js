@@ -24,7 +24,11 @@ const plugins = [
         {
             from: path.resolve(__dirname, './src/libs/fastclick.js'),
             to: path.resolve(__dirname, './dist/js'),
-        }
+        },
+        {
+            from: path.resolve(__dirname, './src/favicon.ico'),
+            to: path.resolve(__dirname, './dist'),
+        },
     ]),
     new ExtractTextPlugin({
         filename: 'css/[name].[hash:5].css',
@@ -38,6 +42,7 @@ const plugins = [
         title: 'React Startkit UI',
         filename: 'index.html',
         template: './src/index.html',
+        favicon: './src/favicon.ico',
         minify: {
             minifyCSS: true,
             minifyJS: true,
