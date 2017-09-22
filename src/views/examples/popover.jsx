@@ -1,17 +1,58 @@
 import React from 'react';
 import Popover from '@/components/popover';
+import NavBar from '@/components/nav-bar';
 import Divider from '@/components/divider';
+import Icon from '@/components/icon';
+import Menu from '@/components/menu';
 
 export default class PopverExample extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      subMenuVisible: false,
       visible: false,
-      position: {},
     };
   }
+
+  renderPopoverContent = () => {
+    return (
+      <Menu>
+        <Menu.Item
+          thumb={<Icon type="search" size="xxs" />}
+          href="https://www.baidu.com"
+        >
+          搜索
+        </Menu.Item>
+        <Menu.Item
+          thumb={<Icon type="scan" size="xxs" />}
+          onClick={() => {
+            const msg = '点击了扫一扫';
+            alert(msg);
+            console.log(msg);
+          }}
+        >
+          扫一扫
+        </Menu.Item>
+        <Divider />
+        <Menu.Item
+          thumb={<Icon type="home" size="xxs" />}
+          href="/"
+        >
+          首页
+        </Menu.Item>
+        <Menu.Item
+          thumb={<Icon type="me" size="xxs" />}
+        >
+          退出
+        </Menu.Item>
+      </Menu>
+    );
+  }
+
   render() {
+    const popoverContent = this.renderPopoverContent();
+
     return (
       <div className="page page__home">
         <div className="page__header">
@@ -22,50 +63,56 @@ export default class PopverExample extends React.Component {
 
           <div className="demo__preview">
             <div className="demo__preview__title">基本</div>
-            <div className="demo__preview__content demo__preview__content--bg">
-              <button
-                style={{ marginLeft: '3rem' }}
-                onClick={(ev) => {
-                  ev.stopPropagation();
-
-                  const $target = ev.target;
-
-                  this.setState({
-                    visible: !this.state.visible,
-                    position: {
-                      x: $target.offsetLeft,
-                      y: $target.offsetTop + $target.offsetHeight,
-                    },
-                  });
-                }}
-              >显示/隐藏</button>
-              <Popover
-                className="my-popover"
-                visible={this.state.visible}
-                position={this.state.position}
-                placement="bottomRight"
-                overlay
-                overlayClick={(ev) => {
-                  ev.stopPropagation();
-                  console.log('触发 overlayClick 事件');
-                  this.setState({
-                    visible: false,
-                  });
-                }}
-                close={(ev) => {
-                  ev.stopPropagation();
-                  console.log('触发 close 事件');
-                  this.setState({
-                    visible: false,
-                  });
-                }}
+            <div className="demo__preview__content">
+              <NavBar
+                className="my-navbar"
+                mode="dark"
+                rightContent={
+                  <Popover
+                    className="popover-menu"
+                    visible={this.state.subMenuVisible}
+                    position={this.state.position}
+                    placement="bottomRight"
+                    overlay
+                    offsetX={-10}
+                    overlayClick={(ev) => {
+                      ev.stopPropagation();
+                      this.setState({
+                        subMenuVisible: false,
+                      });
+                    }}
+                    close={(ev) => {
+                      ev.stopPropagation();
+                      this.setState({
+                        subMenuVisible: false,
+                      });
+                    }}
+                    content={popoverContent}
+                  >
+                    <div
+                      role="button"
+                      tabIndex="-1"
+                      style={{
+                        height: '100%',
+                        padding: '0 0.3rem',
+                        marginRight: '-0.3rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                      }}
+                      onClick={(ev) => {
+                        ev.stopPropagation();
+                        this.setState({
+                          subMenuVisible: !this.state.subMenuVisible,
+                        });
+                      }}
+                    >
+                      <Icon type="ellipsis" />
+                    </div>
+                  </Popover>
+                }
               >
-                <p style={{ padding: '0.20rem 0.30rem' }}>历史记录</p>
-                <Divider />
-                <p style={{ padding: '0.20rem 0.30rem' }}>分享到</p>
-                <Divider />
-                <p style={{ padding: '0.20rem 0.30rem' }}>设置</p>
-              </Popover>
+                关于我们
+              </NavBar>
             </div>
           </div>
 
