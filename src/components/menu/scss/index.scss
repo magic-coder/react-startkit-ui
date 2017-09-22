@@ -1,0 +1,105 @@
+@import '../../../style/import';
+
+.menu {
+  &-list {
+    padding: 6px 0;
+
+    .divider {
+      margin: 7px 0 7px;
+    }
+
+    &__group {
+      .menu-item {
+        padding-left: 30px;
+      }
+    }
+
+    &__heading {
+      padding: 10px 15px;
+      color: $color-text-base;
+      font-size: $font-size-subhead;
+    }
+  }  
+
+  &-item {
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+    color: $color-text-paragraph;
+    transition: background-color 0.2s, opacity 0.2s;
+
+    &:hover,
+    &:active {
+      background-color: rgba(0, 0, 0, 0.045);
+    }
+
+    // 禁用
+    &--disabled {
+      opacity: $opacity-disabled;
+
+      &:hover,
+      &:active {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+
+    &__line {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      color: inherit;
+      font-size: $font-size-base;
+    }
+
+    &__thumb {
+      width: $menu-thumb-size;
+      
+      &:first-child {
+        margin-right: 13px;
+      }
+
+      &:last-child {
+        margin-left: 13px;
+      }
+
+      img {
+        display: block;
+        width: $menu-thumb-size;
+        height: $menu-thumb-size;
+      }
+    }
+
+    &__content {
+      flex: 1;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    &__extra {
+      margin-left: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      color: $color-text-secondary;
+      font-size: 0.8em;
+      text-align: right;
+    }
+
+    // 箭头
+    &__arrow {
+      display: block;
+      width: $menu-arrow-size;
+      height: $menu-arrow-size;
+      margin-left: 8px;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='26' viewBox='0 0 16 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 0L0 2l11.5 11L0 24l2 2 14-13z' fill='%23C7C7CC' fill-rule='evenodd'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      visibility: visible;
+
+      &--empty {
+        visibility: hidden;
+      }
+    }
+  }
+}
