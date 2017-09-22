@@ -6,7 +6,10 @@ import '@/style/base';
 
 import Home from '@/views/home';
 import NotFound from '@/views/404';
+import PaperExample from '@/views/examples/paper';
 import PopoverExample from '@/views/examples/popover';
+import MenuExample from '@/views/examples/menu';
+import AbstractButtonExample from '@/views/examples/abstractbutton';
 
 const FlexExample = dynamic({
   loader: () => { return import('@/views/examples/flex'); },
@@ -62,10 +65,13 @@ export default class APP extends React.Component {
             <Route exact path="/grid" component={GridExample} />
             <Route exact path="/whitespace" component={WhiteSpaceExample} />
             <Route exact path="/wingblank" component={WingBlankExample} />
+            <Route exact path="/abstract" component={AbstractButtonExample} />
+            <Route exact path="/paper" component={PaperExample} />
             <Route exact path="/navbar" component={NavBarExample} />
             <Route exact path="/searchbar" component={SearchBarExample} />
             <Route exact path="/tabbar" component={TabBarExample} />
             <Route exact path="/popover" component={PopoverExample} />
+            <Route exact path="/menu" component={MenuExample} />
             <Route exact path="/divider" component={DividerExample} />
             <Route exact path="/badge" component={BadgeExample} />
             <Route exact path="/panel" component={PanelExample} />
