@@ -1,10 +1,13 @@
+@import '../../../style/import';
 
 .page__not__found section {
   position: absolute;
-  top: 48%;
-  left: 55%;
-  margin: -103px 0 0 -120px;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  padding: 0 20px;
   text-align: center;
+  transform: translate(-50%, -50%);
 
   h1 {
     color: #2db7f5;
@@ -15,7 +18,8 @@
 
   p {
     color: #666;
-    font-size: 16px
+    font-size: 16px;
+    line-height: $line-height-paragraph;
   }
 
 }
