@@ -1,0 +1,37 @@
+@import '../../../style/import';
+
+.paper {
+  background-color: $fill-base;
+  @include depth(1);
+  transition: all .45s $easeOutFunction;
+
+  &--round {
+    border-radius: $radius-xxs;
+  }
+
+  &--circle {
+    border-radius: $radius-circle
+  }
+
+  &--depth {
+    &-1 {
+      @include depth(1);
+    }
+
+    &-2 {
+      @include depth(2);
+    }
+
+    &-3 {
+      @include depth(3);
+    }
+
+    &-4 {
+      @include depth(4);
+    }
+
+    &-5 {
+      @include depth(5);
+    }
+  }
+}
