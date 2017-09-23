@@ -22,8 +22,10 @@
     "no-console": 0,
     // 允许使用 alert
     "no-alert": 0,
-    // 允许试用 javascript:
+    // 允许使用 javascript:
     "no-script-url": 0,
+    // 允许使用 ++, --
+    "no-plusplus": 0,
     // 允许标识符中有悬空下划线
     "no-underscore-dangle": 0,
     // 换行风格
