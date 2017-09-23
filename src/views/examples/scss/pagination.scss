@@ -1,0 +1,31 @@
+@import '../../../style/import';
+
+.page__pagination {
+  button {
+    border: none;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.045);
+    margin: 10px;
+    padding: 8px 20px;
+    display: inline-block;
+  }
+
+  .arrow-align {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .pagination__with-icon {
+    .pagination__button__prev {
+      a {
+        padding-left: 6px;
+      }
+    }
+    .pagination__button__next {
+      a {
+        padding-right: 6px;
+      }
+    }
+  }
+}

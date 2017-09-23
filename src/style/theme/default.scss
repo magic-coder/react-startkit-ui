@@ -106,9 +106,9 @@ $icon-size-xl  : 48 * $hd;
 
 // 动画缓动
 // ---
-$ease-in-out-quint: cubic-bezier(.86, 0, .07, 1);
-$easeOutFunction: cubic-bezier(0.23, 1, 0.32, 1);
-$easeInOutFunction: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+$ease-in-out-quint : cubic-bezier(.86, 0, .07, 1);
+$easeOutFunction   : cubic-bezier(0.23, 1, 0.32, 1);
+$easeInOutFunction : cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
 // 组件变量
 // ---
@@ -149,6 +149,18 @@ $list-arrow-size       : 14 * $hd;
 $menu-thumb-size       : 18 * $hd;
 $menu-arrow-size       : 12 * $hd;
 
+
+// pagination
+$pagination-active                     : $brand-primary;
+$pagination-font-size                  : $font-size-caption;
+$pagination-button-height              : 42 * $hd;
+$pagination-button-text                : $color-text-base;
+$pagination-button-text-disabled       : $color-text-disabled;
+$pagination-button-background          : $fill-base;
+$pagination-button-background-active   : $fill-tap;
+$pagination-button-background-disabled : $fill-disabled;
+$pagination-dot-size                   : 12 * $hd;
+
 // tabs
 $tab-height            : 44 * $hd;
 
@@ -161,6 +173,7 @@ $accordion-height      : 44 * $hd;
 $divider-spacing-sm     : 15 * $hd;
 $divider-spacing-md     : 30 * $hd;
 $divider-spacing-lg     : 55 * $hd;
+
 
 
 // z-index

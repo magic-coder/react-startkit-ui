@@ -1,0 +1,90 @@
+@import '../../../style/import';
+
+.pagination {
+
+  .active {
+    color: $pagination-active;
+  }
+
+  .sep {
+    margin: 0 2px;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    font-size: $pagination-font-size;
+
+    &--mode-dot {
+      display: block;
+      font-size: 0;
+      text-align: center;
+    }
+  }
+
+  &__button__prev,
+  &__button__next,
+  &__number {
+    flex: 1;
+  }
+
+  &__number {
+    text-align: center;
+  }
+
+  &__dot {
+    display: inline-block;
+    zoom: 1;
+
+    > span {
+      width: $pagination-dot-size;
+      height: $pagination-dot-size;
+      display: block;
+      margin: 0 5px;
+      border-radius: $radius-circle;
+      background: #ccc;
+      transition: background-color 0.2s $easeOutFunction, width 0.2s, height 0.2s;
+    }
+
+    &--active {
+      > span {
+        background: $pagination-active;
+      }
+    }
+  }
+
+  
+
+  &__button {
+
+    &__prev,
+    &__next {
+      a {
+        cursor: pointer;
+        display: inline-block;
+        height: $pagination-button-height;
+        line-height: $pagination-button-height;
+        padding: 0 15px;
+        border-radius: $radius-md;
+        color: $pagination-button-text;
+        background-color: $pagination-button-background;
+        border: 1px solid $border-color-base; /* no */
+        transition: background-color 0.2s, opacity 0.2s;
+
+        &:active {
+          background-color: $pagination-button-background-active;
+        }
+        
+        &[disabled] {
+          color: $pagination-button-text-disabled;
+          background-color: $pagination-button-background-disabled;
+        }
+      }
+    }
+
+    &__next {
+      text-align: right;
+    }
+  }
+
+}
