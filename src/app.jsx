@@ -10,6 +10,8 @@ import PaperExample from '@/views/examples/paper';
 import PopoverExample from '@/views/examples/popover';
 import MenuExample from '@/views/examples/menu';
 import PaginationExample from '@/views/examples/pagination';
+import MarqueeExample from '@/views/examples/marquee';
+import NoticebarExample from '@/views/examples/noticebar';
 import AbstractButtonExample from '@/views/examples/abstractbutton';
 
 const FlexExample = dynamic({
@@ -76,6 +78,8 @@ export default class APP extends React.Component {
             <Route exact path="/pagination" component={PaginationExample} />
             <Route exact path="/divider" component={DividerExample} />
             <Route exact path="/badge" component={BadgeExample} />
+            <Route exact path="/marquee" component={MarqueeExample} />
+            <Route exact path="/noticebar" component={NoticebarExample} />
             <Route exact path="/panel" component={PanelExample} />
             <Route exact path="/tabs" component={TabsExample} />
             <Route exact path="/accordion" component={AccordionExample} />
