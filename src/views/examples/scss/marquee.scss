@@ -1,0 +1,16 @@
+@import '../../../style/import';
+
+.page__marquee {
+
+  .my-notice-bar {
+    background-color: #fefcec;
+    height: .72rem;
+    overflow: hidden;
+    font-size: .28rem;
+    line-height: .72rem;
+    color: #f76a24;
+    display: flex;
+    padding: 0 15px;
+  }
+  
+}
