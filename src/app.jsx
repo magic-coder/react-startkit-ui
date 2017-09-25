@@ -13,6 +13,7 @@ import PaginationExample from '@/views/examples/pagination';
 import MarqueeExample from '@/views/examples/marquee';
 import NoticebarExample from '@/views/examples/noticebar';
 import AbstractButtonExample from '@/views/examples/abstractbutton';
+import ButtonExample from '@/views/examples/button';
 
 const FlexExample = dynamic({
   loader: () => { return import('@/views/examples/flex'); },
@@ -85,6 +86,7 @@ export default class APP extends React.Component {
             <Route exact path="/accordion" component={AccordionExample} />
             <Route exact path="/icon" component={IconExample} />
             <Route exact path="/list" component={ListExample} />
+            <Route exact path="/button" component={ButtonExample} />
             <Route component={NotFound} />
           </Switch>
         </div>

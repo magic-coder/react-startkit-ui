@@ -106,7 +106,7 @@ $icon-size-xl  : 48 * $hd;
 
 // 动画缓动
 // ---
-$ease-in-out-quint : cubic-bezier(.86, 0, .07, 1);
+$easeInOutQuint    : cubic-bezier(.86, 0, .07, 1);
 $easeOutFunction   : cubic-bezier(0.23, 1, 0.32, 1);
 $easeInOutFunction : cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
@@ -157,6 +157,35 @@ $menu-thumb-size       : 18 * $hd;
 $menu-arrow-size       : 12 * $hd;
 
 
+// button
+$button-height-small                 : 24 * $hd;
+$button-height-default               : 32 * $hd;
+$button-height-large                 : 42 * $hd;
+$button-size-small                   : 12 * $hd;
+$button-size-default                 : 14 * $hd;
+$button-size-large                   : 16 * $hd;
+$button-space-small                  : 10 * $hd;
+$button-space-default                : 15 * $hd;
+$button-space-large                  : 20 * $hd;
+$button-primary-fill                 : $brand-primary;
+$button-primary-tap                  : $brand-primary-tap;
+$button-primary-border               : $brand-primary;
+$button-primary-text-color           : $color-text-base-inverse;
+$button-primary-text-color-inverse   : $brand-primary;
+$button-secondary-fill               : #f04134;
+$button-secondary-tap                : #e53e32;
+$button-secondary-border             : #f04134;
+$button-secondary-text-color         : $color-text-base-inverse;
+$button-secondary-text-color-inverse : #f04134;
+$button-default-fill                 : $fill-base;
+$button-default-tap                  : $fill-tap;
+$button-default-border               : $border-color-base;
+$button-default-text-color           : $color-text-base;
+$button-disabled-text-color          : $color-text-disabled;
+$button-disabled-border              : $border-color-base;
+$button-disabled-fill                : $fill-disabled;
+
+
 // pagination
 $pagination-active                     : $brand-primary;
 $pagination-font-size                  : $font-size-caption;
@@ -181,7 +210,6 @@ $accordion-height      : 44 * $hd;
 $divider-spacing-sm     : 15 * $hd;
 $divider-spacing-md     : 30 * $hd;
 $divider-spacing-lg     : 55 * $hd;
-
 
 
 // z-index

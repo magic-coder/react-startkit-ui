@@ -1,0 +1,175 @@
+@import '../../../style/import';
+
+.button {
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+
+  height: $button-height-default;
+  line-height: 1.15;
+  padding: 0 $button-space-default;
+  text-align: center;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  white-space: nowrap;border-radius: $radius-sm;
+  transition: all 0.3s $easeInOutFunction;
+
+  color: $button-default-text-color;
+  background-color: $button-default-fill;
+  border: 1px solid $button-default-border; /* no */
+
+  &:active {
+    background-color: $button-default-tap;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      margin-right: $button-space-default / 2;
+    }
+    &:last-child {
+      margin-left: $button-space-default / 2;
+    }
+  }
+
+  // 加载中状态
+  &--loading {
+    &:before {
+      position: absolute;
+      top: -1px; /* no */
+      left: -1px; /* no */
+      bottom: -1px; /* no */
+      right: -1px; /* no */
+      content: "";
+      display: block;
+      background: $fill-base;
+      opacity: 0.50;
+      border-radius: inherit;
+      z-index: 1;
+      transition: opacity .2s;
+      pointer-events: none;
+    }
+  }
+
+  // 幽灵背景透明
+  &--ghost {
+    background-color: transparent;
+    color: $color-text-base-inverse;
+  }
+
+  // 满屏
+  &--full {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // 形状 - 原型
+  &--circle {
+    padding: 0;
+    border-radius: $radius-circle;
+
+    &.button--size {
+      &-small,
+      &-large {
+        padding: 0;
+        border-radius: $radius-circle;
+      }
+    }
+  }
+  
+  // 类型
+  &__primary {
+    color: $button-primary-text-color;
+    background-color: $button-primary-fill;
+    border: 1px solid $button-primary-border; /* no */
+    &:active {
+      background-color: $button-primary-tap;
+    }
+    // 幽灵背景透明
+    &.button--ghost {
+      background-color: transparent;
+      color: $button-primary-text-color-inverse;
+    }
+  }
+  &__secondary {
+    color: $button-secondary-text-color;
+    background-color: $button-secondary-fill;
+    border: 1px solid $button-secondary-border; /* no */
+    &:active {
+      background-color: $button-secondary-tap;
+    }
+    // 幽灵背景透明
+    &.button--ghost {
+      background-color: transparent;
+      color: $button-secondary-text-color-inverse;
+    }
+  }
+  &__link {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  // 禁用
+  &.button--disabled {
+    color: $button-disabled-text-color;
+    background-color: $button-disabled-fill;
+    border-color: transparent;
+  }
+  &__link {
+    &.button--disabled {
+      color: $button-disabled-text-color;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  // 尺寸
+  &--size {
+    &-small {
+      height: $button-height-small;
+      line-height: $button-height-small;
+      font-size: $button-size-small;
+      padding: 0 $button-space-small;
+
+      .button__icon {
+        width: 13px;
+        height: 13px;
+        &:first-child {
+          margin-right: $button-space-small / 2;
+        }
+        &:last-child {
+          margin-left: $button-space-small / 2;
+        }
+      }
+    }
+
+    &-large {
+      height: $button-height-large;
+      line-height: $button-height-large;
+      font-size: $button-size-large; 
+      padding: 0 $button-space-large;
+      border-radius: $radius-md;
+
+      .button__icon {
+        &:first-child {
+          margin-right: $button-space-large / 2;
+        }
+        &:last-child {
+          margin-left: $button-space-large / 2;
+        }
+      }
+    }
+  }
+}

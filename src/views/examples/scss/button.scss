@@ -1,0 +1,12 @@
+@import '../../../style/import';
+
+.page__button {
+  .button {
+    margin: 10px 5px;
+  }
+
+  .button--full {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
