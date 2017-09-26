@@ -1,0 +1,168 @@
+@import '../../../style/import';
+
+.drawer {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  // 左侧, 右侧抽屉
+  &--left,
+  &--right {
+    .drawer__sidebar {
+      top: 0;
+      bottom: 0;
+      width: 70%;
+    }
+  }
+
+  // 左侧抽屉
+  &--left {
+    .drawer__sidebar {
+      left: 0;
+      transform: translateX(-100%);
+    }
+
+    // 展开
+    &.drawer--open,
+    &.drawer--docked {
+      .drawer__sidebar {
+        transform: translateX(0%);
+        box-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+      }
+    }
+    &.drawer--docked {
+      // 嵌入内容
+      .drawer__content {
+        transform: translateX(70%);
+      }
+    }
+  }
+  // 右侧抽屉
+  &--right {
+    .drawer__sidebar {
+      right: 0;
+      transform: translateX(100%);
+    }
+
+    // 展开
+    &.drawer--open,
+    &.drawer--docked {
+      .drawer__sidebar {
+        transform: translateX(0%);
+        box-shadow: -1px 1px 2px rgba(0,0,0,0.15);
+      }
+    }
+    &.drawer--docked {
+      // 嵌入内容
+      .drawer__content {
+        transform: translateX(-70%);
+      }
+    }
+  }
+
+  // 顶部, 底部抽屉
+  &--top,
+  &--bottom {
+    overflow: hidden;
+
+    .drawer__sidebar {
+      left: 0;
+      right: 0;
+      height: 50%;
+    }
+  }
+  // 顶部抽屉
+  &--top {
+    .drawer__sidebar {
+      top: 0;
+      transform: translateY(-100%);
+    }
+
+    // 展开
+    &.drawer--open,
+    &.drawer--docked {
+      .drawer__sidebar {
+        transform: translateY(0%);
+        box-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+      }
+    }
+    &.drawer--docked {
+      // 嵌入内容
+      .drawer__content {
+        transform: translateY(50%);
+      }
+    }
+  }
+  // 底部抽屉
+  &--bottom {
+    .drawer__sidebar {
+      bottom: 0;
+      transform: translateY(100%);
+    }
+
+    // 展开
+    &.drawer--open,
+    &.drawer--docked {
+      .drawer__sidebar {
+        transform: translateY(0%);
+        box-shadow: 1px -1px 2px rgba(0,0,0,0.15);
+      }
+    }
+
+    &.drawer--docked {
+      // 嵌入内容
+      .drawer__content {
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+
+  // 展开
+  &--open,
+  &--docked {
+    .drawer__overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(0,0,0,0.4);
+    transition: opacity 0.25s ease-out;
+    // 禁用触摸滚屏功能
+    touch-action: none;
+  
+    &.fade-leave,
+    &.fade-leave-active {
+      visibility: visible;
+      animation: fadeOut 0.25s ease-out;
+      animation-fill-mode: both;
+    }
+  }
+
+  &__sidebar {
+    position: absolute;
+    z-index: 2;
+    transition: transform 0.3s $easeOutFunction;
+    will-change: transform;
+    overflow-y: auto;
+
+    background-color: #fff;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__content {
+    transition: transform 0.3s $easeOutFunction;
+  }
+}
