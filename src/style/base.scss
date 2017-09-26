@@ -1,5 +1,6 @@
 @import "./import";
 @import "./normalize";
+@import "./animate";
 
 // 基础样式
 *[contenteditable] {
@@ -84,6 +85,7 @@ a {
 img {
   max-width: 100%;
 }
+
 
 // page 
 .page {
