@@ -197,6 +197,21 @@ $pagination-button-background-active   : $fill-tap;
 $pagination-button-background-disabled : $fill-disabled;
 $pagination-dot-size                   : 12 * $hd;
 
+// steps
+$steps-box-small                       : 18 * $hd;
+$steps-box-large                       : 22 * $hd;
+$steps-progress-size-small             : 1 * $hd;
+$steps-progress-size-large             : 2 * $hd;
+$steps-font-size-small                 : 14 * $hd;
+$steps-font-size-large                 : 16 * $hd;
+$steps-font-color                      : #ddd;
+$steps-border                          : #ddd;
+$steps-finish-color                    : $brand-primary;
+$steps-process-color                   : $brand-primary;
+$steps-error-color                     : #f4333c;
+$steps-progress-fill-color-base        : #ddd;
+$steps-content-width-max               : 80 * $hd;
+
 
 // tabs
 $tab-height            : 44 * $hd;

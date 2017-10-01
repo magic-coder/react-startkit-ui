@@ -1,0 +1,322 @@
+@import '../../../style/import';
+
+.steps {
+  // 水平
+  &--horizontal {
+    display: flex;
+    font-size: 0;
+
+    .step {
+      &:last-child {
+        margin-right: 0; 
+
+        .step__title:after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // 垂直
+  &--vertical {
+    // background-color: rgba(0, 0, 0, 0.045);
+
+    .step {
+      flex: none;
+      display: flex;
+
+      &:last-child {
+        .step__tail {
+          display: none;
+        }
+      }
+
+      &__tail {
+        width: $steps-progress-size-large;
+        height: 100%;
+        top: 0;
+        left: 10px;
+        margin: 0;
+        padding: 28px 0 5px 0;
+        background-color: transparent;
+
+        i {
+          display: block;
+        }
+      }
+
+      &__body {
+        flex: 1;
+        min-width: 0;
+      }
+
+      &__title {
+        &:after {
+          display: none;
+        }
+      }
+      &__description {
+        margin-bottom: 15px;
+        max-width: 100%;
+      }
+    }
+  }
+
+  // 信息内容水平排版
+  &--label-horizontal:not(.steps--vertical) {
+    .step {
+      &__tail {
+        display: none;
+      }
+    }
+  }
+
+  // 信息内容垂直排版
+  &--label-vertical:not(.steps--vertical) {
+    .step {
+      overflow: visible;
+
+      &:last-child {
+        .step__tail {
+          display: none;
+        }
+      }
+
+      &__tail {
+        padding: 0 15px;
+        margin-left: 45px;
+        background-color: transparent;
+      }
+
+      &__header {
+        text-align: center;
+        width: $steps-content-width-max;
+        background-color: rgba(0, 0, 0, 0);
+
+        &__inner {
+          margin: 0 auto;
+        }
+      }
+      &__title {
+        padding-right: 0;
+
+        &:after {
+          display: none;
+        }
+      }
+      
+      &__body {
+        display: block;
+        text-align: center;
+        margin-top: 8px;
+        width: $steps-content-width-max;
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+  }
+
+
+  // 小尺寸
+  &--small {
+    .step__header__inner {
+      width: $steps-box-small;
+      height: $steps-box-small;
+      line-height: $steps-box-small - 2;
+      font-size: 11px;
+    }
+    .step__header .icon {
+      width: $steps-box-small;
+      height: $steps-box-small;
+    }
+    .step__title:after {
+      height: $steps-progress-size-small; /* no */
+      top: 8px;
+    }
+    .step__title {
+      font-size: $steps-font-size-small;
+    }
+    .step__description {
+      font-size: $steps-font-size-small - 2;
+    }
+
+    &.steps--horizontal .step__tail {
+      height: $steps-progress-size-small; /* no */
+      top: 8px;
+    }
+    &.steps--vertical .step__tail {
+      width: $steps-progress-size-small; /* no */
+      left: 8px;
+    }
+  }
+
+}
+
+.step {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: inline-block;
+  margin-right: 10px;
+
+  &:last-child {
+    flex: none;
+  }
+
+  // 等待
+  &--wait {
+    .step__header__inner {
+      color: $steps-font-color;
+      border-color: $steps-border ;
+      background-color: transparent;
+    }
+  }
+  // 完成
+  &--finish {
+    .step__tail {
+      i {
+        background-color: $steps-finish-color;
+      }
+    }
+    .step__header__inner {
+      border: none;
+      background-color: transparent;
+      color: $steps-finish-color;
+    }
+
+    .step__title:after {
+      background-color: $steps-finish-color;
+    }
+  }
+  // 进行中
+  &--process {
+    .step__header__inner {
+      color: $color-text-base-inverse;
+      border-color: $steps-process-color;
+      background-color: $steps-process-color;
+    }
+  }
+  // 错误
+  &--error {
+    .step__header__inner {
+      color: $steps-error-color;
+      border: none;
+      background: transparent;
+    }
+    .step__title,
+    .step__description {
+      color: $steps-error-color;
+    }
+  }
+  // 下一项为错误项
+  &__next--error {
+    .step__tail {
+      i {
+        background-color: $steps-error-color;
+      }
+    }
+    .step__title {
+      &:after {
+        background-color: $steps-error-color;
+      }
+    }
+  }
+
+  &__tail {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    top: 10px;
+    background-color: $steps-progress-fill-color-base;
+
+    i {
+      display: inline-block;
+      vertical-align: top;
+      background: $steps-progress-fill-color-base;
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+  }
+
+  // 标题居中
+  &--label-horizontal {
+    .step__tail {
+      right: 0;
+      width: auto;
+    }
+  }
+
+  &__header,
+  &__body {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  &__header {
+    &__inner {
+      box-sizing: border-box;
+      width: $steps-box-large;
+      height: $steps-box-large;
+      line-height: $steps-box-large - 2;
+      border-radius: 50%;
+      margin-right: 8px;
+      text-align: center;
+      border: 1px solid $steps-border;
+      font-size: $steps-font-size-large - 2;
+      transition: background-color .3s ease, border-color .3s ease;
+    }
+    .icon {
+      width: $steps-box-large;
+      height: $steps-box-large;
+    }
+  }
+
+  &__title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 5px;
+    padding-right: 10px;
+    line-height: $line-height-paragraph;
+    font-size: $steps-font-size-large ;
+    font-weight: 600;
+    font-family: $font-family-num;
+
+    &:after {
+      content: '';
+      height: 2px;
+      width: 1000px;
+      background: $steps-progress-fill-color-base;
+      display: block;
+      position: absolute;
+      top: 11px;
+      left: 100%;
+    }
+  }
+
+  &__description {
+    max-width: $steps-content-width-max;
+    font-size: $steps-font-size-large - 2;
+    color: $color-text-auxiliary;
+    line-height: $line-height-paragraph;
+    text-align: justify;
+  }
+  
+
+  // 自定义
+  &__custom {
+    .step__header__inner {
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    &.step--process {
+      .step__header__inner {
+        color: $steps-process-color;
+      }
+    }
+  }
+
+}

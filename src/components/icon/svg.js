@@ -26,3 +26,6 @@ import '@/assets/svg/message.svg';
 import '@/assets/svg/message-fill.svg';
 import '@/assets/svg/friend.svg';
 import '@/assets/svg/friend-fill.svg';
+import '@/assets/svg/check-circle.svg';
+import '@/assets/svg/uncheck-circle.svg';
+import '@/assets/svg/cross-circle.svg';
