@@ -1,0 +1,29 @@
+@import '../../../style/import';
+
+
+.scrollview {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+
+  &--x {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  &--y {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  // item
+  &__item {
+    &--x {
+      display: inline-block;
+      vertical-align: top;
+      white-space: normal
+    }
+  }
+}

@@ -6,13 +6,14 @@ import '@/style/base';
 
 import Home from '@/views/home';
 import NotFound from '@/views/404';
+import ScrollViewExample from '@/views/examples/scrollview';
 import PaperExample from '@/views/examples/paper';
 import PopoverExample from '@/views/examples/popover';
 import MenuExample from '@/views/examples/menu';
-import DrawerExample from '@/views/examples/drawer';
 import PaginationExample from '@/views/examples/pagination';
 import MarqueeExample from '@/views/examples/marquee';
 import NoticebarExample from '@/views/examples/noticebar';
+import StepsExample from '@/views/examples/steps';
 import AbstractButtonExample from '@/views/examples/abstractbutton';
 import ButtonExample from '@/views/examples/button';
 
@@ -70,6 +71,7 @@ export default class APP extends React.Component {
             <Route exact path="/grid" component={GridExample} />
             <Route exact path="/whitespace" component={WhiteSpaceExample} />
             <Route exact path="/wingblank" component={WingBlankExample} />
+            <Route exact path="/scrollview" component={ScrollViewExample} />
             <Route exact path="/abstract" component={AbstractButtonExample} />
             <Route exact path="/paper" component={PaperExample} />
             <Route exact path="/navbar" component={NavBarExample} />
@@ -77,12 +79,12 @@ export default class APP extends React.Component {
             <Route exact path="/tabbar" component={TabBarExample} />
             <Route exact path="/popover" component={PopoverExample} />
             <Route exact path="/menu" component={MenuExample} />
-            <Route exact path="/drawer" component={DrawerExample} />
             <Route exact path="/pagination" component={PaginationExample} />
             <Route exact path="/divider" component={DividerExample} />
             <Route exact path="/badge" component={BadgeExample} />
             <Route exact path="/marquee" component={MarqueeExample} />
             <Route exact path="/noticebar" component={NoticebarExample} />
+            <Route exact path="/steps" component={StepsExample} />
             <Route exact path="/panel" component={PanelExample} />
             <Route exact path="/tabs" component={TabsExample} />
             <Route exact path="/accordion" component={AccordionExample} />
