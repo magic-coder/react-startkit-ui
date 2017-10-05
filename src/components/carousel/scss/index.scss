@@ -1,0 +1,99 @@
+@import '../../../style/import';
+
+.carousel {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  // 水平方向
+  &--horizontal {
+    > .carousel {
+
+      &__pagination {
+        width: 100%;
+        bottom: 10px;
+      }
+    }
+  }
+
+  // 垂直方向
+  &--vertical {
+    > .carousel {
+      &__wrapper {
+        flex-direction: column;
+      }
+      &__slide {
+        display: block;
+        flex: 1;
+      }
+
+      &__pagination {
+        right: 10px;
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+
+        span {
+          margin: 5px 0;
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__pagination {
+    position: absolute;
+    text-align: center;
+    transition: .3s;
+    transform: translate3d(0,0,0);
+    z-index: 10;
+
+    span {
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      border-radius: 100%;
+      background-color: #000;
+      opacity: 0.5;
+      margin: 0 5px;
+      cursor: pointer;
+
+      &.active {
+        opacity: 1;
+        background-color: #007fff;
+      }
+
+      em {
+        display: none; 
+      }
+    }
+  }
+
+  &__wrapper {
+    box-sizing: content-box;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+  }
+
+  // slide item
+  &__slide {
+    // flex: 1;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

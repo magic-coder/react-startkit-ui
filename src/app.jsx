@@ -13,6 +13,7 @@ import MenuExample from '@/views/examples/menu';
 import PaginationExample from '@/views/examples/pagination';
 import MarqueeExample from '@/views/examples/marquee';
 import NoticebarExample from '@/views/examples/noticebar';
+import CarouselExample from '@/views/examples/carousel';
 import StepsExample from '@/views/examples/steps';
 import AbstractButtonExample from '@/views/examples/abstractbutton';
 import ButtonExample from '@/views/examples/button';
@@ -84,6 +85,7 @@ export default class APP extends React.Component {
             <Route exact path="/badge" component={BadgeExample} />
             <Route exact path="/marquee" component={MarqueeExample} />
             <Route exact path="/noticebar" component={NoticebarExample} />
+            <Route exact path="/carousel" component={CarouselExample} />
             <Route exact path="/steps" component={StepsExample} />
             <Route exact path="/panel" component={PanelExample} />
             <Route exact path="/tabs" component={TabsExample} />
