@@ -28,6 +28,8 @@
     "no-plusplus": 0,
     // 允许标识符中有悬空下划线
     "no-underscore-dangle": 0,
+    // 可以修改参数的属性
+    "no-param-reassign": ["error", { "props": false }],
     // 换行风格
     "linebreak-style": [0, "windows"],
     "jsx-a11y/href-no-hash": 0,
