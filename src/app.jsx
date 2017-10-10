@@ -6,6 +6,8 @@ import '@/style/base';
 
 import Home from '@/views/home';
 import NotFound from '@/views/404';
+import AnimateExample from '@/views/examples/animate';
+import AnimateTodoExample from '@/views/examples/animatetodo';
 import ScrollViewExample from '@/views/examples/scrollview';
 import PaperExample from '@/views/examples/paper';
 import PopoverExample from '@/views/examples/popover';
@@ -75,6 +77,8 @@ export default class APP extends React.Component {
             <Route exact path="/scrollview" component={ScrollViewExample} />
             <Route exact path="/abstract" component={AbstractButtonExample} />
             <Route exact path="/paper" component={PaperExample} />
+            <Route exact path="/animate" component={AnimateExample} />
+            <Route exact path="/animatetodo" component={AnimateTodoExample} />
             <Route exact path="/navbar" component={NavBarExample} />
             <Route exact path="/searchbar" component={SearchBarExample} />
             <Route exact path="/tabbar" component={TabBarExample} />
