@@ -1,0 +1,174 @@
+@import '../../../style/import';
+$toastPrefixCls: 'toast';
+
+.#{$toastPrefixCls} {
+
+  &--overlay-opacity {
+    .#{$toastPrefixCls}__notice__overlay {
+      background-color: rgba(0,0,0,0.35);
+    }
+  }
+    
+  // 遮罩层
+  &__notice__overlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0);
+    touch-action: none;
+  }
+
+  // 内容
+  &__notice__content {
+    position: fixed;
+    left: 50%;
+    bottom: 50%;
+    z-index: $toast-zindex;
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    font-size: $font-size-base;
+    text-align: center;
+    
+    .#{$toastPrefixCls}__text {
+      display: inline-block;
+      position: relative;
+      left: -50%;
+      bottom: -50%;
+      min-width: 60 * $hd;
+      border-radius: $radius-md;
+      color: $color-text-base-inverse;
+      background-color: $toast-fill-base;
+      line-height: $line-height-paragraph;
+      padding: $v-spacing-md $h-spacing-lg;
+    }
+    
+    .#{$toastPrefixCls}__text__icon {
+      max-width: 200px;
+
+      .icon {
+        margin-top: 2px;
+      }
+      .#{$toastPrefixCls}__text__info {
+        margin-top: 3px;
+      }
+    }
+  }
+
+  // 位置 ==>> 居中
+  &--center {}
+
+  // 位置 ==>> 底部
+  &--bottom {
+
+    .#{$toastPrefixCls}__notice__content {
+      bottom: 30px;
+
+      .#{$toastPrefixCls}__text {
+        bottom: 0;
+      }
+    }
+  }
+  
+
+  // 渐隐 运动
+  &-fade-enter,
+  &-fade-leave {
+    animation-duration: 0.25s;
+    animation-fill-mode: both;
+    animation-timing-function: $fadeInOutFunction;
+;
+    animation-play-state: paused;
+  }
+  
+  &-fade-enter {
+    opacity: 0;
+  }
+  
+  &-fade-enter,
+  &-fade-enter-active {
+    animation-name: toastFadeIn;
+    animation-play-state: running;
+  }
+
+  &-fade-leave,
+  &-fade-leave-active {
+    animation-name: toastFadeOut;
+    animation-play-state: running;
+  }
+  
+  // 渐隐 + 弹性 运动
+  &-fadeBounce-enter,
+  &-fadeBounce-leave {
+    animation-duration: 0.25s;
+
+    .#{$toastPrefixCls}__notice__overlay,
+    .#{$toastPrefixCls}__notice__content {
+      animation-duration: 0.25s;
+      animation-fill-mode: both;
+      animation-timing-function: $fadeInOutFunction;
+      animation-play-state: paused;
+    }
+  }
+
+  &-fadeBounce-enter,
+  &-fadeBounce-enter-active {
+    .#{$toastPrefixCls}__notice__overlay {
+      animation-name: toastFadeIn;
+      animation-play-state: running;
+    }
+
+    .#{$toastPrefixCls}__notice__content {
+      animation-name: toastFadeBounceIn;
+      animation-play-state: running;
+    }
+  }
+
+  &-fadeBounce-leave,
+  &-fadeBounce-leave-active {
+    .#{$toastPrefixCls}__notice__overlay,
+    .#{$toastPrefixCls}__notice__content {
+      animation-name: toastFadeOut;
+      animation-play-state: running;
+    }
+  }
+ 
+
+  @keyframes toastFadeBounceIn {
+    0% {
+      opacity: 0;
+      transform: translateX(0) translateY(20px) translateZ(0);
+    }
+    70% {
+      opacity: 1;
+      transform: translateX(0) translateY(-10px) translateZ(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) translateY(0) translateZ(0);
+    }
+  }
+
+  @keyframes toastFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes toastFadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+}
