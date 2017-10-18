@@ -29,3 +29,7 @@ import '@/assets/svg/friend-fill.svg';
 import '@/assets/svg/check-circle.svg';
 import '@/assets/svg/uncheck-circle.svg';
 import '@/assets/svg/cross-circle.svg';
+import '@/assets/svg/success.svg';
+import '@/assets/svg/fail.svg';
+import '@/assets/svg/offline.svg';
+import '@/assets/svg/warning.svg';
