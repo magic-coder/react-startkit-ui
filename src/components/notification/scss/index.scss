@@ -1,0 +1,87 @@
+@import '../../../style/import';
+
+.notification {
+  position: fixed;
+  z-index: $toast-zindex;
+
+  // 通知
+  &__notice {
+    padding: 7px 10px 7px 10px;
+    border-radius: 3px 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: $notification-fill-base;
+    display: block;
+    width: auto;
+    line-height: 1.5;
+    vertical-align: middle;
+    position: relative;
+    margin: 10px 0;
+
+    &--closable {
+      padding-right: 30px;
+    }
+
+    // 带关闭按钮
+    &__close {
+      position: absolute;
+      right: 5px;
+      top: 10px;
+      color: $color-text-base;
+      cursor: pointer;
+      outline: none;
+      opacity: 0.3;
+      font-size: 0;
+      text-decoration: none;
+
+      &:hover,
+      &active {
+        opacity: 1;
+      }
+    }
+  }
+
+
+  // 运动
+  &-fade-enter,
+  &-fade-leave {
+    animation-duration: 0.25s;
+    animation-fill-mode: both;
+    animation-timing-function: $fadeInOutFunction;
+    animation-play-state: paused;
+  }
+  
+  &-fade-enter {
+    opacity: 0;
+  }
+
+  &-fade-enter,
+  &-fade-enter-active {
+    animation-name: notificationFadeIn;
+    animation-play-state: running;
+  }
+
+  &-fade-leave,
+  &-fade-leave-active {
+    animation-name: notificationFadeOut;
+    animation-play-state: running;
+  }
+
+  @keyframes notificationFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes notificationFadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+}

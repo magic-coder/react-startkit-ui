@@ -20,6 +20,9 @@ import StepsExample from '@/views/examples/steps';
 import AbstractButtonExample from '@/views/examples/abstractbutton';
 import ButtonExample from '@/views/examples/button';
 
+import ToastExample from '@/views/examples/toast';
+import NotificationExample from '@/views/examples/notification';
+
 const FlexExample = dynamic({
   loader: () => { return import('@/views/examples/flex'); },
 });
@@ -97,6 +100,10 @@ export default class APP extends React.Component {
             <Route exact path="/icon" component={IconExample} />
             <Route exact path="/list" component={ListExample} />
             <Route exact path="/button" component={ButtonExample} />
+
+            <Route exact path="/notification" component={NotificationExample} />
+            {<Route exact path="/toast" component={ToastExample} />}
+
             <Route component={NotFound} />
           </Switch>
         </div>
