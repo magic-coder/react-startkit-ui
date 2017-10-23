@@ -12,7 +12,7 @@ const prefixClassName = 'toast';
  * 获取 提示信单例
  * 
  */
-function getMessageInstance(overlayOpacity, position, transitionName) {
+function getMessageInstance(overlayOpacity, position, transitionName, className, content) {
   // 如果存在提示信息单例. 则进行销毁
   if (messageInstance) {
     messageInstance.destroy();
@@ -28,6 +28,9 @@ function getMessageInstance(overlayOpacity, position, transitionName) {
       [`${prefixClassName}--overlay-opacity`]: overlayOpacity,
       [`${prefixClassName}--center`]: position === 'center',
       [`${prefixClassName}--bottom`]: position === 'bottom',
+      [`${prefixClassName}--only-icon`]: !content,
+
+      [`${className}`]: className,
     }),
   }, (instance) => { messageInstance = instance; });
 
@@ -79,7 +82,7 @@ function getToastContent(icon, content, type) {
   return (
     <div className={toastTextClasses} role="alert">
       {iconDom}
-      <div className={`${prefixClassName}__text__info`}>{content}</div>
+      { content ? <div className={`${prefixClassName}__text__info`}>{content}</div> : null }
     </div>
   );
 }
@@ -91,6 +94,7 @@ function getToastContent(icon, content, type) {
  */
 function notice(options) {
   const defaults = {
+    className: '',
     icon: '', // 提示图标
     content: '', // 提示内容
     type: 'info', // 类型
@@ -102,13 +106,16 @@ function notice(options) {
     onClose: () => {}, // 关闭回调函数
   };
   const {
-    icon, content, type, overlay, overlayOpacity, position, duration, onClose, transitionName,
+    className, icon, content, type, overlay, overlayOpacity,
+    position, duration, onClose, transitionName,
   } = Object.assign({}, defaults, options);
 
   const toastContent = getToastContent(icon, content, type);
   const effecTransitionName = getTransitionName(transitionName);
 
-  let instance = getMessageInstance(overlayOpacity, position, effecTransitionName);
+  let instance = getMessageInstance(
+    overlayOpacity, position, effecTransitionName, className, content,
+  );
 
   instance.notice({
     duration,

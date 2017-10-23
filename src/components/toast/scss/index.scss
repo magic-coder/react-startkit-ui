@@ -39,7 +39,6 @@ $toastPrefixCls: 'toast';
       position: relative;
       left: -50%;
       bottom: -50%;
-      min-width: 60 * $hd;
       border-radius: $radius-md;
       color: $color-text-base-inverse;
       background-color: $toast-fill-base;
@@ -55,6 +54,22 @@ $toastPrefixCls: 'toast';
       }
       .#{$toastPrefixCls}__text__info {
         margin-top: 3px;
+      }
+    }
+  }
+
+  // 只有图标
+  &--only-icon {
+    .#{$toastPrefixCls}__notice__content  {
+      .#{$toastPrefixCls}__text__icon {
+        .icon {
+          margin-top: 0;
+        }
+      }
+
+      .#{$toastPrefixCls}__text {
+        line-height: 1;
+        padding: $h-spacing-lg;
       }
     }
   }

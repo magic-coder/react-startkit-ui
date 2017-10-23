@@ -62,6 +62,20 @@ function showToastCustom() {
     content: '自定义图标',
   });
 }
+function showToastCustomOnlyIcon() {
+  Toast.custom({
+    className: 'custom-toast--only-icon',
+    icon: <Icon type="loading" size="md" />,
+    overlay: true,
+    overlayOpacity: true,
+    duration: 0,
+  });
+
+  // 5 秒后删除
+  setTimeout(() => {
+    Toast.hide();
+  }, 5000);
+}
 
 // 移动效果
 function animateEffect(options) {
@@ -102,6 +116,7 @@ export default class ToastExample extends React.Component {
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastOffline}>断网</Button>
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastLoading}>加载中</Button>
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastCustom}>自定义</Button>
+                <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastCustomOnlyIcon}>自定义 - 图标</Button>
                 <WitheSpace />
               </WingBlank>
             </div>
