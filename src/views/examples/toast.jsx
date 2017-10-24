@@ -38,7 +38,6 @@ function showToastInfo() {
 function showToastSuccess() {
   Toast.success({
     content: '加载成功',
-    duration: 0,
   });
 }
 function showToastFail() {
