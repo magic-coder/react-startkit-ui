@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { getComponentLocale } from '../_utils/getLocale';
 
 import Icon from '../icon';
 
@@ -25,12 +26,12 @@ export default class SearchBar extends React.Component {
     // 搜索框的当前值
     value: PropTypes.string,
     // 默认提示内容
-    placeholder: PropTypes.string,
+    // placeholder: PropTypes.string,
 
     // 左边内容
     leftContent: PropTypes.any,
     // 右边内容
-    rightContent: PropTypes.any,
+    // rightContent: PropTypes.any,
 
     // 输入框左边内容
     leftInputContent: PropTypes.any,
@@ -64,9 +65,9 @@ export default class SearchBar extends React.Component {
     mode: 'dark',
     defaultValue: '',
     value: '',
-    placeholder: '输入搜索关键词',
+    // placeholder: '输入搜索关键词',
     leftContent: <Icon type="left" />,
-    rightContent: '搜索',
+    // rightContent: '搜索',
     leftInputContent: <Icon type="search" size="xxs" />,
     autoFocus: false,
     focused: false,
@@ -80,6 +81,11 @@ export default class SearchBar extends React.Component {
     onReset: () => {},
     onSubmit: () => {},
   }
+
+  static contextTypes = {
+    // 语言信息
+    locale: PropTypes.object,
+  };
 
   constructor(props) {
     super(props);
@@ -296,8 +302,15 @@ export default class SearchBar extends React.Component {
   }
 
   renderSearchInput = () => {
-    const { prefixClassName, defaultValue, placeholder } = this.props;
+    const { prefixClassName, defaultValue } = this.props;
     const { value } = this.state;
+
+    /* eslint-disable global-require */
+    const _locale = getComponentLocale(this.props, this.context, 'SearchBar', () => {
+      return require('./locales/zh-CN');
+    });
+    const { placeholder } = _locale;
+    /* eslint-enable global-require */
 
     return (
       <input
@@ -330,7 +343,14 @@ export default class SearchBar extends React.Component {
   }
 
   renderRight = () => {
-    const { prefixClassName, rightContent } = this.props;
+    const { prefixClassName } = this.props;
+    /* eslint-disable global-require */
+    const _locale = getComponentLocale(this.props, this.context, 'SearchBar', () => {
+      return require('./locales/zh-CN');
+    });
+    const { rightContent } = _locale;
+    /* eslint-enable global-require */
+
     return (
       rightContent ? <div
         className={`${prefixClassName}__right`}
