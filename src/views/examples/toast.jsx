@@ -1,6 +1,6 @@
 import React from 'react';
 import WingBlank from '@/components/wing-blank';
-import WitheSpace from '@/components/white-space';
+import WhiteSpace from '@/components/white-space';
 import Button from '@/components/button';
 import Icon from '@/components/icon';
 import Toast from '@/components/toast';
@@ -95,11 +95,11 @@ export default class ToastExample extends React.Component {
             <div className="demo__preview__title">位置</div>
             <div className="demo__preview__content demo__preview__content--bg">
               <WingBlank>
-                <WitheSpace />
+                <WhiteSpace />
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastCenter}>居中</Button>
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastBottom}>底部</Button>
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastBottomMulti}>底部 - 多行</Button>
-                <WitheSpace />
+                <WhiteSpace />
               </WingBlank>
             </div>
           </div>
@@ -108,7 +108,7 @@ export default class ToastExample extends React.Component {
             <div className="demo__preview__title">类型</div>
             <div className="demo__preview__content demo__preview__content--bg">
               <WingBlank>
-                <WitheSpace />
+                <WhiteSpace />
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastInfo}>信息</Button>
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastSuccess}>成功</Button>
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastFail}>失败</Button>
@@ -116,7 +116,7 @@ export default class ToastExample extends React.Component {
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastLoading}>加载中</Button>
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastCustom}>自定义</Button>
                 <Button style={{ margin: '0.2rem 0.1rem' }} onClick={showToastCustomOnlyIcon}>自定义 - 图标</Button>
-                <WitheSpace />
+                <WhiteSpace />
               </WingBlank>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default class ToastExample extends React.Component {
             <div className="demo__preview__title">显示效果</div>
             <div className="demo__preview__content demo__preview__content--bg">
               <WingBlank>
-                <WitheSpace />
+                <WhiteSpace />
                 <Button
                   style={{ margin: '0.2rem 0.1rem' }}
                   onClick={() => {
@@ -148,7 +148,7 @@ export default class ToastExample extends React.Component {
                     });
                   }}
                 >居中:渐隐 + 弹性</Button>
-                <WitheSpace />
+                <WhiteSpace />
                 <Button
                   style={{ margin: '0.2rem 0.1rem' }}
                   onClick={() => {
@@ -172,7 +172,7 @@ export default class ToastExample extends React.Component {
                     });
                   }}
                 >底部:渐隐 + 弹性</Button>
-                <WitheSpace />
+                <WhiteSpace />
               </WingBlank>
             </div>
           </div>
@@ -181,7 +181,7 @@ export default class ToastExample extends React.Component {
             <div className="demo__preview__title">遮罩层</div>
             <div className="demo__preview__content demo__preview__content--bg">
               <WingBlank>
-                <WitheSpace />
+                <WhiteSpace />
                 <Button
                   style={{ margin: '0.2rem 0.1rem' }}
                   onClick={() => {
@@ -216,7 +216,7 @@ export default class ToastExample extends React.Component {
                     });
                   }}
                 >半透明</Button>
-                <WitheSpace />
+                <WhiteSpace />
               </WingBlank>
             </div>
           </div>
