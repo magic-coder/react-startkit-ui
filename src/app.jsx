@@ -19,9 +19,12 @@ import CarouselExample from '@/views/examples/carousel';
 import StepsExample from '@/views/examples/steps';
 import AbstractButtonExample from '@/views/examples/abstractbutton';
 import ButtonExample from '@/views/examples/button';
+import SegmentedControlExample from '@/views/examples/segmented-control';
 
 import ToastExample from '@/views/examples/toast';
 import NotificationExample from '@/views/examples/notification';
+
+import LocaleProviderExample from '@/views/locale-provider';
 
 const FlexExample = dynamic({
   loader: () => { return import('@/views/examples/flex'); },
@@ -100,9 +103,12 @@ export default class APP extends React.Component {
             <Route exact path="/icon" component={IconExample} />
             <Route exact path="/list" component={ListExample} />
             <Route exact path="/button" component={ButtonExample} />
+            <Route exact path="/segmented-control" component={SegmentedControlExample} />
 
             <Route exact path="/notification" component={NotificationExample} />
-            {<Route exact path="/toast" component={ToastExample} />}
+            <Route exact path="/toast" component={ToastExample} />
+
+            <Route exact path="/locale-provider" component={LocaleProviderExample} />
 
             <Route component={NotFound} />
           </Switch>
