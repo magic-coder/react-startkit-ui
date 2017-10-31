@@ -23,7 +23,6 @@ class Home extends React.Component {
 
   render() {
     console.log(this.props.test);
-    // console.log(this.props);
     console.log('process.env.NODE_ENV =>>', process.env.NODE_ENV);
     return (
       <div className="page page__home">
@@ -39,7 +38,6 @@ class Home extends React.Component {
               </div>
             )
           }
-
           <Accordion
             className="accordion__category"
           >
@@ -71,7 +69,7 @@ class Home extends React.Component {
               label="数据展示 Data Display"
             >
               <List transparent className="category__list">
-                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/panel'); }}>Panel 面包</List.Item>
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/panel'); }}>Panel 面板</List.Item>
                 <Divider shallowInset />
                 <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/divider'); }}>Divider 间隔线</List.Item>
                 <Divider shallowInset />
@@ -113,9 +111,9 @@ class Home extends React.Component {
             <Accordion.Item
               label="其他 Other"
             >
-              <div className="text__content" style={{ padding: '0.3rem' }}>
-                <p>其他 Other</p>
-              </div>
+              <List transparent className="category__list">
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/locale-provider'); }}>LocaleProvider 国际化</List.Item>
+              </List>
             </Accordion.Item>
           </Accordion>
 

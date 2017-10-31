@@ -8,7 +8,8 @@
     margin-bottom: 15px; 
 
     &--active {
-      .text__content {
+      .text__content,
+      .list--transparent {
         opacity: 1;
         transform: translateY(0);
       }
@@ -25,7 +26,8 @@
     font-size: $font-size-heading;
   }
 
-  .text__content {
+  .text__content,
+  .list--transparent {
     opacity: 0;
     transform: translateY(-50%);
     transition: opacity .3s, transform .3s;
