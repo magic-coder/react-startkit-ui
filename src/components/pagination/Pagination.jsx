@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { getComponentLocale } from '../_utils/getLocale';
 
 import './scss';
 
@@ -22,8 +23,7 @@ export default class Pagination extends React.Component {
     current: PropTypes.number.isRequired,
     // 是否隐藏数值
     simple: PropTypes.bool,
-    // 上下页切换
-    locale: PropTypes.object,
+    // 切换回调
     onChange: PropTypes.func,
   }
 
@@ -31,12 +31,13 @@ export default class Pagination extends React.Component {
     prefixClassName: 'pagination',
     mode: 'button',
     simple: false,
-    locale: {
-      prevText: '上一页',
-      nextText: '下一页',
-    },
     onChange: () => {},
   }
+
+  static contextTypes = {
+    // 语言信息
+    locale: PropTypes.object,
+  };
 
   constructor(props) {
     super(props);
@@ -63,7 +64,7 @@ export default class Pagination extends React.Component {
   onChange(p, ev) {
     ev.stopPropagation();
     const { total } = this.props;
-    if (p < 0 || p > total) {
+    if (p <= 0 || p > total) {
       return;
     }
 
@@ -80,8 +81,14 @@ export default class Pagination extends React.Component {
    * 渲染 按钮模式的分页
    */
   renderButtonMode() {
-    const { prefixClassName, total, locale, simple } = this.props;
+    const { prefixClassName, total, simple } = this.props;
     const { current } = this.state;
+
+    /* eslint-disable global-require */
+    const currentlocale = getComponentLocale(this.props, this.context, 'Pagination', () => {
+      require('./locales/zh-CN');
+    });
+    /* eslint-enable global-require */
 
     const isPrexDisabed = current <= 1;
     const isNextDisabed = current >= total;
@@ -108,7 +115,7 @@ export default class Pagination extends React.Component {
             role="button"
             tabIndex="-1"
           >
-            {locale.prevText}
+            {currentlocale.prevText}
           </a>
         </div>
         {
@@ -121,7 +128,7 @@ export default class Pagination extends React.Component {
             role="button"
             tabIndex="-1"
           >
-            {locale.nextText}
+            {currentlocale.nextText}
           </a>
         </div>
       </div>
