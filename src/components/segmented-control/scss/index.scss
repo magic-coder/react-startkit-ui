@@ -1,0 +1,45 @@
+@import '../../../style/import';
+
+.segment {
+  display: flex;
+  overflow: hidden;
+  min-height: 27px;
+  opacity: 1;
+  border-radius: $radius-md;
+
+  &--disabled {
+    opacity: 0.5;
+  }
+
+  &__item {
+    box-sizing: border-box;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: $font-size-base;
+    color: $brand-primary;
+    line-height: $line-height-base;
+    border: 1px solid $brand-primary; /* no */
+    border-left-width: 0;
+    transition: background 0.2s;
+    cursor: pointer;
+
+    // 选中
+    &--selected {
+      color: $color-text-base-inverse;
+      background-color: $brand-primary;
+    }
+
+    &:first-child {
+      border-left-width: 1px; /* no */
+      border-radius: $radius-md 0 0 $radius-md;
+    }
+
+    &:last-child {
+      border-radius: 0 $radius-md $radius-md 0;
+    }
+  }
+}
