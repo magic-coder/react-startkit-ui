@@ -1,0 +1,6 @@
+$prefixClass              : 'dialog';
+$dialog-radius            : 5px;
+$dialog-border-color-base : #ddd;
+
+@import './overlay';
+@import './dialog';

@@ -1,0 +1,147 @@
+.#{$prefixClass} {
+  position: relative;
+  width: auto;
+  margin: 10px;
+
+&__wrap {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+
+  // 居中
+  &--center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+&__content {
+  position: relative;
+  background-color: #fff;
+  border: none;
+  background-clip: padding-box;
+  border-radius: $dialog-radius;
+}
+
+&__header {
+  padding: 13px 15px;
+  border-radius: $dialog-radius $dialog-radius 0 0;
+  background: #fff;
+  color: #666;
+  border-bottom: 1px solid $dialog-border-color-base; /* no */
+}
+
+&__title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: normal;
+}
+
+&__footer {
+  border-top: 1px solid $dialog-border-color-base; /* no */
+  padding: 12px 15px;
+  text-align: right;
+  border-radius: 0 0 $dialog-radius $dialog-radius;
+}
+
+&__body {
+  padding: 15px;
+}
+
+// 关闭按钮
+&__close {
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  opacity: 0.5;
+  transition: opacity 0.25s linear;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &__button {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3csvg%20viewBox=%220%200%201024%201024%22%20version=%221.1%22%20xmlns=%22http:%2f%2fwww.w3.org%2f2000%2fsvg%22%20p-id=%226231%22%20xmlns:xlink=%22http:%2f%2fwww.w3.org%2f1999%2fxlink%22%20width=%2264%22%20height=%2264%22%3e%3cdefs%3e%3cstyle%20type=%22text%2fcss%22%3e%3c%2fstyle%3e%3c%2fdefs%3e%3cpath%20d=%22M176.661601%20817.172881C168.472798%20825.644055%20168.701706%20839.149636%20177.172881%20847.338438%20185.644056%20855.527241%20199.149636%20855.298332%20207.338438%20846.827157L826.005105%20206.827157C834.193907%20198.355983%20833.964998%20184.850403%20825.493824%20176.661601%20817.02265%20168.472798%20803.517069%20168.701706%20795.328267%20177.172881L176.661601%20817.172881Z%22%20p-id=%226232%22%3e%3c%2fpath%3e%3cpath%20d=%22M795.328267%20846.827157C803.517069%20855.298332%20817.02265%20855.527241%20825.493824%20847.338438%20833.964998%20839.149636%20834.193907%20825.644055%20826.005105%20817.172881L207.338438%20177.172881C199.149636%20168.701706%20185.644056%20168.472798%20177.172881%20176.661601%20168.701706%20184.850403%20168.472798%20198.355983%20176.661601%20206.827157L795.328267%20846.827157Z%22%20p-id=%226233%22%3e%3c%2fpath%3e%3c%2fsvg%3e");
+  }
+}
+
+// -------------
+// 运动
+// -------------
+&-zoom-enter,
+&-zoom-appear {
+  opacity: 0;
+  animation-duration: .25s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
+  animation-play-state: paused;
+}
+&-zoom-leave {
+  animation-duration: .25s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+  animation-play-state: paused;
+}
+
+// 显示
+&-zoom-enter,
+&-zoom-enter-active,
+&-zoom-appear,
+&-zoom-appear-active {
+  animation-name: dialogZoomIn;
+  animation-play-state: running;
+}
+
+// 隐藏
+&-zoom-leave,
+&-zoom-leave-active {
+  animation-name: dialogZoomOut;
+  animation-play-state: running;
+}
+
+
+@keyframes dialogZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+@keyframes dialogZoomOut {
+  0% {
+    transform: scale(1, 1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+}
+}
+
+@media (min-width: 768px) {
+  .#{$prefixClass} {
+    width: 600px;
+    margin: 30px auto;
+  }
+}
