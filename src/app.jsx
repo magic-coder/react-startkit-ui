@@ -22,8 +22,10 @@ import ButtonExample from '@/views/examples/button';
 import SegmentedControlExample from '@/views/examples/segmented-control';
 
 import NotificationExample from '@/views/examples/notification';
-import ToastExample from '@/views/examples/toast';
 import ProgressExample from '@/views/examples/progress';
+import ToastExample from '@/views/examples/toast';
+import DialogExample from '@/views/examples/dialog';
+import ModalExample from '@/views/examples/modal';
 
 import LocaleProviderExample from '@/views/locale-provider';
 
@@ -106,9 +108,11 @@ export default class APP extends React.Component {
             <Route exact path="/button" component={ButtonExample} />
             <Route exact path="/segmented-control" component={SegmentedControlExample} />
 
-            <Route exact path="/toast" component={ToastExample} />
-            <Route exact path="/notification" component={NotificationExample} />
             <Route exact path="/progress" component={ProgressExample} />
+            <Route exact path="/notification" component={NotificationExample} />
+            <Route exact path="/toast" component={ToastExample} />
+            <Route exact path="/dialog" component={DialogExample} />
+            <Route exact path="/modal" component={ModalExample} />
 
             <Route exact path="/locale-provider" component={LocaleProviderExample} />
 

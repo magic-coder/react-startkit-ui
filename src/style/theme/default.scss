@@ -238,6 +238,11 @@ $notification-fill-base : $fill-base;
 $toast-fill-base : rgba(0,0,0,0.75);
 
 
+// dialog & modal
+$modal-button-size-ios     : 50px;
+$modal-button-size-android : 32px;
+
+
 // z-index
 $progress-zindex        : 2000;
 $popover-zindex         : 1999;

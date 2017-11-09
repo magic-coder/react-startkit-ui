@@ -1,0 +1,346 @@
+@import '../../../style/import';
+$modalPrefixClass       : modal;
+
+.#{$modalPrefixClass} {
+  position: relative;
+
+  // 遮罩层
+  &__mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: $modal-zindex;
+    background-color: $fill-mask;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  // 主题内容
+  &__wrap {
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    z-index: $modal-zindex;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__content {
+    position: relative;
+    background-color: $fill-base;
+    border: 0;
+    background-clip: padding-box;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__header {
+    padding: 6px $h-spacing-lg $v-spacing-lg;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-size-heading;
+    line-height: $line-height-base;
+    color: $color-text-base;
+    text-align: center;
+  }
+
+  // 关闭按钮
+  &__close {
+    cursor: pointer;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    opacity: 0.5;
+    transition: opacity 0.25s linear;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &__button {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3csvg%20viewBox=%220%200%201024%201024%22%20version=%221.1%22%20xmlns=%22http:%2f%2fwww.w3.org%2f2000%2fsvg%22%20p-id=%226231%22%20xmlns:xlink=%22http:%2f%2fwww.w3.org%2f1999%2fxlink%22%20width=%2264%22%20height=%2264%22%3e%3cdefs%3e%3cstyle%20type=%22text%2fcss%22%3e%3c%2fstyle%3e%3c%2fdefs%3e%3cpath%20d=%22M176.661601%20817.172881C168.472798%20825.644055%20168.701706%20839.149636%20177.172881%20847.338438%20185.644056%20855.527241%20199.149636%20855.298332%20207.338438%20846.827157L826.005105%20206.827157C834.193907%20198.355983%20833.964998%20184.850403%20825.493824%20176.661601%20817.02265%20168.472798%20803.517069%20168.701706%20795.328267%20177.172881L176.661601%20817.172881Z%22%20p-id=%226232%22%3e%3c%2fpath%3e%3cpath%20d=%22M795.328267%20846.827157C803.517069%20855.298332%20817.02265%20855.527241%20825.493824%20847.338438%20833.964998%20839.149636%20834.193907%20825.644055%20826.005105%20817.172881L207.338438%20177.172881C199.149636%20168.701706%20185.644056%20168.472798%20177.172881%20176.661601%20168.701706%20184.850403%20168.472798%20198.355983%20176.661601%20206.827157L795.328267%20846.827157Z%22%20p-id=%226233%22%3e%3c%2fpath%3e%3c%2fsvg%3e");
+    }
+  }
+
+  &__body {
+    font-size: $font-size-subhead;
+    color: $color-text-caption;
+    height: 100%;
+    line-height: $line-height-paragraph;
+    overflow: auto;
+  }
+
+  &--transparent {
+    width: 280px;
+
+    .#{$modalPrefixClass} {
+      &__content {
+        border-radius: $radius-lg;;
+        height: auto;
+        padding-top: $v-spacing-lg;
+      }
+
+      &__body {
+        padding: 0 $h-spacing-lg $v-spacing-lg;
+      }
+
+    }
+  }
+
+  // 输入框
+  &__input__container {
+    margin-top: 10px;
+    border: 1px solid $border-color-base; /* no */
+    border-radius: $radius-sm;
+  }
+
+  &__input {
+    height: 36px;
+    line-height: 1;
+    position: relative;
+    border-top: 1px solid $border-color-base; /* no */
+    
+    &:first-child {
+      border-top: 0;
+    }
+    
+    input {
+      font-family: sans-serif;
+      font-size: 100%;
+      color: $color-text-paragraph;
+      position: relative;
+      top: 1px; /* no */
+      border: 0;
+      width: 100%;
+      height: 34px;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0 $h-spacing-md;
+      line-height: normal;
+
+      &::-webkit-input-placeholder {
+        color: $color-text-placeholder;
+      }
+      &::-moz-placeholder { 
+        color: $color-text-placeholder;
+      }
+      &:-ms-input-placeholder { 
+        color: $color-text-placeholder;
+      }
+    }
+  }
+
+
+  // 按钮
+  .#{$modalPrefixClass}__button {
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    position: relative;
+    display: block;
+    width: auto;
+    height: $modal-button-size-ios;
+    line-height: $modal-button-size-ios;
+    font-size: $font-size-heading;
+
+    @include ellipsis();
+    
+    &:active {
+      background-color: $fill-tap;
+    }
+  }
+
+  // 底部按钮组
+  &__button__group {
+    // 常规
+    &--normal {
+      // 垂直排版
+      &.#{$modalPrefixClass}__button__group--v {
+
+        .#{$modalPrefixClass}__button {
+          text-align: center;
+          border-top: 1px solid $border-color-base; /* no */
+          color: $brand-primary;
+        }
+        
+      }
+
+      // 水平排版
+      &.#{$modalPrefixClass}__button__group--h {
+
+        position: relative;
+        border-top: 1px solid $border-color-base; /* no */
+        display: flex;
+
+        .#{$modalPrefixClass}__button {
+          text-align: center;
+          color: $brand-primary;
+          
+          flex: 1;
+          border-left: 1px solid $border-color-base; /* no */
+
+          &:first-child {
+            border-left: none;
+            color: $color-text-base;
+          }
+
+          &:last-child {
+            color: $brand-primary;
+          }
+        }
+
+      }
+    }
+
+    // 操作弹窗
+    &--operation {
+
+      display: block;
+      border-top: 0;
+
+      .#{$modalPrefixClass}__button {
+        display: block;
+        text-align: left;
+        padding: 0 $h-spacing-lg;
+        color: $color-text-base;
+        border-top: 1px solid $border-color-base; /* no */
+
+        &:first-child {
+          border-top: 0;
+          // color: $color-text-base;
+        }
+
+        &:last-child {
+          border-left: 0;
+          // color: $color-text-base;
+        }
+      }
+
+    }
+
+  }
+
+
+  // 操作弹窗
+  &__operation {
+
+    .#{$modalPrefixClass}__content {
+      padding-top: 0;
+      height: auto;
+    }
+
+    .#{$modalPrefixClass}__body {
+      padding: 0;
+    }
+
+  }
+
+
+  // -----------------------------------
+  // Android
+  // -----------------------------------
+
+  &--android {
+
+    width: 300px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 45px, rgba(0, 0, 0, 0.22) 0px 10px 18px;
+
+    .#{$modalPrefixClass} {
+
+      &__close {
+        top: 18px;
+        right: 15px;
+      }
+
+      &__content {
+        border-radius: $radius-xs;
+        text-align: left;
+      }
+
+      &__title {
+        text-align: left; 
+      }
+
+      &__button__group {
+        // 常规
+        &--normal {
+
+          .#{$modalPrefixClass}__button {
+            flex: none;
+            display: inline-block;
+            min-width: 68px;
+            height: $modal-button-size-android;
+            line-height: $modal-button-size-android;
+            font-size: $font-size-caption;
+          }
+
+          // 垂直排版
+          &.#{$modalPrefixClass}__button__group--v {
+            display: block;
+            padding: $v-spacing-md $h-spacing-md;
+            text-align: right;
+            font-size: 0;
+            
+            .#{$modalPrefixClass}__button {
+              text-align: right;
+              box-sizing: content-box;
+              display: block;
+              border-top: 0;
+              padding: $v-spacing-sm $h-spacing-sm;
+              color: $color-text-base;
+
+              &:last-child {
+                color: $brand-primary;
+              }
+            }
+
+          }
+
+          // 水平排版
+          &.#{$modalPrefixClass}__button__group--h {
+            border-top: 0;
+            display: block;
+            padding: $v-spacing-md $h-spacing-md;
+            text-align: right;
+            font-size: 0;
+
+            .#{$modalPrefixClass}__button {
+              border-left: 0;
+              padding: 0 $h-spacing-sm;
+            }
+
+          }
+
+        }
+
+      }
+    }
+  }
+
+}
