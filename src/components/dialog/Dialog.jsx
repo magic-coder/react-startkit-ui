@@ -24,7 +24,10 @@ export default class Dialog extends React.Component {
       PropTypes.element,
     ]),
     // 弹窗底部
-    footer: PropTypes.element,
+    footer: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element,
+    ]),
     // 是否显示关闭按钮
     closable: PropTypes.bool,
     // 是否有遮罩层
