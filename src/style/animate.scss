@@ -3,7 +3,7 @@
 // --------------------------------------
 
 @mixin effect() {
-  animation-duration: 0.3s;
+  animation-duration: 0.2s;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(.55, 0, .55, .2);
 }
@@ -125,7 +125,7 @@
 
 
 // --------------------
-// 缩放
+// 渐隐下划
 // --------------------
 .fade-slide-enter,
 .fade-slide-leave {
@@ -184,5 +184,56 @@
   100% {
     opacity: 0;
     transform: translateY(-60px);
+  }
+}
+
+
+// ------------------------------
+// 底部抽出
+// ------------------------------
+.slide-up-enter,
+.slide-up-appear {
+  transform: translate(0, 100%);
+}
+
+.slide-up-enter,
+.slide-up-appear,
+.slide-up-leave {
+  @include effect();
+
+  animation-play-state: paused;
+}
+
+.slide-up-enter,
+.slide-up-enter-active,
+.slide-up-appear,
+.slide-up-appear-active {
+  animation-name: slideUpIn;
+  animation-play-state: running;
+}
+
+.slide-up-leave,
+.slide-up-leave-active {
+  animation-name: slideUpOut;
+  animation-play-state: running;
+}
+
+@keyframes slideUpIn {
+  0% {
+    transform: translate(0, 100%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideUpOut {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(0, 100%);
   }
 }

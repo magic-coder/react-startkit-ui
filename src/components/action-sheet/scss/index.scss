@@ -1,0 +1,329 @@
+@import '../../../style/import';
+$actionSheetPrefixClass       : 'action-sheet';
+$action-sheet-button-item-height       : 50 * $hd;
+$action-sheet-button-item-share-size   : 60 * $hd;
+$action-sheet-button-item-font-size    : 18 * $hd;
+$action-sheet-button-item-thumb-sm     : 22 * $hd;
+$action-sheet-button-item-thumb-md     : 36 * $hd;
+$action-sheet-button-item-thumb-lg     : 48 * $hd;
+$action-sheet-button-item-thumb-xl     : 60 * $hd;
+$action-sheet-button-cancel-space      : 6 * $hd;
+
+
+.#{$actionSheetPrefixClass} {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+
+  // 关闭按钮
+  &__close {
+    cursor: pointer;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    opacity: 0.5;
+    transition: opacity 0.25s linear;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &__button {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3csvg%20viewBox=%220%200%201024%201024%22%20version=%221.1%22%20xmlns=%22http:%2f%2fwww.w3.org%2f2000%2fsvg%22%20p-id=%226231%22%20xmlns:xlink=%22http:%2f%2fwww.w3.org%2f1999%2fxlink%22%20width=%2264%22%20height=%2264%22%3e%3cdefs%3e%3cstyle%20type=%22text%2fcss%22%3e%3c%2fstyle%3e%3c%2fdefs%3e%3cpath%20d=%22M176.661601%20817.172881C168.472798%20825.644055%20168.701706%20839.149636%20177.172881%20847.338438%20185.644056%20855.527241%20199.149636%20855.298332%20207.338438%20846.827157L826.005105%20206.827157C834.193907%20198.355983%20833.964998%20184.850403%20825.493824%20176.661601%20817.02265%20168.472798%20803.517069%20168.701706%20795.328267%20177.172881L176.661601%20817.172881Z%22%20p-id=%226232%22%3e%3c%2fpath%3e%3cpath%20d=%22M795.328267%20846.827157C803.517069%20855.298332%20817.02265%20855.527241%20825.493824%20847.338438%20833.964998%20839.149636%20834.193907%20825.644055%20826.005105%20817.172881L207.338438%20177.172881C199.149636%20168.701706%20185.644056%20168.472798%20177.172881%20176.661601%20168.701706%20184.850403%20168.472798%20198.355983%20176.661601%20206.827157L795.328267%20846.827157Z%22%20p-id=%226233%22%3e%3c%2fpath%3e%3c%2fsvg%3e");
+    }
+  }
+
+  // 遮罩层
+  &__mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: $action-sheet-zindex;
+    background-color: $fill-mask;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  // 主题内容
+  &__wrap {
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    z-index: $action-sheet-zindex;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+  }
+
+
+  // 标题 & 描述信息
+  &__title,
+  &__message {
+    margin: $v-spacing-lg auto;
+    padding: 0 $h-spacing-lg;
+    text-align: center;
+  }
+  &__title {
+    font-size: $font-size-heading;
+    color: $color-text-base;
+  }
+  &__message {
+    font-size: $font-size-base;
+    color: $color-text-caption;
+  }
+
+  // 按钮列表
+  &__button__list {
+    text-align: center;
+    color: $color-text-base;
+
+    &__item {
+      transition: background 0.25s linear;
+      
+      &:active {
+        background-color: $fill-tap;
+      }
+
+      &__content {
+        box-sizing: border-box;
+        margin: 0;
+        cursor: pointer;
+        position: relative;
+        padding: 0 $h-spacing-lg;
+        font-size: $action-sheet-button-item-font-size;
+        height: $action-sheet-button-item-height;
+        line-height: $action-sheet-button-item-height;
+        border-top: 1px solid $border-color-base; /* no */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include ellipsis();
+      }
+
+      // 图标
+      &__thumb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color-text-auxiliary;
+        margin-right: $h-spacing-md;
+        min-width: $action-sheet-button-item-thumb-sm;
+        
+        .icon,
+        img {
+          width: $action-sheet-button-item-thumb-sm;
+          height: $action-sheet-button-item-thumb-sm;
+        }
+      }
+
+      &__text {
+        text-align: left;
+        @include ellipsis();
+      }
+    }
+
+    // 网格布局
+    &--grid {
+      display: flex;
+      flex-wrap: wrap; 
+      padding: 0 $h-spacing-md;
+
+      .#{$actionSheetPrefixClass}__button__list__item {
+        
+        position: relative;
+        display: block;
+        width: 25%;
+        height: auto;
+        padding: $v-spacing-md * 2 0;
+
+        &__content {
+          border-top: 0;
+          padding: 0;
+          line-height: 1;
+          text-align: center;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        &__thumb { 
+          display: block;
+          width: 100%;          
+          margin: 0 auto $v-spacing-md;
+
+          .icon,
+          img {
+            width: $action-sheet-button-item-thumb-md;
+            height: $action-sheet-button-item-thumb-md;
+          }
+        }
+
+        &__text {
+          color: $color-text-caption;
+          font-size: $font-size-caption;
+          width: 100%;
+          text-align: center;
+        }
+
+      }
+    }
+  }
+
+  // 取消按钮
+  &__button__cancel {
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    margin-top: $action-sheet-button-cancel-space;
+    padding: 0 $h-spacing-lg;
+    font-size: $font-size-heading;
+    text-align: center;
+    height: $action-sheet-button-item-height;
+    line-height: $action-sheet-button-item-height;
+    border-top: 1px solid $border-color-base; /* no */
+    transition: background 0.25s linear;
+    background-color: $fill-base;
+    
+    &:active {
+      background-color: $fill-tap;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: $action-sheet-button-cancel-space;
+      position: absolute;
+      top: -$action-sheet-button-cancel-space;
+      left: 0;
+      right: 0;
+      background-color: #e7e7ed;
+    }
+
+  }
+
+
+  // 内容左对齐
+  &--align-left {
+    
+    .#{$actionSheetPrefixClass} {
+      &__title,
+      &__message {
+        text-align: left;
+      }
+
+      &__button__list__item__content {
+        justify-content: flex-start
+      }
+      &__button__list__item__text {
+        flex: 1;
+        min-width: 0;
+      }
+    }
+
+  }
+
+
+  // 分享类型
+  &--share {
+    background-color: $fill-grey;
+  }
+  .#{$actionSheetPrefixClass}__share {
+    
+    &__list--simple {
+
+      .#{$actionSheetPrefixClass} {
+        &__share__list__row {
+          &:first-child {
+            border-top: 0;
+          }
+        }
+      } 
+    }
+
+    &__list__row {
+      border-top: 1px solid $border-color-base; /* no */
+
+      &__header {
+        color: $color-text-secondary;
+        font-size: $font-size-caption-sm;
+        padding: $h-spacing-lg $v-spacing-lg 0;
+      }
+
+      &__body {
+        position: relative;
+        display: flex;
+        padding: 21px 0 21px $h-spacing-lg;
+        -webkit-overflow-scrolling: touch;
+        overflow-y: hidden;
+        overflow-x: scroll;
+      }
+    }
+
+    &__list__item {
+      flex: none;
+      vertical-align: top;
+
+      &__content {
+        box-sizing: content-box;
+        padding: 0 12px 0 0;
+        max-width: $action-sheet-button-item-share-size;
+      }
+
+      &__thumb {
+        margin-bottom: $v-spacing-md;
+        width: $action-sheet-button-item-thumb-xl;
+        height: $action-sheet-button-item-thumb-xl;
+        background-color: $fill-base;
+        border-radius: $radius-sm;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon,
+        img {
+          width: $action-sheet-button-item-thumb-md;
+          height: $action-sheet-button-item-thumb-md;
+        }
+      }
+
+      &__text {
+        display: block;
+        text-align: center;
+        color: $color-text-caption;
+        font-size: $font-size-caption-sm;
+        text-align: center;
+      }
+    }
+
+  }
+
+  // 自定义内容
+  &__custom__content {
+    border-top: 1px solid $border-color-base; /* no */
+    padding: $h-spacing-lg $v-spacing-lg;
+  }
+}

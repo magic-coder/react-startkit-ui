@@ -26,6 +26,7 @@ import ProgressExample from '@/views/examples/progress';
 import ToastExample from '@/views/examples/toast';
 import DialogExample from '@/views/examples/dialog';
 import ModalExample from '@/views/examples/modal';
+import ActionSheetExample from '@/views/examples/action-sheet';
 
 import LocaleProviderExample from '@/views/locale-provider';
 
@@ -113,6 +114,7 @@ export default class APP extends React.Component {
             <Route exact path="/toast" component={ToastExample} />
             <Route exact path="/dialog" component={DialogExample} />
             <Route exact path="/modal" component={ModalExample} />
+            <Route exact path="/action-sheet" component={ActionSheetExample} />
 
             <Route exact path="/locale-provider" component={LocaleProviderExample} />
 
