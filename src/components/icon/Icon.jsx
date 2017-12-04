@@ -2,8 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './svg';
 import './scss';
+
+// import './svg';
+const requireAll = (requireContext) => {
+  console.log(requireContext.keys());
+  requireContext.keys().map(requireContext);
+};
+const req = require.context('@/assets/svg', false, /\.svg$/);
+requireAll(req);
 
 export default class Icon extends React.Component {
   static propTypes = {
