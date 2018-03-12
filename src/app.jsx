@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import dynamic from '@/utils/dynamic';
 
 import '@/style/base';
 
+import dynamic from '@/utils/dynamic';
 import Home from '@/views/home';
 import NotFound from '@/views/404';
 import AnimateExample from '@/views/examples/animate';
@@ -73,12 +73,23 @@ const ListExample = dynamic({
   loader: () => { return import('@/views/examples/list'); },
 });
 
+// import router from '@/router/router';
+
 export default class APP extends React.Component {
   render() {
     return (
       <Router>
         <div className="container">
           <Switch>
+            {
+              /* router.map((route) => {
+                const { exact, path, component } = route;
+                // console.log(Component);
+                return (
+                  <Route key={path} exact={exact} path={path} component={component} />
+                );
+              }) */
+            }
             <Route exact path="/" component={Home} />
             <Route exact path="/flex" component={FlexExample} />
             <Route exact path="/grid" component={GridExample} />
