@@ -6,7 +6,6 @@ import './scss';
 
 // import './svg';
 const requireAll = (requireContext) => {
-  console.log(requireContext.keys());
   requireContext.keys().map(requireContext);
 };
 const req = require.context('@/assets/svg', false, /\.svg$/);
