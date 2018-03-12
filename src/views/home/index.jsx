@@ -52,6 +52,8 @@ class Home extends React.Component {
                 <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/whitespace'); }}>WhiteSpace 上下留白</List.Item>
                 <Divider shallowInset />
                 <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/wingblank'); }}>WingBlank 两翼留白</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/scrollview'); }}>ScrollView 滚动视图区域</List.Item>
               </List>
             </Accordion.Item>
             <Accordion.Item
@@ -63,6 +65,8 @@ class Home extends React.Component {
                 <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/searchbar'); }}>SearchBar 搜索栏</List.Item>
                 <Divider shallowInset />
                 <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/tabbar'); }}>TabBar 标签栏</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/menu'); }}>Menus 菜单组件</List.Item>
               </List>
             </Accordion.Item>
             <Accordion.Item
@@ -73,6 +77,8 @@ class Home extends React.Component {
                 <Divider shallowInset />
                 <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/divider'); }}>Divider 间隔线</List.Item>
                 <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/paper'); }}>Paper 阴影容器</List.Item>
+                <Divider shallowInset />
                 <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/tabs'); }}>Tabs 选项卡</List.Item>
                 <Divider shallowInset />
                 <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/accordion'); }}>Accordion 手风琴</List.Item>
@@ -82,23 +88,47 @@ class Home extends React.Component {
                 <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/icon'); }}>Icon 图标</List.Item>
                 <Divider shallowInset />
                 <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/list'); }}>List 列表</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/marquee'); }}>Marquee 跑马灯</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/carousel'); }}>Carousel 轮播图</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/steps'); }}>Steps 步骤条</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/segmented-control'); }}>SegmentedControl 分段器</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/progress'); }}>进度条</List.Item>
               </List>
             </Accordion.Item>
             <Accordion.Item
               label="数据录入 Data Entry"
             >
-              <div className="text__content" style={{ padding: '0.3rem' }}>
-                <p>您可以在旅程开始前或旅程期间随时取消预订。要取消预订，请按以下步骤操作：</p>
-                <p>1.前往您的旅程; 2.在您要取消的预订旁边点击更改或取消; 3.选择取消预订</p>
-              </div>
+              <List transparent className="category__list">
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/pagination'); }}>Pagination 分页器</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/divider'); }}>Divider 间隔线</List.Item>
+              </List>
             </Accordion.Item>
             <Accordion.Item
               label="操作反馈 Feedback"
             >
-              <div className="text__content" style={{ padding: '0.3rem' }}>
-                <p>您可以在旅程开始前或旅程期间随时取消预订。要取消预订，请按以下步骤操作：</p>
-                <p>1.前往您的旅程; 2.在您要取消的预订旁边点击更改或取消; 3.选择取消预订</p>
-              </div>
+              <List transparent className="category__list">
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/popover'); }}>Popover 气泡菜单</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/divider'); }}>Divider 间隔线</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/noticebar'); }}>Noticebar 通告栏</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/notification'); }}>Notification 通知提醒信息</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/toast'); }}>Toast 轻提示弹窗</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/dialog'); }}>Dialog 弹窗</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/modal'); }}>Modal 模态对话框</List.Item>
+                <Divider shallowInset />
+                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/action-sheet'); }}>ActionSheet 动作面板</List.Item>
+              </List>
             </Accordion.Item>
             <Accordion.Item
               label="组合组件 Combination"
