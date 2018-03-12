@@ -105,8 +105,6 @@ class Home extends React.Component {
             >
               <List transparent className="category__list">
                 <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/pagination'); }}>Pagination 分页器</List.Item>
-                <Divider shallowInset />
-                <List.Item arrow="horizontal" onClick={() => { this.props.history.push('/divider'); }}>Divider 间隔线</List.Item>
               </List>
             </Accordion.Item>
             <Accordion.Item
